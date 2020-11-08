@@ -1,9 +1,9 @@
-  (% load static %}
+(% load static %}
   
-  <!DOCTYPE html>
+<!DOCTYPE html>
   <html>
     <head>
-
+    
     {% block meta %}
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
@@ -12,13 +12,13 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {% block corecss %}
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    {% end block %}
+    {% endblock %}
 
     {% block corejs %}
       
         <script type="text/javascript" src="js/materialize.min.js"></script>
-    {% end block %} 
-        <title>Ravel {% block extra_title %}{% end block %}</title>
+    {% endblock %} 
+        <title>Ravel {% block extra_title %}{% endblock %}</title>
     </head>
 
     <body>
@@ -28,15 +28,15 @@
     {% endif %}
 
     {% block page_header %}
-    {% end block %}
+    {% endblock %}
 
     {% block content %}
-    {% end block %}
+    {% endblock %}
 
     {% block postloadjs %}
     {% endblock %}
 
 
     </body>
-  </html>
+</html>
         
