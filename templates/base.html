@@ -2,51 +2,139 @@
 
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="shortcut icon" href="images/knit.png" />
+    <link rel="stylesheet" href="static/css/style.css" type="text/css" />
+    <title>Ravel</title>
+    {% block meta %}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8" />
+    <meta name="theme-color" content="#ffa78a" />
+    <meta name="author" content="Daniel Bradford" />
+    <meta
+      name="description"
+      content="Custom Knitware Online Store Application"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% endblock %}
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    {% block corecss %}
+    <link
+      rel=" stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      type="text/css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.min.css"
+      media="screen,projection"
+    />
+    {% endblock %} {% block corejs %}
 
-<head>
-	<link rel="shortcut icon" href="images/knit.png" />
-	<link rel="stylesheet" href="css/style.css" type="text/css" />
-	<title>Ravel</title>
-	{% block meta %}
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta charset="UTF-8" />
-	<meta name="theme-color" content="#ffa78a" />
-	<meta name="author" content="Daniel Bradford" />
-	<meta name="description" content="Custom Knitware Online Store Application" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	{% endblock %}
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	{% block corecss %}
-    <link rel=" stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-		type="text/css" />
-	<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-	{% endblock %}
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    {% endblock %}
+    <title>Ravel {% block extra_title %}{% endblock %}</title>
+  </head>
 
-	{% block corejs %}
+  <body>
+    <header>
+      <nav class="nav-extended text-shadow #b39ddb deep-purple lighten-2">
+        <!--top navbar-->
+        <div class="navbar nav-wrapper">
+          <a
+            href="/"
+            class="title logo brand-logo"
+            style="font-family: Lobster; font-size: 50px"
+            ><i class="fas fa-hat-winter"></i>Ravel</a
+          >
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger right"
+            ><i class="fas fa-bars"></i
+          ></a>
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <a href="index.html">Home <i class="fas fa-home"></i></a>
+            </li>
 
-	<script type="text/javascript" src="js/materialize.min.js"></script>
-	{% endblock %}
-	<title>Ravel {% block extra_title %}{% endblock %}</title>
-</head>
+            <li>
+              <a href="babywear.html">Babywear <i class="fas fa-baby"></i></a>
+            </li>
 
-<body>
-	<header class="col-12"></header>
-	{% if messages %}
-	<div class="message-container"></div>
-	{% endif %}
+            <li>
+              <a href="accessories.html"
+                >Accessories <i class="fas fa-scarf"></i
+              ></a>
+            </li>
+            <!-- Prevents guest user accessing profile feature -->
 
-	{% block page_header %}
-	{% endblock %}
+            <li>
+              <a href="contact.html">Contact <i class="fas fa-phone"></i></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!--side nav bar-->
+      <ul class="sidenav" id="mobile-demo">
+        <li>
+          <h4 class="center-align deep-purple-text lighten-2">
+            <i class="fas fa-hat-winter"></i> Ravel
+          </h4>
+        </li>
 
-	{% block content %}
-	{% endblock %}
+        <li>
+          <a href="index.html">Home <i class="fas fa-home"></i></a>
+        </li>
+        <li>
+          <a href="babywear.html">Babywear<i class="fas fa-baby"></i></a>
+        </li>
 
-	{% block postloadjs %}
-	{% endblock %}
-
-
-</body>
-
+        <li>
+          <a href="accesories.html">Accessories <i class="fas fa-scarf"></i></a>
+        </li>
+        <li>
+          <a href="contact.html">Contact<i class="fas fa-phone"></i></a>
+        </li>
+      </ul>
+    </header>
+    {% if messages %}
+    <div class="message-container"></div>
+    <footer class="heartwool-footer">
+      <div class="purple-text container">
+        © 2020 Copyright DDB
+        <span
+          ><a
+            href="https://www.linkedin.com/in/daniel-bradford-12492946/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="linked in button"
+            ><i class="fab fa-linkedin"></i></a
+        ></span>
+        <span class="right"
+          >Follow Us:<a
+            aria-label="instagram button"
+            class="grey-text text-lighten-4 right"
+            target="_blank"
+            rel="noreferrer"
+            href="https://instagram.com"
+            ><i class="fab fa-instagram"></i> </a
+        ></span>
+      </div>
+    </footer>
+    {% endif %} 
+    {% block page_header %} 
+    {% endblock %} 
+    {% block content %} 
+    {% endblock %} 
+    {% block postloadjs %} 
+    {% endblock %}
+  </body>
 </html>
