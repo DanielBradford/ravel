@@ -1,42 +1,42 @@
-(% load static %}
-  
+{% load static %}
+
 <!DOCTYPE html>
-  <html>
-    <head>
-    
-    {% block meta %}
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    {% endblock %}
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    {% block corecss %}
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    {% endblock %}
+<html>
 
-    {% block corejs %}
-      
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-    {% endblock %} 
-        <title>Ravel {% block extra_title %}{% endblock %}</title>
-    </head>
+<head>
+	{% block meta %}
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	{% endblock %}
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	{% block corecss %}
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+	{% endblock %}
 
-    <body>
-    <header class="col-12"></header>
-    {% if messages %}
-     <div class="message-container"></div>
-    {% endif %}
+	{% block corejs %}
 
-    {% block page_header %}
-    {% endblock %}
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	{% endblock %}
+	<title>Ravel {% block extra_title %}{% endblock %}</title>
+</head>
 
-    {% block content %}
-    {% endblock %}
+<body>
+	<header class="col-12"></header>
+	{% if messages %}
+	<div class="message-container"></div>
+	{% endif %}
 
-    {% block postloadjs %}
-    {% endblock %}
+	{% block page_header %}
+	{% endblock %}
+
+	{% block content %}
+	{% endblock %}
+
+	{% block postloadjs %}
+	{% endblock %}
 
 
-    </body>
+</body>
+
 </html>
-        
