@@ -3,17 +3,40 @@
   <!DOCTYPE html>
   <html>
     <head>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+    {% block meta %}
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-         <script type="text/javascript" src="js/materialize.min.js"></script>
-        <title>Ravel</title>
+    {% endblock %}
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% block corecss %}
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    {% end block %}
+
+    {% block corejs %}
+      
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+    {% end block %} 
+        <title>Ravel {% block extra_title %}{% end block %}</title>
     </head>
 
     <body>
-     
+    <header class="col-12"></header>
+    {% if messages %}
+     <div class="message-container"></div>
+    {% endif %}
+
+    {% block page_header %}
+    {% end block %}
+
+    {% block content %}
+    {% end block %}
+
+    {% block postloadjs %}
+    {% endblock %}
+
+
     </body>
   </html>
         
