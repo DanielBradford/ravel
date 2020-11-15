@@ -3,7 +3,7 @@
 .heartwool {
   width: 100vw;
   height: 90vh;
-  background: url(media/images/brownwool.jpg) no-repeat bottom right fixed;
+  background: url(./media/images/brownwool.jpg) no-repeat bottom right fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -31,7 +31,7 @@
 
 }
 #cta-btn-order{
-    padding-top: 200px;
+    margin-top: 25%;
 }
 
 .about{
