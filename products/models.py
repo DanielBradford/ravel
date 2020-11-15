@@ -20,7 +20,7 @@ class Category(models.Model):
 class Color(models.Model):
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    cost = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
@@ -32,7 +32,7 @@ class Color(models.Model):
 class Size(models.Model):
     name = models.CharField(max_length=254)
     measurement = models.CharField(max_length=254, null=True, blank=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    cost = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):

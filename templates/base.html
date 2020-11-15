@@ -4,7 +4,6 @@
 <html>
   <head>
     <link rel="shortcut icon" href="images/knit.png" />
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <title>Ravel</title>
     {% block meta %}
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -39,6 +38,7 @@
       href="css/materialize.min.css"
       media="screen,projection"
     />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %} {% block corejs %}
      <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
