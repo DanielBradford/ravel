@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Lobster&family=Open+Sans:wght@300&display=swap');
 
+.intro{
+       margin-top: 30px;
 
+}
 .container{
+ 
     border: double 3px black;
 }
 .heartwool {
@@ -20,6 +24,11 @@
   box-shadow: 1px 1px #9575cd;
 }
 
+.about{
+    padding: 2em;
+    padding-top: 1em;
+}
+
 .contact{
     width: 40vw;
   height: 100vh;
@@ -35,7 +44,7 @@
 
 }
 #cta-btn-order{
-    margin-top:50%;
+    margin-top:100px;
 }
 
 
@@ -45,7 +54,7 @@
     z-index: 400;
     margin: 20%;
     border-radius: 50%;
-    margin-top: 1em;
+    padding-top: 2em;
 }
 #knit{
     opacity: .07;
