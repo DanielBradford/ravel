@@ -9,8 +9,8 @@
     border: double 3px black;
 }
 .heartwool {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: auto;
   background: url(/media/images/brownwool.jpg) no-repeat bottom right fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
