@@ -4,7 +4,7 @@
 <html>
   <head>
     <link rel="shortcut icon" href="images/knit.png" />
-    <link rel="stylesheet" href="static/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <title>Ravel</title>
     {% block meta %}
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -41,7 +41,7 @@
     />
     {% endblock %} {% block corejs %}
 
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    
     {% endblock %}
     <title>Ravel {% block extra_title %}{% endblock %}</title>
   </head>
@@ -52,7 +52,7 @@
         <!--top navbar-->
         <div class="navbar nav-wrapper">
           <a
-            href="/"
+            href="{% url 'home' %}"
             class="title logo brand-logo"
             style="font-family: Lobster; font-size: 50px"
             ><i class="fas fa-hat-winter"></i>Ravel</a
@@ -62,7 +62,7 @@
           ></a>
           <ul class="right hide-on-med-and-down">
             <li>
-              <a href="index.html">Home <i class="fas fa-home"></i></a>
+              <a href="{% url 'home' %}">Home <i class="fas fa-home"></i></a>
             </li>
 
             <li>
