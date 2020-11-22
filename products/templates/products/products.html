@@ -4,12 +4,24 @@
 	<main>
 	<div class="container">
         <div class="row">
-        <div class="col-12 center">
-        <h1>Products</h1>
-        </div>
-            <div class="col m12 s12 center">A selection of items that you can base your order on. They come in a variety of colors and sizes. Prices will vary!</div>
+            <div class="col-12 center">
+                <h1>Products</h1>
+                <hr>
+                    <div>
+                        <div class="col m12 s12 center">A selection of items that you can base your order on. They come in a variety of colors and sizes. Prices will vary!
+                        </div>
+                    </div>
+                <hr>
+            </div>
         </div>
     </div>
+    <div id="categories" class="row">
+        <div class="col m6 s6 lg6 center">
+        <button class="btn"> Babywear <i class="fa fa-baby"></i></button>
+        </div>
+        <div class="col m6 s6 lg6">
+        <button class="btn"> Accessories <i class="fa fa-scarf"></i></button>
+        </div>
     <div class="products-container">
     <div class="row">
         {% for product in products %}
@@ -48,11 +60,15 @@
                 </div>
             
                 <div class="row center">
-                    <button class="btn center">Order Now <i class="fa fa-shopping-bag"></i></button>
+                    <a href="#"><button class="btn center">Order Now <i class="fa fa-shopping-bag"></i></button></a>
                     </div>
                 </div>
             </div>
-        {% endfor %}
+        {% endfor %} 
+            
+      
+    </div>
+    
     </div>
     </div>
 	</main>
