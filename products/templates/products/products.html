@@ -7,7 +7,7 @@
         <div class="col-12 center">
         <h1>Products</h1>
         </div>
-            <div class="col">{{products}}</div>
+            <div class="col m12 s12 center">A selection of items that you can base your order on. They come in a variety of colors and sizes. Prices will vary!</div>
         </div>
     </div>
     <div class="products-container">
@@ -15,15 +15,34 @@
         {% for product in products %}
             <div class=" col m4 s12 card">
                 <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src='{{product.image}}'>
+                <img class="activator" src='{{product.imageurl}}'>
                 </div>
                 <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{product.name}}<i class="material-icons right">more_vert</i></span>
-                <p><a href="#">£{{product.price}}</a></p>
+                <p><a href="#">from £{{product.price}}</a></p>
                 </div>
                 <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">About <i class="fa fa-info"></i><i class="material-icons right">close</i></span>
                 <p>{{product.description}}</p>
+                <div class="row">
+                <div class="input-field col s12 m6">
+                    <select class="icons">
+                    <option value="" disabled selected>Choose your Color</option>
+                    {% for color in colors %}
+                    <option value="" data-icon="{{color.image}}">{{color.name}}: +£{{color.cost}}</option>
+                    {% endfor %}
+                    </select>
+                    <label>Color Option</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <select class="icons">
+                    <option value="" disabled selected>Choose your Size</option>
+                    {% for size in size %}
+                    <option value="{{size.name}}" >{{size.name}} {{size.measurement}}</option>
+                    {% endfor %}
+                    </select>         
+                </div>
+                </div>
                 <div class="row center">
                     <button class="btn center">Order Now <i class="fa fa-shopping-bag"></i></button>
                     </div>
