@@ -22,7 +22,7 @@
     <div class="products-container">
     <div class="row">
         {% for product in products %}
-            <div class=" col m4 s12 card">
+            <div class=" col m3 l4 s12 card">
                 <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="{{ product.image.url }}">
                 </div>
@@ -53,7 +53,7 @@
                 </div>
                 </div>
                 <div class="row">
-                <p>Item: £{{product.price}}</p>
+                <p>Total: £{{product.price}}</p>
                 
                 </div>
             
