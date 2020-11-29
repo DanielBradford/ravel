@@ -6,10 +6,7 @@
         <div class="row">
             <div class="col-12 center">
                 <h1>Products</h1>
-                <hr>
-                    <div>
-                        <div class="col m12 s12 center">A selection of items that you can base your order on. They come in a variety of colors and sizes. Prices will vary!
-                        </div>
+                    <div class="col m12 s12 center">A selection of items that you can base your order on. They come in a variety of colors and sizes. Prices will vary!
                     </div>
                 <hr>
             </div>
@@ -19,7 +16,7 @@
         <div class="col m6 s6 lg6 center">
         <button class="btn"> Babywear <i class="fa fa-baby"></i></button>
         </div>
-        <div class="col m6 s6 lg6">
+        <div class="col m6 s6 lg6 center">
         <button class="btn"> Accessories <i class="fa fa-scarf"></i></button>
         </div>
     <div class="products-container">
@@ -31,12 +28,12 @@
                 </div>
                 <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{product.name}}<i class="material-icons right">more_vert</i></span>
-                <p><a href="#">from £{{product.price}}</a></p>
+                <p><a href="#"><strong>from £{{product.price}}</strong></a></p>
                 </div>
                 <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">About <i class="fa fa-info"></i><i class="material-icons right">close</i></span>
                 <p>{{product.description}}</p>
-                <div class="row">
+                <div id="color-select" class="row">
                 <div class="input-field col s12 m12">
                     <select id="colorChoice" class="icons">
                     <option value="" disabled selected>Choose your Color</option>
@@ -56,6 +53,7 @@
                 </div>
                 </div>
                 <div class="row">
+                <p>Item: £{{product.price}}</p>
                 
                 </div>
             
@@ -64,6 +62,26 @@
                     </div>
                 </div>
             </div>
+            <!-- {% if forloop.counter|divisibleby:1 %}
+                            <div class="col-12 d-sm-none mb-5">
+                                <hr>
+                            </div>
+            {% endif %}                        
+            {% if forloop.counter|divisibleby:2 %}
+                            <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+                                <hr>
+                            </div>
+            {% endif %}
+            {% if forloop.counter|divisibleby:3 %}
+                            <div class="col-12 d-none d-lg-block d-xl-none mb-5">
+                                <hr>
+                            </div>
+            {% endif %}
+            {% if forloop.counter|divisibleby:4 %}
+                            <div class="col-12 d-none d-xl-block mb-5">
+                                <hr>
+                            </div>
+            {% endif %} -->
         {% endfor %} 
             
       
