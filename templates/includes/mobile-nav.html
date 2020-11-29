@@ -1,5 +1,5 @@
  <!-- Dropdown Structure -->
-<ul id="my-account-dropdown" class="dropdown-content">
+<ul id="my-account-dropdown-mobile" class="dropdown-content">
 {% if request.user.is_authenticated %}
     {% if request.user.is_superuser %}
         <li><a href="{% url 'account_logout' %}" class="dropdown-item">Admin <i class="fa fa-cogs"></i></a></li>
@@ -34,7 +34,6 @@
           <a href="contact.html">Contact<i class="fas fa-comments"></i></a>
         </li>
         <li>
-              <a class="dropdown-trigger" href="#!" data-target="my-account-dropdown">My Account <i class="fas fa-user"></i
-              ></a>
+            <a class="dropdown-trigger" data-target="my-account-dropdown-mobile">My Account <i class="fas fa-user"></i></a>
         </li> 
 </ul>

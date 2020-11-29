@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 
@@ -6,4 +6,3 @@ from django.shortcuts import render
 def orders(request):
     """ A view to renders the orders page"""
     return render(request, 'orders/orders.html')
-    

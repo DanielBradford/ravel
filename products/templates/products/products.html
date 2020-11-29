@@ -14,10 +14,10 @@
     </div>
     <div id="categories" class="row">
         <div class="col m6 s6 lg6 center">
-        <button class="btn"> Babywear <i class="fa fa-baby"></i></button>
+        <a href="{% url 'products' %}?category=babywear" class="btn">Babywear <i class="fa fa-baby"></i></a>
         </div>
         <div class="col m6 s6 lg6 center">
-        <button class="btn"> Accessories <i class="fa fa-scarf"></i></button>
+        <a href="{% url 'products' %}?category=accessories" class="btn">Accessories <i class="fa fa-scarf"></i></a>
         </div>
     <div class="products-container">
     <div class="row">
@@ -35,19 +35,19 @@
                 <p>{{product.description}}</p>
                 <div id="color-select" class="row">
                 <div class="input-field col s12 m12">
-                    <select id="colorChoice" class="icons">
+                    <select name="color" id="colorChoice" class="icons">
                     <option value="" disabled selected>Choose your Color</option>
                     {% for color in colors %}
-                    <option value="" data-icon="{{color.image.url}}">{{color.name}} <span class="center">(+£{{color.cost}})</span></option>
+                    <option value="{{color.cost}}" data-icon="{{color.image.url}}">{{color.name}} <span class="center">(+£{{color.cost}})</span></option>
                     {% endfor %}
                     </select>
                     <label>Color Option</label>
                 </div>
                 <div class="input-field col s12 m12">
-                    <select id="sizeChoice" class="icons">
+                    <select name="size" id="sizeChoice" class="icons">
                     <option value="" disabled selected>Choose your Size</option>
                     {% for size in size %}
-                    <option value="{{size.name}}" >{{size.name}} (+£{{size.cost}}) {{size.measurement}}) </option>
+                    <option value="{{size.cost}}" >{{size.name}} (+£{{size.cost}}) {{size.measurement}}) </option>
                     {% endfor %}
                     </select>         
                 </div>
@@ -58,7 +58,7 @@
                 </div>
             
                 <div class="row center">
-                    <a href="#"><button class="btn center">Order Now <i class="fa fa-shopping-bag"></i></button></a>
+                    <a href="{#"><button class="btn center">Order Now <i class="fa fa-shopping-bag"></i></button></a>
                     </div>
                 </div>
             </div>
