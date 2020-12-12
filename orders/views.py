@@ -27,17 +27,9 @@ def add_to_order(request, item_id):
     size = str(request.POST.get('size'))
     redirect_url = request.POST.get('redirect_url')
     order = request.session.get('order', {})
-
-    if item_id in list(order.keys()):
-        order[item_id] += quantity
-    else:
-        order[item_id] = quantity, color, size
-
+    order[item_id] = quantity, color, size
     request.session['order'] = order
     print(order)
     print(len(order))
-    # values = order.values()
-    # totalof = sum(values)
-    # print(totalof)
 
     return redirect(redirect_url)

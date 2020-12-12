@@ -5,46 +5,57 @@
         <div class="container homeContainer heartwool">
 			<div class="intro row">
 				<div class="col s12 m6">
-					<div class="welcome row center">
+					<div class="row center">
 						<h1 class="col s12"><strong>Orders</strong></h1>
 					</div>
 				</div>
 			
 			</div>
 		</div>
-    </main>
-    
-<div class="row col-8">
-      <table>
+   
+<div>
+      <table style="padding: 2em; margin: 2em;">
         <thead>
           <tr>
+              <th>Order #</th>
               <th>Item Image</th>
               <th>Item Name</th>
               <th>Item Price</th>
+              <th>Quantity</th>
               <th>Item Color</th>
               <th>Item Size</th>
-              <th>Item Total</th>
-              <th>Quantity</th>
+              <th>Total</th>
               <th>Remove</th>
           </tr>
         </thead>
 
         <tbody>
-        {% for item in order_items %}
-          <tr>
-            <td><img width="10em" src="{{ item.product.image.url }}"></td>
-            <td><p>{{item.product.name}}</p></td>
-            <td>£{{item.product.price}}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><i style="color:red" class=" fa fa-trash"></i></td>
-          </tr>
-        {% endfor %}
+        {% if order_items|length > 0 %}
+            {% for item in order_items %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><img width="100px" style="border-radius: 1.4em; object-fit: cover;" src="{{ item.product.image.url }}"></td>
+                <td><p>{{item.product.name}}</p><p style="color: grey">({{item.product.category}})</p></td>
+                <td>£{{item.product.price}}</td>
+                {% for value in item.quantity %}
+                <td><p>{{ value }}</p></td>
+                {% endfor %}
+                <td></td>
+                <td><i style="color:red" class=" fa fa-trash"></i></td>
+            </tr>
+            {% endfor %}
+        {% endif %}
         </tbody>
       </table>
-    </div>
+</div>
+<div class="row left" style="padding-left: 100px;">
+    <h3>Total: </h3>
+    <h3>Delivery: </h3>
+    <h2><strong>Grand Total: </strong></h2>
+</div>
+<div class="row center" style="padding-top: 100px">
+    <button class="btn-large">Checkout <i class="fa fa-shopping-cart"></i></button>
+</div>
         
-    
+     </main>
 {% endblock %}
