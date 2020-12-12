@@ -33,3 +33,10 @@ def add_to_order(request, item_id):
     print(len(order))
 
     return redirect(redirect_url)
+
+
+def delete_all_orders(request):
+    redirect_url = request.POST.get('redirect_url')
+    del request.session
+    return redirect(redirect_url)
+

@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-	<main>
+<main>
         <div class="container homeContainer heartwool">
 			<div class="intro row">
-				<div class="col s12 m6">
+				
 					<div class="row center">
-						<h1 class="col s12"><strong>Orders</strong></h1>
+						<h1 class="col s12"><strong>Orders <i class="fa fa-shopping-bag"></i></strong></h1>
 					</div>
-				</div>
+			
 			
 			</div>
-		</div>
-   
+        </div>
+    <br>
+{% if order_items|length > 0 %}
+   <div class="row center">
+       <button onclick="delete_all_orders()" class="red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></button>
+   </div>
 <div>
       <table style="padding: 2em; margin: 2em;">
         <thead>
@@ -35,7 +39,7 @@
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td><img width="100px" style="border-radius: 1.4em; object-fit: cover;" src="{{ item.product.image.url }}"></td>
-                <td><p>{{item.product.name}}</p><p style="color: grey">({{item.product.category}})</p></td>
+                <td><h5><strong>{{item.product.name}}</strong></h5><p style="color: grey">({{item.product.category}})</p></td>
                 <td>£{{item.product.price}}</td>
                 {% for value in item.quantity %}
                 <td><p>{{ value }}</p></td>
@@ -58,4 +62,11 @@
 </div>
         
      </main>
+{% elif order_items|length == 0 %}
+<div class="row center">
+<h2>YOU DONT HAVE ANY ORDERS</h2>
+<a href="{% url 'products' %}"><button class="btn-large">Start Shopping</button></a>
+</div>
+
+{% endif %}
 {% endblock %}
