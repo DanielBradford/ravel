@@ -4,6 +4,10 @@ $(document).ready(function () {
   $(".sidenav").sidenav();
   $(".modal").modal();
   $('select').formSelect()
+
+  $('#sizeChoice, #colorChoice').on('input',function(e){
+  $('#C').val(parseInt($('#sizeChoice').val()) + parseInt($('#colorChoice').val()));
+    });
   
 
 });

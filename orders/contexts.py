@@ -1,10 +1,28 @@
 from decimal import Decimal
 from django.conf import settings
+from django.shortcuts import get_object_or_404
+from products.models import Product, Color, Size
+
 
 def order_contents(request):
     order_items = []
     total = 0
     product_count = 0
+    order = request.session.get('order', {})
+
+    for item_id, quantity in order.items():
+        product = get_object_or_404(Product, pk=item_id)
+        # color = get_object_or_404(Color, pk=item_id)
+        # size = get_object_or_404(Size, pk=item_id)
+
+        total = product.price
+        print(total)
+        product_count = quantity
+        order_items.append({
+            'item_id': item_id,
+            'quantity': quantity,
+            'product': product,
+        })
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = settings.STANDARD_DELIVERY
@@ -26,4 +44,4 @@ def order_contents(request):
         'grand_total': grand_total,
     }
 
-    return context 
+    return context

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+	<main>
+        <div class="container homeContainer heartwool">
+			<div class="intro row">
+				<div class="col s12 m6">
+					<div class="welcome row center">
+						<h1 class="col s12"><strong>Orders</strong></h1>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+    </main>
+    
+<div class="row col-8">
+      <table>
+        <thead>
+          <tr>
+              <th>Item Image</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+              <th>Item Color</th>
+              <th>Item Size</th>
+              <th>Item Total</th>
+              <th>Quantity</th>
+              <th>Remove</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for item in order_items %}
+          <tr>
+            <td><img width="10em" src="{{ item.product.image.url }}"></td>
+            <td><p>{{item.product.name}}</p></td>
+            <td>£{{item.product.price}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><i style="color:red" class=" fa fa-trash"></i></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+        
+    
+{% endblock %}
