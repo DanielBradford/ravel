@@ -17,30 +17,36 @@ def order_contents(request):
         print(colorChoice)
         
 
-        colorCost = ''
+        # colorCost = ''
         for color in colors:
             # print("This is the color choice" item.name)
             if colorChoice == color.name:
-                colorCost = color.cost
+                colorCost = decimal.Decimal(color.cost)
+                print(colorCost)
             else:
-                colorCost = 0
-        print(colorCost)
+                colorCost = decimal.Decimal(0)
         sizeChoice = quantity[2]
-        size = Size.objects.all()
-
-
-        total += (product.price + colorCost) * decimal.Decimal(quantity[0])
-
-
+        sizes = Size.objects.all()
+        for size in sizes:
+            if sizeChoice == size.name:
+                sizeCost = decimal.Decimal(size.cost)
+            else:
+                sizeCost = decimal.Decimal(0)
+        sizeCost = sizeCost
+        colorCost = colorCost
+        extras = (sizeCost + colorCost)
+        print("The extras are", extras)
+        total += (product.price + extras) * decimal.Decimal(quantity[0])
         order_items.append({
             'item_id': item_id,
             'quantity': quantity[0],
             'color': colorChoice,
-            "colorCost": colorCost,
+            'colorCost': colorCost,
+            'sizeCost': sizeCost,
+            'extras': extras,
             'size': sizeChoice,
-            # "sizeCost":
             'product': product,
-            'this_total': product.price * decimal.Decimal(quantity[0])
+            'this_total': (product.price + extras) * decimal.Decimal(quantity[0])
         })
                 
     if total < settings.FREE_DELIVERY_THRESHOLD:

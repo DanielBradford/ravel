@@ -14,6 +14,11 @@
         </div>
     <br>
 {% if order_items|length > 0 %}
+{% if total < 20 %}
+<div class="row">
+    You're £{{free_deliver_delta }} away from getting free delivery on your order!
+</div>
+{% endif %}
    <div class="row center">
        <button onclick="delete_all_orders()" class="red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></button>
    </div>
@@ -42,12 +47,13 @@
                 <td><h5><strong>{{item.product.name}}</strong></h5><p style="color: grey">({{item.product.category}})</p></td>
                 <td>£{{item.product.price}}</td>
                 <td>{{item.quantity}}</td>
-                <td>{{item.color}} (+£{{colorCost}})</td>
-                <td>{{item.size}}</td>
+           
+                <td>{{item.color}} <span data-badge-caption="extra" class="new badge">(+£{{item.colorCost}})</span></td>
+           
+                <td>{{item.size}} <span data-badge-caption="extra" class="new badge">(+ £{{item.sizeCost}})</span></td>
                 <td>£{{item.this_total}}</td>                        
                 <td><i style="color:red" class=" fa fa-trash"></i></td>
-              
-                <!-- <td>{{order_items}}</td>  -->
+       
              
             </tr>
             {% endfor %}
@@ -66,6 +72,7 @@
     {% endif %}
 
     <h4>3) <strong style="text-decoration: underline;">Grand Total: £{{grand_total}}</strong></h4>
+    {{free_deliver_delta}}
 </div>
 <div class="row center" style="padding-top: 100px">
     <button class="btn-large">Checkout <i class="fa fa-shopping-cart"></i></button>
