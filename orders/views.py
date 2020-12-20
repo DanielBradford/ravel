@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from django import template
-
-register = template.Library()
-
-@register.filter
-def get_type(value):
-    return type(value)
 # from .models import Product, Color, Size
 
-# # Create your views here.
+# register = template.Library()
+
+# @register.filter
+# def get_type(value):
+#     return type(value)
+
+
+# # # Create your views here.
 # products = Product.objects.all()
 # colors = Color.objects.all()
 # size = Size.objects.all()

@@ -9,27 +9,36 @@ def order_contents(request):
     total = 0
     product_count = 0
     order = request.session.get('order', {})
+    colors = Color.objects.all()
 
     for item_id, quantity in order.items():
         product = get_object_or_404(Product, pk=item_id)
-        colorChoice = quantity[1]
-        # colorCost = ''
-        # for item in Color:
-        #     if colorChoice == item.name:
-        #         colorCost = item.cost
-        #     else:
-        #         colorCost = 0
+        colorChoice = str(quantity[1])
+        print(colorChoice)
+        
+
+        colorCost = ''
+        for color in colors:
+            # print("This is the color choice" item.name)
+            if colorChoice == color.name:
+                colorCost = color.cost
+            else:
+                colorCost = 0
+        print(colorCost)
         sizeChoice = quantity[2]
+        size = Size.objects.all()
 
 
-        total += product.price * decimal.Decimal(quantity[0])
+        total += (product.price + colorCost) * decimal.Decimal(quantity[0])
 
 
         order_items.append({
             'item_id': item_id,
             'quantity': quantity[0],
             'color': colorChoice,
+            "colorCost": colorCost,
             'size': sizeChoice,
+            # "sizeCost":
             'product': product,
             'this_total': product.price * decimal.Decimal(quantity[0])
         })
