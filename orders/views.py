@@ -1,4 +1,11 @@
 from django.shortcuts import render, redirect
+from django import template
+
+register = template.Library()
+
+@register.filter
+def get_type(value):
+    return type(value)
 # from .models import Product, Color, Size
 
 # # Create your views here.
@@ -22,7 +29,7 @@ def add_to_order(request, item_id):
                 
     """ Add a quantity of the specified product to the order """
 
-    quantity = request.POST.get('quantity')
+    quantity = float(request.POST.get('quantity'))
     color = str(request.POST.get('color'))
     size = str(request.POST.get('size'))
     redirect_url = request.POST.get('redirect_url')
@@ -31,5 +38,13 @@ def add_to_order(request, item_id):
     request.session['order'] = order
     print(order)
     print(len(order))
+    
 
     return redirect(redirect_url)
+
+
+def delete_all_orders(request):
+    redirect_url = request.POST.get('redirect_url')
+    del request.session
+    return redirect(redirect_url)
+

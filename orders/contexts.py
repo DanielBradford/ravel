@@ -1,4 +1,4 @@
-from decimal import Decimal
+import decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product, Color, Size
@@ -12,18 +12,28 @@ def order_contents(request):
 
     for item_id, quantity in order.items():
         product = get_object_or_404(Product, pk=item_id)
-        # color = get_object_or_404(Color, pk=item_id)
-        # size = get_object_or_404(Size, pk=item_id)
+        colorChoice = quantity[1]
+        # colorCost = ''
+        # for item in Color:
+        #     if colorChoice == item.name:
+        #         colorCost = item.cost
+        #     else:
+        #         colorCost = 0
+        sizeChoice = quantity[2]
 
-        total = product.price
-        print(total)
-        product_count = quantity
+
+        total += product.price * decimal.Decimal(quantity[0])
+
+
         order_items.append({
             'item_id': item_id,
-            'quantity': quantity,
+            'quantity': quantity[0],
+            'color': colorChoice,
+            'size': sizeChoice,
             'product': product,
+            'this_total': product.price * decimal.Decimal(quantity[0])
         })
-
+                
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = settings.STANDARD_DELIVERY
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
@@ -31,7 +41,7 @@ def order_contents(request):
         delivery = 0
         free_delivery_delta = 0
     
-    grand_total = delivery + total
+    grand_total = total + delivery
 
     context = {
 
