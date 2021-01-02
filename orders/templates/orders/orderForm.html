@@ -42,13 +42,13 @@
         {% if order_items|length > 0 %}
             {% for item in order_items %}
             <tr>
-                <td>{{ forloop.counter }}</td>
+                <td>{{ item.orderID }}</td>
                 <td><img width="100px" style="border-radius: 1.4em; object-fit: cover;" src="{{ item.product.image.url }}"></td>
                 <td><h5><strong>{{item.product.name}}</strong></h5><p style="color: grey">({{item.product.category}})</p></td>
                 <td>£{{item.product.price}}</td>
                 <td>{{item.quantity}}</td>
            
-                <td>{{item.color}} <span data-badge-caption="extra" class="new badge">(+£{{item.colorCost}})</span></td>
+                <td>{{item.color}} <span data-badge-caption="extra" class="new badge">(+ £{{item.colorCost}})</span></td>
            
                 <td>{{item.size}} <span data-badge-caption="extra" class="new badge">(+ £{{item.sizeCost}})</span></td>
                 <td>£{{item.this_total}}</td>                        

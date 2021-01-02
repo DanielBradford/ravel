@@ -38,7 +38,7 @@
                     {% csrf_token %}
                     <div id="color-select" class="row">
                         <div class="input-field col s12 m12">
-                            <select name="color" id="colorChoice" class="icons flow-text">
+                            <select required name="color" id="colorChoice" class="icons flow-text">
                             <option value="" disabled selected>Choose your Color</option>
                             {% for color in colors %}
                             <option  value="{{color.name}}" data-icon="{{color.image.url}}">{{color.name}} <span class="center">(+£{{color.cost}})</span></option>
@@ -47,7 +47,7 @@
                             <label>Color Option</label>
                         </div>
                         <div class="input-field col s12 m12">
-                            <select name="size" id="sizeChoice" class="icons flow-text">
+                            <select required name="size" id="sizeChoice" class="icons flow-text">
                             <option value="" disabled selected>Choose your Size</option>
                             {% for size in size %}
                             <option  value="{{size.name}}" >{{size.name}} (+£{{size.cost}}) {{size.measurement}}) </option>
@@ -56,7 +56,7 @@
                             <label>Size Option</label>        
                         </div>
                         <div class="input-field col s12 m12">
-                            <select name="quantity" id="quantity" class="icons">
+                            <select required name="quantity" id="quantity" class="icons">
                             <option value="" disabled selected>Quantity</option>
                            
                             <option value="1">1 </option>
@@ -75,7 +75,7 @@
                     </div>
             
                     <div class="row center">
-                         <a onclick="M.toast({html: 'I am a toast'})" class="btn"> <button type="submit" class="btn center">Place Order Now <i class="fa fa-shopping-bag"></i></button></a>
+                         <a onclick="M.toast({html: 'Order added to basket!'})" class="btn"> <button type="submit" class="btn center">Place Order Now <i class="fa fa-shopping-bag"></i></button></a>
                     </div>
                 
                 </form>
