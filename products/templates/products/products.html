@@ -67,6 +67,7 @@
                             </select>
                             <label>Quantity</label>
                         </div>
+                        
                     </div>
                     Total:<div id="C">£{{product.price}} (+ Size and color options )</div>
                     <div class="row">
@@ -75,7 +76,7 @@
                     </div>
             
                     <div class="row center">
-                         <a onclick="M.toast({html: 'Order added to basket!'})" class="btn"> <button type="submit" class="btn center">Place Order Now <i class="fa fa-shopping-bag"></i></button></a>
+                         <a onclick="M.toast({html: {{product.name}} ' added to basket!'})" class="btn"> <button type="submit" class="btn center">Place Order Now <i class="fa fa-shopping-bag"></i></button></a>
                     </div>
                 
                 </form>

@@ -2,6 +2,12 @@ import decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product, Color, Size
+import string
+import random
+
+
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
 
 
 def order_contents(request):
@@ -11,32 +17,34 @@ def order_contents(request):
     order = request.session.get('order', {})
     colors = Color.objects.all()
 
-    for item_id, quantity in order.items():
+    for item_id, orderData in order.items():
         product = get_object_or_404(Product, pk=item_id)
-        colorChoice = quantity[1]
+        print(orderData)
+        colorChoice = orderData[1]
         print(colorChoice)
         for color in colors:
             if colorChoice == color.name:
                 print("This is the color choice", colorChoice, color.cost)
                 colorCost = color.cost
-                sizeChoice = quantity[2]
+                sizeChoice = orderData[2]
                 sizes = Size.objects.all()
                 for size in sizes:
                     if sizeChoice == size.name:
                         sizeCost = decimal.Decimal(size.cost)
                         extras = decimal.Decimal(sizeCost + colorCost)
                         print("The extras are", extras)
-                        total += (product.price + extras) * decimal.Decimal(quantity[0])
+                        total += (product.price + extras) * decimal.Decimal(orderData[0])
                         order_items.append({
+                            'order_id': orderData[3],
                             'item_id': item_id,
-                            'quantity': quantity[0],
+                            'quantity': orderData[0],
                             'color': colorChoice,
                             'colorCost': colorCost,
                             'sizeCost': sizeCost,
                             'extras': extras,
                             'size': sizeChoice,
                             'product': product,
-                            'this_total': (product.price + extras) * decimal.Decimal(quantity[0])
+                            'this_total': (product.price + extras) * decimal.Decimal(orderData[0])
                         })
             else:
                 colorCost = 0
