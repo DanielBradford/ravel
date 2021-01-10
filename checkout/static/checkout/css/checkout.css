@@ -1,3 +1,8 @@
 #adjustBtn{
 background-color: goldenrod ;
 }
+
+
+.quantityInfo:hover{
+    color: red;
+}

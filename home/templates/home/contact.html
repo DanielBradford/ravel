@@ -1,5 +1,38 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-Contact Details
+<div class="container homeContainer heartwool">
+			<div class="intro row">
+				
+					<div class="row center">
+						<h1 class="col s12"><strong>Contact Us <i class="fa fa-comments"></i></strong></h1>
+					</div>
+			
+			
+			</div>
+        </div>
+
+
+
+<div class="row">
+			<div class="center col s12 m4 hide-on-small-only">
+				<img id="avatar" src="/media/images/avatar.png" alt="avatar of mary" />
+            </div>
+				<div class="col s12 m8">
+					<h2 class="center">About Ravel</h2>
+					<h3 class="about flow-text">
+						The founder of Ravel, <span class="light">Mary Bradford</span>, has been
+						knitting for over <span class="light">40 years</span> and loves to create
+						amazing <span class="light">gifts and garments</span> for babies, children and
+						adults. Contact Mary now and place your order for incredible
+						<span class="light">hand-knitted</span> goods!
+					</h3>
+					<div class="row center">
+						<a
+							href="{% url 'products' %}"><button class="hoverable btn btn-large #ffcc80 orange lighten-3">Babywear <i class="fas fa-baby"></i> </button></a>
+						<a
+							href="{% url 'products' %}"><button class="hoverable btn btn-large purple lighten-2">Accessories <i class="fas fa-scarf"></i></button></a>
+					</div>
+				</div>
+        </div>
 {% endblock %}

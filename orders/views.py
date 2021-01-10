@@ -10,7 +10,7 @@ def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
 
 def orders(request):
     """ A view to render the orders page"""
-    return render(request, 'orders/orderForm.html')
+    return render(request, 'orders/orderList.html')
 
 
 def add_to_order(request, item_id):
