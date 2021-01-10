@@ -104,9 +104,11 @@
     <h4>3) <strong style="text-decoration: underline;">Grand Total: £{{grand_total}}</strong></h4>
     {{free_deliver_delta}}
 </div>
+<a href="{% url 'checkout' %}">
 <div class="row center" style="padding-top: 100px">
     <button class="btn-large">Checkout <i class="fa fa-shopping-cart"></i></button>
 </div>
+</a>
         
      </main>
 {% elif order_items|length == 0 %}
