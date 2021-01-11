@@ -1,5 +1,9 @@
-from django.shortcuts import render
-from .models import Product, Color, Size
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
+from django.db.models import Q
+from django.db.models.functions import Lower
+
+from .models import Product, Category, Color, Size
 
 # Create your views here.
 
@@ -10,7 +14,7 @@ size = Size.objects.all()
 context = {
     'products': products,
     'colors': colors,
-    'size': size
+    'size': size,
 }
 
 
@@ -19,6 +23,15 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
-def view_product(request):
+def view_product(request, product_id):
     """A View to return product details"""
-    return render(request, 'products/product_detail', context)
+
+    product = get_object_or_404(Product, pk=product_id)
+
+    context = {
+        'product': product,
+        'colors': colors,
+        'size': size
+    }
+
+    return render(request, 'products/product_detail.html', context)

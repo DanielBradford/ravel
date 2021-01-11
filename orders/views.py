@@ -24,36 +24,38 @@ def add_to_order(request, item_id):
     order = request.session.get('order', {})
     order[item_id] = quantity, color, size, orderID
     request.session['order'] = order
-    print(order)
-    print(len(order))
+
     return redirect(redirect_url)
 
 
-def update_order(request, order_id):
+# def update_order(request, order_id):
                 
-    """ Update the quantity of the specified product to the order """
-    quantity = int(request.POST.get('quantity'))
-    order = request.session.get('order', {})
-    if quantity > 0:
-        for item in order.items:
-            if item.order_id == order_id:
-                item.quantity = quantity
-    else:
-        order.pop(order_id)
-    request.session['order'] = order
-    return redirect(reverse('orders'))
+#     """ Update the quantity of the specified product to the order """
+#     quantity = int(request.POST.get('quantity'))
+#     order = request.session.get('order', {})
+#     if quantity > 0:
+#         for item in order.items:
+#             if item.order_id == order_id:
+#                 item.quantity = quantity
+#     else:
+#         order.pop(order_id)
+#     request.session['order'] = order
+#     return redirect(reverse('orders'))
 
 
-def remove_from_order(request, order_id):
+def remove_from_order(request, orderId):
     order = request.session.get('order', {})
-    for item in order.items:
-        if item.order_id == order_id:
-            order.pop(order_id)
+    print(order)
+    for item in order:
+        if item.order_id == orderId:
+            order.pop(orderId)
             request.session['order'] = order
             return HttpResponse(status=200)
         else:
             request.session['order'] = order
             return HttpResponse(status=200)
+
+
 
 
 

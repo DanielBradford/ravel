@@ -15,8 +15,8 @@
     <br>
 {% if order_items|length > 0 %}
 {% if total < 20 %}
-<div class="row">
-    You're £{{free_deliver_delta }} away from getting free delivery on your order!
+<div class="row center">
+    <p><i class="fa fa-truck-loading"></i> <strong>You're <span style="font-weight: 800;">£{{ free_delivery_delta }}</span> away from getting free delivery on your order! <i class="fa fa-truck-loading"></i></strong></p>
 </div>
 {% endif %}
    <div class="row center">
@@ -44,7 +44,7 @@
             <tr>
                 <td>{{ item.order_id}}</td>
                 <td><img width="100px" style="border-radius: 1.4em; object-fit: cover;" src="{{ item.product.image.url }}"></td>
-                <td><h5><strong>{{item.product.name}}</strong></h5><p style="color: grey">({{item.product.category}})</p></td>
+                <td><h5><a href="{% url 'view_product' item.product.id %}"<strong>{{item.product.name}}</strong></h5><p style="color: grey">({{item.product.category}})</p></td>
                 <td>£{{item.product.price}}</td>
                 <td> 
                     <form class="form update-form" method="POST" action="">
@@ -60,7 +60,7 @@
                                                         </button>
                                                     </div>
                                                     <input class="form-control form-control-sm qty_input" type="number"
-                                                        name="quantity" value="{{ item.quantity }}" min="1" max="5"
+                                                        name="quantity" value="{{ item.quantity }}" min="1" max="3"
                                                         data-item_id="{{ item.item_id }}"
                                                         id="id_qty_{{ item.item_id }}">
                                                     <div class="input-group-append">
@@ -74,7 +74,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        <a class="update-link text-info"><small>Update</small></a>
+                                        <!-- <a class="update-link text-info"><small>Update</small></a> -->
                                      
                 </td>
            
@@ -82,8 +82,8 @@
            
                 <td>{{item.size}} <span data-badge-caption="extra" class="new badge">(+ £{{item.sizeCost}})</span></td>
                 <td>£{{item.this_total}}</td>                        
-                <td><a class="remove-item" id="remove_{{ item.order_id }}" data-size="{{ item.size }}"><i style="color:red" class=" fa fa-trash"></i></a></td>
-       
+                <td><a class="remove-item" id="{{item.order_id }}">Remove<i style="color:red" class=" fa fa-trash"></i></a>
+                </td>
              
             </tr>
             {% endfor %}
@@ -95,10 +95,10 @@
   
     <h4>1) <i class="fa fa-cash-register"></i> Total: £{{ total}}</h4>
     {% if total < 20 %}
-    <h4>2) <i class="fa fa-truck-loading"></i> Delivery: £{{delivery}}</h4>
+    <h4>2) <i class="fa fa-truck-loading"></i> Delivery: £{{delivery}}</h4>  <p><i class="fa fa-truck-loading"></i> <strong>You're <span style="font-weight: 800;">£{{ free_delivery_delta }}</span> away from getting free delivery on your order! <i class="fa fa-truck-loading"></i></strong></p>
     {% endif %}
     {% if total > 20 %}
-    <h4>2) <i class="fa fa-truck-loading"></i> Delivery: FREE DELIVERY</h4>
+    <h4>2) <i class="fa fa-truck-loading"></i> Delivery: FREE </h4>
     {% endif %}
 
     <h4>3) <strong style="text-decoration: underline;">Grand Total: £{{grand_total}}</strong></h4>
@@ -130,11 +130,11 @@
         form.submit();
     })
 
-    // Remove item and reload on click
+      // Remove item and reload on click
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var orderId = $(this).attr('id');
-        var url = `/order/remove/${orderId}`;
+        var url = `/orders/remove/${orderId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken};
         $.post(url, data)
          .done(function() {

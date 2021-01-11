@@ -29,7 +29,9 @@
                 <div class="card-content flow-text">
                 <span class="card-title activator grey-text text-darken-4">{{product.name}}<i class="material-icons right">more_vert</i></span>
                 <p><a href="#"><strong>from £{{product.price}}</strong></a></p>
-                <a class="btn" href="#">More info</a>
+                <div class="center">
+                <a class="btn center" href="{% url 'view_product' product.id %}">More info</a>
+                </div>
                 </div>
                 <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">About <i class="fa fa-info"></i><i class="material-icons right">close</i></span>
@@ -76,7 +78,7 @@
                     </div>
             
                     <div class="row center">
-                         <a onclick="M.toast({html: {{product.name}} ' added to basket!'})" class="btn"> <button type="submit" class="btn center">Add to Order <i class="fa fa-plus"></i></button></a>
+                         <a onclick="M.toast({html: '{{product.name}}  added to basket!'})" > <button type="submit" class="btn center">Add to Order <i class="fa fa-plus"></i></button></a>
                     </div>
                 
                 </form>
