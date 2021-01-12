@@ -16,7 +16,7 @@
 {% if order_items|length > 0 %}
 {% if total < 20 %}
 <div class="row center">
-    <p><i class="fa fa-truck-loading"></i> <strong>You're <span style="font-weight: 800;">£{{ free_delivery_delta }}</span> away from getting free delivery on your order! <i class="fa fa-truck-loading"></i></strong></p>
+    <p><i class="fa fa-truck-loading"></i> <strong>You're <span style="font-weight: 800;">£{{ free_delivery_delta }}</span> away from getting free delivery on your order! <a href="{% url 'products'%}"<i class="fa fa-shopping-bag"></i></strong></a></p>
 </div>
 {% endif %}
    <div class="row center">
