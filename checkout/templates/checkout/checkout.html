@@ -64,12 +64,12 @@
                     </div>
                 </div>
                 <div class="center ">
-                <button id="submit-button" class="btn btn-large ">
+                <!-- <button id="submit-button" class="btn btn-large ">
 							<span class="font-weight-bold">Complete Order</span>
 							<span class="icon">
 								<i class="fas fa-lock"></i>
 							</span>
-                </button>
+                </button> -->
                 <p class="small">
 							<span class="red-text darken-2 icon">
 								<i class="fas fa-exclamation-circle"></i>
@@ -111,13 +111,13 @@
                     <fieldset class="px-3">
                         <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
                         <!-- A Stripe card element will go here -->
-                        <div class="mb-3" id="card-element"></div>
+                        <div id="card-element"></div>
 
                         <!-- Used to display form errors -->
-                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                        <div class="text-red" id="card-errors" role="alert"></div>
                     </fieldset>
 
-                    <div class="submit-button center">                    
+                    <div class="center">                    
 						<a href="{% url 'orders' %}" id="adjustBtn" class="btn btn-outline-black rounded-0">
 							<span class="icon">
 								<i class="fas fa-chevron-left"></i>
