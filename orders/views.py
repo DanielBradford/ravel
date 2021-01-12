@@ -56,6 +56,9 @@ def remove_from_order(request, orderId):
             return HttpResponse(status=200)
 
 
+def delete_all_orders(request):
+    del request.session['order']
+    return HttpResponse(status=200)
 
 
 

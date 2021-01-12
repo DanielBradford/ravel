@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="container homeContainer heartwool">
+			<div class="intro row">
+					<div class="row center">
+						<h1 class="col s12"><strong>Thank you<i class="fa fa-cash-register"></i></strong></h1>
+                    </div>
+                    <p>Your order information is below. You will reieve an email to confirm your order sent to {{order.email}}</p>
+			</div>
+        </div>
+        </div>
+        
+    </div>
+{% endblock %}

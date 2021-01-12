@@ -19,9 +19,7 @@ def order_contents(request):
 
     for item_id, orderData in order.items():
         product = get_object_or_404(Product, pk=item_id)
-        print(orderData)
         colorChoice = orderData[1]
-        print(colorChoice)
         for color in colors:
             if colorChoice == color.name:
                 print("This is the color choice", colorChoice, color.cost)
@@ -48,29 +46,6 @@ def order_contents(request):
                         })
             else:
                 colorCost = 0
-        # print("TEST IF wrong", colorCost)
-        # sizeChoice = quantity[2]
-        # sizes = Size.objects.all()
-        # for size in sizes:
-        #     if sizeChoice == size.name:
-        #         sizeCost = decimal.Decimal(size.cost)
-            # else:
-            #     sizeCost = 88
-    
-        # extras = decimal.Decimal(sizeCost + colorCost)
-        # print("The extras are", extras)
-        # total += (product.price + extras) * decimal.Decimal(quantity[0])
-        # order_items.append({
-        #     'item_id': item_id,
-        #     'quantity': quantity[0],
-        #     'color': colorChoice,
-        #     'colorCost': colorCost,
-        #     'sizeCost': sizeCost,
-        #     'extras': extras,
-        #     'size': sizeChoice,
-        #     'product': product,
-        #     'this_total': (product.price + extras) * decimal.Decimal(quantity[0])
-        # })
                 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = settings.STANDARD_DELIVERY

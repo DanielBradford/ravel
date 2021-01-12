@@ -20,7 +20,7 @@
 </div>
 {% endif %}
    <div class="row center">
-       <button onclick="delete_all_orders()" class="red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></button>
+       <button id="deleteAll" class="red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></button>
    </div>
 <div>
       <table style="padding: 2em; margin: 2em;">
@@ -137,6 +137,13 @@
         var url = `/orders/remove/${orderId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken};
         $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+    // Remove all order items
+     $('#deleteAll').click(function(e) {
+        $.post()
          .done(function() {
              location.reload();
          });
