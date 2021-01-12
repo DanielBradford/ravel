@@ -4,12 +4,7 @@ $(document).ready(function () {
   $(".sidenav").sidenav();
   $(".modal").modal();
   $('select').formSelect()
-  $('.quantityInfo').hover(function(){
-      
-
-
-  });
-
+  $('input#input_text, textarea#textarea2').characterCounter();
   $('#sizeChoice, #colorChoice').on('input',function(e){
   $('#C').val(parseInt($('#sizeChoice').val()) + parseInt($('#colorChoice').val()));
     });

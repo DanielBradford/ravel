@@ -280,3 +280,16 @@ button{
     padding:20px; 
     border-radius: 1.4em;
 }
+
+
+#contactForm textarea,
+#contactForm input{
+    background-color: rgba(255, 255, 255, 0.692);
+    border-radius: 1.4em;
+    text-align: center;
+}
+#contactForm textarea{
+    height: 10em;
+    text-align: left;
+    padding-left: 10px;
+}

@@ -6,7 +6,35 @@
 				
 					<div class="row center">
 						<h1 class="col s12"><strong>Contact Us <i class="fa fa-comments"></i></strong></h1>
-					</div>
+                    </div>
+                     <div class="row">
+    <form id="contactForm" class="col s12">
+      <div class="row">
+        <div class="input-field col s12 l6">
+          <input placeholder="Enter you first name" id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s12 l6">
+          <input placeholder="Enter you last name" id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+        <div class="input-field col s12">
+            <input placeholder="Enter your email address" id="email_inline" type="email" class="validate">
+            <label for="email_inline">Email</label>
+            <br>
+            <span class="helper-text" data-error="Invalid Email" data-success="right"></span>
+        </div>
+        <div class="input-field col s12">
+            <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
+            <label for="textarea2">Your Message</label>
+        </div>
+        <div class="row center">
+        <a class="waves-effect waves-light btn"><i class="fa fa-paper-plane"></i> Send</a>
+        </div>
+
+      </div>
+    </form>
+  </div>
 			
 			
 			</div>
