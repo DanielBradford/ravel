@@ -32,26 +32,27 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             newOrder = order_form.save()
-            for item_id, orderData in order.items():
-                try:
+            # for item_id, orderData in order.items():
+            try:
+                
+                for item_id, orderData in order.items():
                     product = Product.objects.get(id=item_id)
-                    for item_id, orderData in order.items():
-                        order_line_item = OrderLineItem(
+                    order_line_item = OrderLineItem(
                                 order=newOrder,
                                 product=product,
                                 quantity=orderData[0],
                                 color=orderData[1],
                                 size=orderData[2]
                         )
-                        order_line_item.save()
+                    order_line_item.save()
 
-                except Product.DoesNotExist:
-                    messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
+            except Product.DoesNotExist:
+                messages.error(request, (
+                    "One of the products in your bag wasn't found in our database. "
                         "Please call us for assistance!")
-                    )
-                    newOrder.delete()
-                    return redirect(reverse('view_orders'))
+                )
+                newOrder.delete()
+                return redirect(reverse('view_orders'))
 
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success',
