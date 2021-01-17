@@ -6,7 +6,7 @@
 			<div class="intro row">
 				
 					<div class="row center">
-						<h1 class="col s12"><strong>Orders <i class="fa fa-shopping-bag"></i></strong></h1>
+						<h1 class="col s12"><strong>Basket <i class="fa fa-shopping-basket"></i></strong></h1>
 					</div>
 			
 			
@@ -20,7 +20,8 @@
 </div>
 {% endif %}
    <div class="row center">
-       <button id="deleteAll" class="red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></button>
+       <a href="{% url 'delete_session' %}">
+       <button id="deleteAll" class="red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></button></a>
    </div>
 <div>
       <table style="padding: 2em; margin: 2em;">
@@ -82,7 +83,7 @@
            
                 <td>{{item.size}} <span data-badge-caption="extra" class="new badge">(+ £{{item.sizeCost}})</span></td>
                 <td>£{{item.this_total}}</td>                        
-                <td><a class="remove-item" id="{{item.order_id }}">Remove<i style="color:red" class=" fa fa-trash"></i></a>
+                <td ><a class="remove-item" id="{{item.item_id }}" >Remove<i style="color:red" class=" fa fa-trash"></i></a>
                 </td>
              
             </tr>
@@ -91,6 +92,8 @@
         </tbody>
       </table>
 </div>
+{{test}}
+{{order_items}}
 <div class="row left" style="padding-left: 100px;">
   
     <h4>1) <i class="fa fa-cash-register"></i> Total: £{{ total}}</h4>
@@ -128,19 +131,26 @@
     $('.update-link').click(function(e) {
         var form = $(this).prev('.update-form');
         form.submit();
-    })
+    }),
 
       // Remove item and reload on click
-    $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var orderId = $(this).attr('id');
-        var url = `/orders/remove/${orderId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken};
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
+    $('.remove-item').mouseover(function(e) {
+        $(this).text('Hello');
+
+    },
+    $('.remove-item').mouseleave(function(e) {
+         $(this).text('DOne');
+    },
+    // $('.remove-item').click(function(e) {
+    //     var csrfToken = "{{ csrf_token }}";
+    //     var orderId = $(this).attr('id');
+    //     var url = `/orders/remove/${orderId}/`;
+    //     var data = {'csrfmiddlewaretoken': csrfToken};
+    //     $.post(url, data)
+    //      .done(function() {
+    //          location.reload();
+    //      });
+    // })
     // Remove all order items
      $('#deleteAll').click(function(e) {
         $.post()

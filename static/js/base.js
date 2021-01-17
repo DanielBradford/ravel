@@ -9,7 +9,17 @@ $(document).ready(function () {
   $('#C').val(parseInt($('#sizeChoice').val()) + parseInt($('#colorChoice').val()));
     });
 
-
-  
-
+  $(".remove-item").hover(function(){
+    $(this).css("background-color", "pink");
+  })
+  $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var item_id = $(this).attr('id');
+        var url = `/orders/remove/${item_id}`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
 });

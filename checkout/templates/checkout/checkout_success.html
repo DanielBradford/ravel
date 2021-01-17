@@ -21,8 +21,16 @@
             <div class="container homeContainer heartwool">
 			<div class="intro row">
 					<div class="row center">
-                        <h1 class="col s12"><strong>Thank you <i class="fa fa-smile-wink"></i></strong></h1>
+                        <h1 class="col s12"><strong>Thank you {{order.full_name|capfirst}} <i class="fa fa-smile-wink"></i></strong></h1>
+                        <div style="background-color: #ffffff;">
                         <h3>Your order information is below. You will reieve an email to confirm your order sent to {{order.email}}</h3>
+                        </div>
+                        <ul>
+                            <span><h3>Order Number:</h3> {{order.order_number}}</span>
+                            <span><h3>Order Placed:</h3> {{order.date}}</span>
+                            <span><h3>Order Amount:</h3> £ {{order.grand_total}}</span>
+                            <span><h3>Order Address:</h3> {{order.street_address1}}, {{order.postcode}}</span>
+                        </ul>
                     </div>
                     
                     

@@ -22,10 +22,24 @@ def add_to_order(request, item_id):
     size = str(request.POST.get('size'))
     redirect_url = request.POST.get('redirect_url')
     order = request.session.get('order', {})
+    print(order)
     order[item_id] = quantity, color, size, orderID
     request.session['order'] = order
-
     return redirect(redirect_url)
+
+    # if item_id in list(order.keys()):
+    #     order[orderID] = quantity, color, size, orderID, item_id
+    #     request.session['order'] = order
+    #     return redirect(redirect_url)
+    #     # messages.success(request, f'Updated {product.name} quantity to {order[item_id]}')
+    # else:
+    #     order[item_id] = quantity, color, size, orderID
+    #     request.session['order'] = order
+    #     return redirect(redirect_url)
+        # messages.success(request, f'Added {product.name} to your bag')
+    # order[item_id] = quantity, color, size, orderID
+    # request.session['order'] = order
+    # return redirect(redirect_url)
 
 
 # def update_order(request, order_id):
@@ -43,22 +57,27 @@ def add_to_order(request, item_id):
 #     return redirect(reverse('orders'))
 
 
-def remove_from_order(request, orderId):
+def remove_from_order(request, item_id):
     order = request.session.get('order', {})
     print(order)
-    for item in order:
-        if item.order_id == orderId:
-            order.pop(orderId)
-            request.session['order'] = order
-            return HttpResponse(status=200)
-        else:
-            request.session['order'] = order
-            return HttpResponse(status=200)
-
-
-def delete_all_orders(request):
-    del request.session['order']
+    # for item in order:
+    #     if item.item_id == item_id:
+    order.pop(item_id)
+    request.session['order'] = order
     return HttpResponse(status=200)
+        # else:
+        #     request.session['order'] = order
+        #     return HttpResponse(status=200)
+
+
+def delete_session(request):
+    if 'order' in request.session:
+        del request.session['order']
+    order = request.session.get('order', {})
+    request.session['order'] = order
+    return redirect(reverse('orders'))
+
+
 
 
 

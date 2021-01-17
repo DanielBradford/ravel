@@ -7,8 +7,13 @@ from .models import Order, OrderLineItem
 from products.models import Product
 
 from orders.contexts import order_contents
-
+import string
+import random
 import stripe
+
+
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
 
 
 def checkout(request):
@@ -19,6 +24,7 @@ def checkout(request):
         order = request.session.get('order', {})
 
         form_data = {
+            'order_number': id_generator(),
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
@@ -32,9 +38,7 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             newOrder = order_form.save()
-            # for item_id, orderData in order.items():
             try:
-                
                 for item_id, orderData in order.items():
                     product = Product.objects.get(id=item_id)
                     order_line_item = OrderLineItem(
@@ -102,7 +106,7 @@ def checkout_success(request, order_number):
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
 
-    if 'bag' in request.session:
+    if 'order' in request.session:
         del request.session['order']
 
     template = 'checkout/checkout_success.html'
