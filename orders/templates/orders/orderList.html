@@ -21,7 +21,7 @@
 {% endif %}
    <div class="row center">
        <a href="{% url 'delete_session' %}">
-       <button id="deleteAll" class="red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></button></a>
+       <button id="deleteAll" onclick="return confirm('Are you sure? All items in your basket will be removed?')" class="red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></button></a>
    </div>
 <div>
       <table style="padding: 2em; margin: 2em;">
@@ -50,9 +50,9 @@
                 <td> 
                     <form class="form update-form" method="POST" action="">
                                             {% csrf_token %}
-                                            <div class="form-group">
+                                            <div class="form-group center">
                                                 <div class="input-group">
-                                                    <div class="input-group-prepend">
+                                                    <div class="input-group-prepend text-center">
                                                         <button class="decrement-qty btn btn-sm btn-black rounded-0" 
                                                             data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
                                                             <span>
@@ -75,7 +75,10 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        <!-- <a class="update-link text-info"><small>Update</small></a> -->
+                                        <div class="center">
+                                            <a class="update-link text-info"><small>Update <i class="fa fa-redo"></i></small></a>      
+                                        </div>
+                                       
                                      
                 </td>
            
@@ -92,8 +95,6 @@
         </tbody>
       </table>
 </div>
-{{test}}
-{{order_items}}
 <div class="row left" style="padding-left: 100px;">
   
     <h4>1) <i class="fa fa-cash-register"></i> Total: £{{ total}}</h4>

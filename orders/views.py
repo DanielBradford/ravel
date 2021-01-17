@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.contrib import messages
+from products.models import Product
 from django import template
 import string
 import random
@@ -57,17 +59,38 @@ def add_to_order(request, item_id):
 #     return redirect(reverse('orders'))
 
 
+
 def remove_from_order(request, item_id):
+    """Remove the item from the shopping basket"""
+    # try:
     order = request.session.get('order', {})
     print(order)
-    # for item in order:
-    #     if item.item_id == item_id:
     order.pop(item_id)
     request.session['order'] = order
     return HttpResponse(status=200)
-        # else:
-        #     request.session['order'] = order
-        #     return HttpResponse(status=200)
+
+    # except Exception as e:
+    #     # messages.error(request, f'Error removing item: {e}')
+    #     return HttpResponse(status=500)
+
+
+
+# def remove_from_order(request, item_id):
+#     """Remove the item from the shopping basket"""
+#     try:
+#         product = get_object_or_404(Product, pk=item_id)
+#         size = None
+#         # if 'product_size' in request.POST:
+#         #     size = request.POST['product_size']
+#         basket = request.session.get('order', {})
+#         basket.pop(item_id)
+#             # messages.success(request, f'Removed size {size.upper()} {product.name} from your bag')
+#         request.session['order'] = basket
+#         return HttpResponse(status=200)
+
+#     except Exception as e:
+#         messages.error(request, f'Error removing item: {e}')
+#         return HttpResponse(status=500)
 
 
 def delete_session(request):
