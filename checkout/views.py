@@ -4,7 +4,7 @@ from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-from products.models import Product
+from products.models import Product, Color, Size
 
 from orders.contexts import order_contents
 import string
@@ -39,14 +39,18 @@ def checkout(request):
         if order_form.is_valid():
             newOrder = order_form.save()
             try:
-                for item_id, orderData in order.items():
-                    product = Product.objects.get(id=item_id)
+                for item_info, quantity in order.items():
+                    item_id, color_id, size_id = [int(value) for value in item_info.split()]
+                    product = get_object_or_404(Product, pk=item_id)
+                    color = get_object_or_404(Color, pk=color_id)
+                    size = get_object_or_404(Size, pk=size_id)   
+                    quantity = quantity
                     order_line_item = OrderLineItem(
                                 order=newOrder,
                                 product=product,
-                                quantity=orderData[0],
-                                color=orderData[1],
-                                size=orderData[2]
+                                quantity=quantity,
+                                color=color,
+                                size=size,
                         )
                     order_line_item.save()
 
@@ -73,7 +77,7 @@ def checkout(request):
 
         current_order = order_contents(request)
         total = current_order['grand_total']
-        stripe_total = round(total * 100)
+        stripe_total = round(float(total) * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,

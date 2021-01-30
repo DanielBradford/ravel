@@ -6,7 +6,7 @@
 			<div class="intro row">
 				
 					<div class="row center">
-						<h1 class="col s12"><strong>Basket <i class="fa fa-shopping-basket"></i></strong></h1>
+						<h1 class="col s12"><strong>Basket {% if order_items|length > 0 %}({{order_items|length}}){% endif %} <i class="fa fa-shopping-basket"></i></strong></h1>
 					</div>
 			
 			
@@ -16,7 +16,7 @@
 {% if order_items|length > 0 %}
 {% if total < 20 %}
 <div class="row center">
-    <p><i class="fa fa-truck-loading"></i> <strong>You're <span style="font-weight: 800;">£{{ free_delivery_delta }}</span> away from getting free delivery on your order! <a href="{% url 'products'%}"<i class="fa fa-shopping-bag"></i></strong></a></p>
+    <p><i class="fa fa-truck-loading"></i> <strong>You're <span style="font-weight: 800;">£{{ free_delivery_delta|floatformat:2 }}</span> away from getting free delivery on your order! <a href="{% url 'products'%}"<i class="fa fa-shopping-bag"></i></strong></a></p>
 </div>
 {% endif %}
    <div class="row center">
@@ -27,7 +27,7 @@
       <table style="padding: 2em; margin: 2em;">
         <thead>
           <tr>
-              <th>Order #</th>
+              <th>Basket Item #</th>
               <th>Item Image</th>
               <th>Item Name</th>
               <th>Item Price</th>
@@ -43,7 +43,7 @@
         {% if order_items|length > 0 %}
             {% for item in order_items %}
             <tr>
-                <td>{{ item.order_id}}</td>
+                <td>{{forloop.counter}}</td>
                 <td><img width="100px" style="border-radius: 1.4em; object-fit: cover;" src="{{ item.product.image.url }}"></td>
                 <td><h5><a href="{% url 'view_product' item.product.id %}"<strong>{{item.product.name}}</strong></h5><p style="color: grey">({{item.product.category}})</p></td>
                 <td>£{{item.product.price}}</td>
@@ -54,7 +54,7 @@
                                                 <div class="input-group">
                                                     <div class="input-group-prepend text-center">
                                                         <button class="decrement-qty btn btn-sm btn-black rounded-0" 
-                                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                                            data-item_id="{{ item.product.id }}" id="decrement-qty_{{ item.product.id }}">
                                                             <span>
                                                                 <i class="fas fa-minus fa-sm"></i>
                                                             </span>
@@ -62,11 +62,11 @@
                                                     </div>
                                                     <input class="form-control form-control-sm qty_input" type="number"
                                                         name="quantity" value="{{ item.quantity }}" min="1" max="3"
-                                                        data-item_id="{{ item.item_id }}"
-                                                        id="id_qty_{{ item.item_id }}">
+                                                        data-item_id="{{ item.product.id }}"
+                                                        id="id_qty_{{ item.product.id }}">
                                                     <div class="input-group-append">
                                                         <button class="increment-qty btn btn-sm btn-black rounded-0"
-                                                            data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                                            data-item_id="{{ item.product.id }}" id="increment-qty_{{ item.product.id }}">
                                                             <span>
                                                                 <i class="fas fa-plus fa-sm"></i>
                                                             </span>
@@ -74,10 +74,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
+                                        
                                         <div class="center">
-                                            <a class="update-link text-info"><small>Update <i class="fa fa-redo"></i></small></a>      
+                                            <a class="btn update-link text-info"><small>Update <i class="fa fa-redo"></i></small></a>      
                                         </div>
+                                        </form>
                                        
                                      
                 </td>
@@ -85,8 +86,8 @@
                 <td>{{item.color}} <span data-badge-caption="extra" class="new badge">(+ £{{item.colorCost}})</span></td>
            
                 <td>{{item.size}} <span data-badge-caption="extra" class="new badge">(+ £{{item.sizeCost}})</span></td>
-                <td>£{{item.this_total}}</td>                        
-                <td ><a class="remove-item" id="{{item.item_id }}" >Remove<i style="color:red" class=" fa fa-trash"></i></a>
+                <td>£{{item.this_total|floatformat:2}}</td>                        
+                <td ><a class="remove-item" id="{{item.order_info}}" >Remove<i style="color:red" class=" fa fa-trash"></i></a>
                 </td>
              
             </tr>
@@ -97,15 +98,15 @@
 </div>
 <div class="row left" style="padding-left: 100px;">
   
-    <h4>1) <i class="fa fa-cash-register"></i> Total: £{{ total}}</h4>
+    <h4>1) <i class="fa fa-cash-register"></i> Total: £{{ total|floatformat:2}}</h4>
     {% if total < 20 %}
-    <h4>2) <i class="fa fa-truck-loading"></i> Delivery: £{{delivery}}</h4>  <p><i class="fa fa-truck-loading"></i> <strong>You're <span style="font-weight: 800;">£{{ free_delivery_delta }}</span> away from getting free delivery on your order! <i class="fa fa-truck-loading"></i></strong></p>
+    <h4>2) <i class="fa fa-truck-loading"></i> Delivery: £{{delivery}}</h4>  <p><i class="fa fa-truck-loading"></i> <strong>You're <span style="font-weight: 800;">£{{ free_delivery_delta|floatformat:2}}</span> away from getting free delivery on your order! <i class="fa fa-truck-loading"></i></strong></p>
     {% endif %}
     {% if total > 20 %}
     <h4>2) <i class="fa fa-truck-loading"></i> Delivery: FREE </h4>
     {% endif %}
 
-    <h4>3) <strong style="text-decoration: underline;">Grand Total: £{{grand_total}}</strong></h4>
+    <h4>3) <strong style="text-decoration: underline;">Grand Total: £{{grand_total|floatformat:2}}</strong></h4>
     {{free_deliver_delta}}
 </div>
 <a href="{% url 'checkout' %}">
@@ -128,36 +129,12 @@
 {% include 'orders/includes/quantity_script.html' %}
 
 <script type="text/javascript">
-    // Update quantity on click
-    $('.update-link').click(function(e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    }),
-
-      // Remove item and reload on click
-    $('.remove-item').mouseover(function(e) {
-        $(this).text('Hello');
-
-    },
-    $('.remove-item').mouseleave(function(e) {
-         $(this).text('DOne');
-    },
-    // $('.remove-item').click(function(e) {
-    //     var csrfToken = "{{ csrf_token }}";
-    //     var orderId = $(this).attr('id');
-    //     var url = `/orders/remove/${orderId}/`;
-    //     var data = {'csrfmiddlewaretoken': csrfToken};
-    //     $.post(url, data)
-    //      .done(function() {
-    //          location.reload();
-    //      });
-    // })
-    // Remove all order items
-     $('#deleteAll').click(function(e) {
+// Remove all order items
+    $('#deleteAll').click(function(e) {
         $.post()
          .done(function() {
              location.reload();
          });
-    })
+    });
 </script>
 {% endblock %}

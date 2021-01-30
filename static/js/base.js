@@ -10,16 +10,21 @@ $(document).ready(function () {
     });
 
   $(".remove-item").hover(function(){
-    $(this).css("background-color", "pink");
+    $(this).css("background-color", "goldenrod ");
   })
   $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var item_id = $(this).attr('id');
-        var url = `/orders/remove/${item_id}`;
+        var url = `/orders/remove/${item_id}/`;
         var data = {'csrfmiddlewaretoken': csrfToken};
         $.post(url, data)
          .done(function() {
              location.reload();
          });
+    })
+   $('.update-link').click(function(e) {
+       alert("hello");
+        // var form = $(this).prev('.update-form');
+        // form.submit();
     })
 });

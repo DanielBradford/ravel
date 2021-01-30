@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path('', views.orders, name='orders'),
     path('add/<item_id>/', views.add_to_order, name='add_to_order'),
-    # path('update/<order_id>/', views.update_order, name='update_order'),
+    path('update/<item_id>/', views.update_order, name='update_order'),
     path('remove/<item_id>/', views.remove_from_order,
          name='remove_from_order'),
     path('delete/', views.delete_session, name='delete_session'),

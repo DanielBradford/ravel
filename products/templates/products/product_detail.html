@@ -20,8 +20,10 @@
             <h3>{{product.description}}</h3>
             {% for color in colors %}
                 <div class="col s3">
+                    <h2>color.sku</h2>
                     <img style="height:50px;" src="{{color.image.url}}">
                 </div>
+            
             {% endfor %}
             <form action="{% url 'add_to_order' product.id %}" method="POST">
                     {% csrf_token %}
@@ -30,7 +32,7 @@
                             <select required name="color" id="colorChoice" class="icons flow-text">
                             <option value="" disabled selected>Choose your Color</option>
                             {% for color in colors %}
-                            <option  value="{{color.name}}" data-icon="{{color.image.url}}">{{color.name}} <span class="center">(+£{{color.cost}})</span></option>
+                            <option  value="{{color.id}}" data-icon="{{color.image.url}}">{{color.name}} <span class="center">(+£{{color.cost}})</span></option>
                             {% endfor %}
                             </select>
                             <label>Color Option</label>
@@ -39,7 +41,7 @@
                             <select required name="size" id="sizeChoice" class="icons flow-text">
                             <option value="" disabled selected>Choose your Size</option>
                             {% for size in size %}
-                            <option  value="{{size.name}}" >{{size.name}} (+£{{size.cost}}) {{size.measurement}}) </option>
+                            <option  value="{{size.id}}" >{{size.name}}: +£{{size.cost}}) ({{size.measurement}}) </option>
                             {% endfor %}
                             </select>
                             <label>Size Option</label>        
@@ -58,7 +60,7 @@
                         </div>
                         
                     </div>
-                    Total:<div id="C">£{{product.price}} (+ Size and color options )</div>
+            
                     <div class="row">
                         <input type="hidden" data-id="{{product.id}}">
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">

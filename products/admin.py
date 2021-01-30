@@ -35,6 +35,7 @@ class sizeAdmin(admin.ModelAdmin):
         'name',
     )
 
+
 admin.site.register(Product)
 admin.site.register(Category)
 admin.site.register(Color)

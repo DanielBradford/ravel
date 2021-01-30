@@ -15,37 +15,58 @@ def order_contents(request):
     total = 0
     product_count = 0
     order = request.session.get('order', {})
-    colors = Color.objects.all()
 
-    for item_id, orderData in order.items():
+    for item_info, quantity in order.items():
+        item_id, color_id, size_id = [int(value) for value in item_info.split()]
         product = get_object_or_404(Product, pk=item_id)
-        colorChoice = orderData[1]
-        for color in colors:
-            if colorChoice == color.name:
-                print("This is the color choice", colorChoice, color.cost)
-                colorCost = color.cost
-                sizeChoice = orderData[2]
-                sizes = Size.objects.all()
-                for size in sizes:
-                    if sizeChoice == size.name:
-                        sizeCost = decimal.Decimal(size.cost)
-                        extras = decimal.Decimal(sizeCost + colorCost)
-                        print("The extras are", extras)
-                        total += (product.price + extras) * decimal.Decimal(orderData[0])
-                        order_items.append({
-                            'order_id': orderData[3],
-                            'item_id': item_id,
-                            'quantity': orderData[0],
-                            'color': colorChoice,
-                            'colorCost': colorCost,
-                            'sizeCost': sizeCost,
-                            'extras': extras,
-                            'size': sizeChoice,
-                            'product': product,
-                            'this_total': (product.price + extras) * decimal.Decimal(orderData[0])
+        color = get_object_or_404(Color, pk=color_id)
+        size = get_object_or_404(Size, pk=size_id)
+        colorCost = decimal.Decimal(color.cost)
+        sizeCost = decimal.Decimal(size.cost)
+        extras = sizeCost + colorCost
+        quantity = quantity
+        total += decimal.Decimal(float(product.price + extras) * float(quantity))
+        order_items.append({
+                        'item_id': item_id,
+                        'quantity': quantity,
+                        'color': color.name,
+                        'colorCost': colorCost,
+                        'sizeCost': sizeCost,
+                        'extras': extras,
+                        'size': size.name,
+                        'product': product,
+                        'this_total': float(product.price + extras) * int(quantity),
                         })
-            else:
-                colorCost = 0
+
+    # for item_id, orderData in order.items():
+    #     product = get_object_or_404(Product, pk=item_id)
+    #     colorChoice = orderData[1]
+    #     for color in colors:
+    #         if colorChoice == color.name:
+    #             print("This is the color choice", colorChoice, color.cost)
+    #             colorCost = color.cost
+    #             sizeChoice = orderData[2]
+    #             sizes = Size.objects.all()
+    #             for size in sizes:
+    #                 if sizeChoice == size.name:
+    #                     sizeCost = decimal.Decimal(size.cost)
+    #                     extras = decimal.Decimal(sizeCost + colorCost)
+    #                     print("The extras are", extras)
+    #                     total += (product.price + extras) * decimal.Decimal(orderData[0])
+    #                     order_items.append({
+    #                         'order_id': orderData[3],
+    #                         'item_id': item_id,
+    #                         'quantity': orderData[0],
+    #                         'color': colorChoice,
+    #                         'colorCost': colorCost,
+    #                         'sizeCost': sizeCost,
+    #                         'extras': extras,
+    #                         'size': sizeChoice,
+    #                         'product': product,
+    #                         'this_total': (product.price + extras) * decimal.Decimal(orderData[0])
+    #                     })
+    #         else:
+    #             colorCost = 0
                 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = settings.STANDARD_DELIVERY
