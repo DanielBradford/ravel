@@ -39,7 +39,7 @@ def add_to_order(request, item_id):
 def update_order(request):   
     """ Update the quantity of the specified product to the order """
     order = request.session.get('order', {})
-    quantity = int(request.post.get('quantity'))
+    quantity = int(request.POST.get('quantity'))
     sizeID = str(request.POST.get('sizeID'))
     colorID = str(request.POST.get('colorID'))
     productID = str(request.POST.get('productID'))
@@ -47,14 +47,10 @@ def update_order(request):
     if quantity > 0:
         order[order_item_identifier] = quantity
         print(str(order_item_identifier))
-        redirect_url = request.POST.get('redirect_url')
-        request.session['order'] = order
-        return redirect(redirect_url)
     else:
         order.pop(order_item_identifier)
-        request.session['order'] = order
-        redirect_url = request.POST.get('redirect_url')
-        return redirect(redirect_url)
+    request.session['order'] = order
+    return redirect(reverse('orders'))
 
     # except:
     #     redirect_url = request.POST.get('redirect_url')
@@ -79,6 +75,7 @@ def remove_from_order(request):
     except:
         redirect_url = request.POST.get('redirect_url')
         return redirect(redirect_url)
+    
 
 
 def delete_session(request):

@@ -15,7 +15,7 @@ $(document).ready(function () {
   $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var item_id = $(this).attr('id');
-        var url = `/orders/remove/${item_id}/`;
+        var url = `/orders/remove/`;
         var data = {'csrfmiddlewaretoken': csrfToken};
         $.post(url, data)
          .done(function() {

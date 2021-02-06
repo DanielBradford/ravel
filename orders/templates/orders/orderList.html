@@ -57,7 +57,7 @@
                         <p style="color: grey">({{item.product.category}})</p>
                     </td>
                     <td>£{{item.product.price}}</td>
-                    <form method="POST" action="{ % url 'update_order' %}" class="form update-form" >
+                    <form method="POST" action="{% url 'update_order' %}" class="form update-form" >
                         {% csrf_token %}
                         <td>
                             <div class="form-group center">
@@ -88,7 +88,7 @@
                                 <input type="hidden" name="sizeID" value="{{item.size_id}}">
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}"> 
                             <br>
-                            <button type="submit" class="btn btn-medium ">Update <i class="fa fa-redo"></i></button>
+                            <button type="submit" class="btn btn-medium">Update <i class="fa fa-redo"></i></button>
                             </div>
                             
 
