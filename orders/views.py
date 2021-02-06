@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
-from products.models import Product
+from products.models import Product, Color, Size
 from django import template
 import string
 import random
@@ -19,20 +19,15 @@ def orders(request):
 def add_to_order(request, item_id):
                 
     """ Add a quantity of the specified product to the order """
-    orderID = id_generator()
     quantity = int(request.POST.get('quantity'))
     color = str(request.POST.get('color'))
     size = str(request.POST.get('size'))
     redirect_url = request.POST.get('redirect_url')
     order = request.session.get('order', {})
-    # order[item_id] = quantity, color, size, orderID
     newItemID = str(item_id)
     order_info = newItemID + " " + color + " " + size
     if order_info in list(order.keys()):
-        order[order_info] += quantity
-        # messages.success(request,
-        #                     (f'Updated {product.name} '
-        #                     f'quantity to {order[item_id]}'))
+        order[order_info] += quantity 
     else:
         order[order_info] = quantity
         # messages.success(request, f'Added {product.name} to your bag')
@@ -41,33 +36,49 @@ def add_to_order(request, item_id):
     return redirect(redirect_url)
 
 
-def update_order(request, order_id):   
+def update_order(request):   
     """ Update the quantity of the specified product to the order """
-    quantity = int(request.POST.get('quantity'))
     order = request.session.get('order', {})
+    quantity = int(request.post.get('quantity'))
+    sizeID = str(request.POST.get('sizeID'))
+    colorID = str(request.POST.get('colorID'))
+    productID = str(request.POST.get('productID'))
+    order_item_identifier = productID + " " + colorID + " " + sizeID
     if quantity > 0:
-        for item in order.items:
-            if item.order_id == order_id:
-                item.quantity = quantity
+        order[order_item_identifier] = quantity
+        print(str(order_item_identifier))
+        redirect_url = request.POST.get('redirect_url')
+        request.session['order'] = order
+        return redirect(redirect_url)
     else:
-        order.pop(order_id)
-    request.session['order'] = order
-    return redirect(reverse('orders'))
+        order.pop(order_item_identifier)
+        request.session['order'] = order
+        redirect_url = request.POST.get('redirect_url')
+        return redirect(redirect_url)
 
-
-
-def remove_from_order(request, item_id):
+    # except:
+    #     redirect_url = request.POST.get('redirect_url')
+    #     request.session['order'] = order
+    #     return redirect(redirect_url)
+    
+def remove_from_order(request):
     """Remove the item from the shopping basket"""
     try:
         order = request.session.get('order', {})
-        print(order)
-        order.pop(item_id)
-        request.session['order'] = order
-        return HttpResponse(status=200)
+        sizeID = str(request.POST.get('sizeID'))
+        colorID = str(request.POST.get('colorID'))
+        productID = str(request.POST.get('productID'))
+        order_item_identifier = productID + " " + colorID + " " + sizeID
 
-    except Exception as e:
-        # messages.error(request, f'Error removing item: {e}')
-        return HttpResponse(status=500)
+        # order[order_item_identifier] = int(request.post.get('quantity'))
+        print(str(order_item_identifier))
+        redirect_url = request.POST.get('redirect_url')
+        order.pop(str(order_item_identifier))
+        request.session['order'] = order
+        return redirect(redirect_url)
+    except:
+        redirect_url = request.POST.get('redirect_url')
+        return redirect(redirect_url)
 
 
 def delete_session(request):

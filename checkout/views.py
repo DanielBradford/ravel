@@ -51,6 +51,7 @@ def checkout(request):
                                 quantity=quantity,
                                 color=color,
                                 size=size,
+
                         )
                     order_line_item.save()
 

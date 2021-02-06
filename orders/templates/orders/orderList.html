@@ -2,124 +2,167 @@
 {% load static %}
 {% block content %}
 <main>
-        <div class="container homeContainer heartwool">
-			<div class="intro row">
-				
-					<div class="row center">
-						<h1 class="col s12"><strong>Basket {% if order_items|length > 0 %}({{order_items|length}}){% endif %} <i class="fa fa-shopping-basket"></i></strong></h1>
-					</div>
-			
-			
-			</div>
+    <div class="container homeContainer heartwool">
+        <div class="intro row">
+
+            <div class="row center">
+                <h1 class="col s12"><strong>Basket {% if order_items|length > 0 %}({{order_items|length}}){% endif %} <i
+                            class="fa fa-shopping-basket"></i></strong></h1>
+            </div>
+
+
         </div>
+    </div>
     <br>
-{% if order_items|length > 0 %}
-{% if total < 20 %}
-<div class="row center">
-    <p><i class="fa fa-truck-loading"></i> <strong>You're <span style="font-weight: 800;">£{{ free_delivery_delta|floatformat:2 }}</span> away from getting free delivery on your order! <a href="{% url 'products'%}"<i class="fa fa-shopping-bag"></i></strong></a></p>
-</div>
-{% endif %}
-   <div class="row center">
-       <a href="{% url 'delete_session' %}">
-       <button id="deleteAll" onclick="return confirm('Are you sure? All items in your basket will be removed?')" class="red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></button></a>
-   </div>
-<div>
-      <table style="padding: 2em; margin: 2em;">
-        <thead>
-          <tr>
-              <th>Basket Item #</th>
-              <th>Item Image</th>
-              <th>Item Name</th>
-              <th>Item Price</th>
-              <th>Quantity</th>
-              <th>Item Color</th>
-              <th>Item Size</th>
-              <th>Total</th>
-              <th>Remove</th>
-          </tr>
-        </thead>
-
-        <tbody>
-        {% if order_items|length > 0 %}
-            {% for item in order_items %}
-            <tr>
-                <td>{{forloop.counter}}</td>
-                <td><img width="100px" style="border-radius: 1.4em; object-fit: cover;" src="{{ item.product.image.url }}"></td>
-                <td><h5><a href="{% url 'view_product' item.product.id %}"<strong>{{item.product.name}}</strong></h5><p style="color: grey">({{item.product.category}})</p></td>
-                <td>£{{item.product.price}}</td>
-                <td> 
-                    <form class="form update-form" method="POST" action="">
-                                            {% csrf_token %}
-                                            <div class="form-group center">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend text-center">
-                                                        <button class="decrement-qty btn btn-sm btn-black rounded-0" 
-                                                            data-item_id="{{ item.product.id }}" id="decrement-qty_{{ item.product.id }}">
-                                                            <span>
-                                                                <i class="fas fa-minus fa-sm"></i>
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                    <input class="form-control form-control-sm qty_input" type="number"
-                                                        name="quantity" value="{{ item.quantity }}" min="1" max="3"
-                                                        data-item_id="{{ item.product.id }}"
-                                                        id="id_qty_{{ item.product.id }}">
-                                                    <div class="input-group-append">
-                                                        <button class="increment-qty btn btn-sm btn-black rounded-0"
-                                                            data-item_id="{{ item.product.id }}" id="increment-qty_{{ item.product.id }}">
-                                                            <span>
-                                                                <i class="fas fa-plus fa-sm"></i>
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        
-                                        <div class="center">
-                                            <a class="btn update-link text-info"><small>Update <i class="fa fa-redo"></i></small></a>      
-                                        </div>
-                                        </form>
-                                       
-                                     
-                </td>
-           
-                <td>{{item.color}} <span data-badge-caption="extra" class="new badge">(+ £{{item.colorCost}})</span></td>
-           
-                <td>{{item.size}} <span data-badge-caption="extra" class="new badge">(+ £{{item.sizeCost}})</span></td>
-                <td>£{{item.this_total|floatformat:2}}</td>                        
-                <td ><a class="remove-item" id="{{item.order_info}}" >Remove<i style="color:red" class=" fa fa-trash"></i></a>
-                </td>
-             
-            </tr>
-            {% endfor %}
-        {% endif %}
-        </tbody>
-      </table>
-</div>
-<div class="row left" style="padding-left: 100px;">
-  
-    <h4>1) <i class="fa fa-cash-register"></i> Total: £{{ total|floatformat:2}}</h4>
+    {% if order_items|length > 0 %}
     {% if total < 20 %}
-    <h4>2) <i class="fa fa-truck-loading"></i> Delivery: £{{delivery}}</h4>  <p><i class="fa fa-truck-loading"></i> <strong>You're <span style="font-weight: 800;">£{{ free_delivery_delta|floatformat:2}}</span> away from getting free delivery on your order! <i class="fa fa-truck-loading"></i></strong></p>
+    <div class="row center">
+        <p><i class="fa fa-truck-loading"></i> <strong>You're <span
+                    style="font-weight: 800;">£{{ free_delivery_delta|floatformat:2 }}</span> away from getting free
+                delivery on your order! <a href="{% url 'products'%}" <i class="fa fa-shopping-bag"></i></strong></a>
+        </p>
+    </div>
     {% endif %}
-    {% if total > 20 %}
-    <h4>2) <i class="fa fa-truck-loading"></i> Delivery: FREE </h4>
-    {% endif %}
+    <div class="row center">
+        <a href="{% url 'delete_session' %}">
+            <button id="deleteAll" onclick="return confirm('Are you sure? All items in your basket will be removed?')"
+                class="red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></button></a>
+    </div>
+    <div>
+        <table style="padding: 2em; margin: 2em;">
+            <thead>
+                <tr>
+                    <th>Basket Item #</th>
+                    <th>Item Image</th>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                    <th>Quantity</th>
+                    <th>Item Color</th>
+                    <th>Item Size</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
 
-    <h4>3) <strong style="text-decoration: underline;">Grand Total: £{{grand_total|floatformat:2}}</strong></h4>
-    {{free_deliver_delta}}
-</div>
-<a href="{% url 'checkout' %}">
-<div class="row center" style="padding-top: 100px">
-    <button class="btn-large">Checkout <i class="fa fa-shopping-cart"></i></button>
-</div>
-</a>
-        
-     </main>
+            <tbody>
+                {% if order_items|length > 0 %}
+                {% for item in order_items %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td><img width="100px" style="border-radius: 1.4em; object-fit: cover;"
+                            src="{{ item.product.image.url }}"></td>
+                    <td>
+                        <h5><a href="{% url 'view_product' item.product.id %}" ><strong>{{item.product.name}}</strong></a>
+                        </h5>
+                        <p style="color: grey">({{item.product.category}})</p>
+                    </td>
+                    <td>£{{item.product.price}}</td>
+                    <form method="POST" action="{ % url 'update_order' %}" class="form update-form" >
+                        {% csrf_token %}
+                        <td>
+                            <div class="form-group center">
+                                <div class="input-group">
+                                    <div class="input-group-prepend text-center">
+                                        <button class="decrement-qty btn btn-sm btn-black rounded-0"
+                                            data-item_id="{{item.product.id}}" id="decrement-qty_{{ item.product.id }}">
+                                            <span>
+                                                <i class="fas fa-minus fa-sm"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input class="form-control form-control-sm qty_input" type="number" name="quantity"
+                                        value="{{ item.quantity }}" min="1" max="3" data-item_id="{{ item.product.id }}"
+                                        id="id_qty_{{ item.product.id }}">
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn btn-sm btn-black rounded-0"
+                                            data-item_id="{{ item.product.id }}"
+                                            id="increment-qty_{{ item.product.id }}">
+                                            <span>
+                                                <i class="fas fa-plus fa-sm"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="productID" value="{{item.product.id}}">
+                                <input type="hidden" name="colorID" value="{{item.color_id}}">
+                                <input type="hidden" name="sizeID" value="{{item.size_id}}">
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}"> 
+                            <br>
+                            <button type="submit" class="btn btn-medium ">Update <i class="fa fa-redo"></i></button>
+                            </div>
+                            
+
+
+
+
+
+
+                        </td>
+                    </form>
+                    <td>{{item.color}} <span data-badge-caption="extra" class="new badge">(+ £{{item.colorCost}})</span>
+                    </td>
+
+                    <td>{{item.size}} <span data-badge-caption="extra" class="new badge">(+ £{{item.sizeCost}})</span>
+                    </td>
+                    <td>£{{item.this_total|floatformat:2}}</td>
+
+                    <td>
+
+                        <div class="center">
+
+
+                            <form action="{% url 'remove_from_order' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="productID" value="{{item.product.id}}">
+                                <input type="hidden" name="colorID" value="{{item.color_id}}">
+                                <input type="hidden" name="sizeID" value="{{item.size_id}}">
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                <button type="submit"
+                                    onclick="return confirm('Are you sure? This item in your basket will be removed?')"
+                                    class="btn red white-text btn-medium">Remove <i class="fa fa-times"></i></button>
+                            </form>
+                        </div>
+
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <div class="row left" style="padding-left: 100px;">
+
+        <h4>1) <i class="fa fa-cash-register"></i> Total: £{{ total|floatformat:2}}</h4>
+        {% if total < 20 %}
+        <h4>2) <i class="fa fa-truck-loading"></i> Delivery: £{{delivery}}</h4>
+        <p><i class="fa fa-truck-loading"></i> <strong>You're <span
+                    style="font-weight: 800;">£{{ free_delivery_delta|floatformat:2}}</span> away from getting free
+                delivery on your order! <i class="fa fa-truck-loading"></i></strong></p>
+        {% endif %}
+        {% if total > 20 %}
+        <h4>2) <i class="fa fa-truck-loading"></i> Delivery: FREE </h4>
+        {% endif %}
+
+        <h4>3) <strong style="text-decoration: underline;">Grand Total: £{{grand_total|floatformat:2}}</strong></h4>
+        {{free_deliver_delta}}
+    </div>
+    <a href="{% url 'checkout' %}">
+        <div class="row center" style="padding-top: 100px">
+            <button class="btn-large">Checkout <i class="fa fa-shopping-cart"></i></button>
+        </div>
+    </a>
+    <a href="{% url 'products' %}">
+        <div class="row center" style="padding-top: 100px">
+            <button class="btn-large">Continue Shopping <i class="fa fa-shopping-basket"></i></button>
+        </div>
+    </a>
+
+
+</main>
 {% elif order_items|length == 0 %}
 <div class="row center">
-<h2>YOU DONT HAVE ANY ORDERS</h2>
-<a href="{% url 'products' %}"><button class="btn-large">Start Shopping</button></a>
+    <h2>YOU DONT HAVE ANY ORDERS</h2>
+    <a href="{% url 'products' %}"><button class="btn-large">Start Shopping</button></a>
 </div>
 
 {% endif %}
@@ -129,12 +172,12 @@
 {% include 'orders/includes/quantity_script.html' %}
 
 <script type="text/javascript">
-// Remove all order items
-    $('#deleteAll').click(function(e) {
+    // Remove all order items
+    $('#deleteAll').click(function (e) {
         $.post()
-         .done(function() {
-             location.reload();
-         });
+            .done(function () {
+                location.reload();
+            });
     });
 </script>
 {% endblock %}
