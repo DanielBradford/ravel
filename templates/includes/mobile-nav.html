@@ -28,7 +28,7 @@
         </li>-->
 
         <li>
-          <a href="{% url 'orders'%}">Basket<i class="fas fa-shopping-basket"></i></a>
+          <a href="{% url 'orders'%}">Basket<i class="fas fa-shopping-basket"></i>  {% if order_items|length > 0 %}({{order_items|length}}){% endif %} </a>
         </li> 
         <li>
           <a href="{% url 'contact' %}">Contact<i class="fas fa-comments"></i></a>
