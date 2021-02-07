@@ -19,6 +19,7 @@ def orders(request):
 def add_to_order(request, item_id):
                 
     """ Add a quantity of the specified product to the order """
+    product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     color = str(request.POST.get('color'))
     size = str(request.POST.get('size'))
@@ -28,9 +29,11 @@ def add_to_order(request, item_id):
     order_info = newItemID + " " + color + " " + size
     if order_info in list(order.keys()):
         order[order_info] += quantity 
+        messages.success(request, f'Updated {product.name} quantity')
+
     else:
         order[order_info] = quantity
-        # messages.success(request, f'Added {product.name} to your bag')
+        messages.success(request, f'Added {product.name} to your bag')
     print(order)
     request.session['order'] = order
     return redirect(redirect_url)
@@ -72,10 +75,9 @@ def remove_from_order(request):
         order.pop(str(order_item_identifier))
         request.session['order'] = order
         return redirect(redirect_url)
-    except:
+    except Exception as e:
         redirect_url = request.POST.get('redirect_url')
         return redirect(redirect_url)
-    
 
 
 def delete_session(request):
