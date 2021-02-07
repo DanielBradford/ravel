@@ -3,40 +3,60 @@
 
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="container homeContainer heartwool">
-			<div class="intro row">
-					<div class="row center">
-                        <h1 class="col s12"><strong>Thank you {{order.full_name|capfirst}} <i class="fa fa-smile-wink"></i></strong></h1>
-                        <div style="background-color: #ffffff;">
-                        <h3>Your order information is below. You will reieve an email to confirm your order sent to {{order.email}}</h3>
-                        </div>
-                        <ul>
-                            <span><h3>Order Number:</h3> {{order.order_number}}</span>
-                            <span><h3>Order Placed:</h3> {{order.date}}</span>
-                            <span><h3>Order Amount:</h3> £ {{order.grand_total}}</span>
-                            <span><h3>Order Address:</h3> {{order.street_address1}}, {{order.postcode}}</span>
-                        </ul>
+<div class="overlay"></div>
+<div class="container checkoutOrder">
+    <div class="row">
+        <div class="container homeContainer heartwool">
+            <div class="intro row">
+                <div class="row center">
+                    <h1 class="col s12"><strong>Thank you {{order.full_name|capfirst}} <i
+                                class="fa fa-smile-wink"></i></strong></h1>
+                    <div style="background-color: #ffffff;">
+                        <h3>Your order information is below. You will reieve an email to confirm your order sent to
+                            {{order.email}}</h3>
                     </div>
-                    
-                    
-			</div>
+                    <ul>
+                        <span class="col s6">
+                            <h3>Order Number:</h3> {{order.order_number}}
+                        </span>
+                        <span class="col s6">
+                            <h3>Order Placed:</h3> {{order.date}}
+                        </span>
+                        <span class="col s6">
+                            <h3>Order Amount:</h3> £ {{order.grand_total}}
+                        </span>
+                        <span class="col s6">
+                            <h3>Delivery Address:</h3> {{order.street_address1}}, {{order.postcode}}
+                        </span>
+                    </ul>
+                </div>
+                <div class="center">
+                    {% for item in order.lineitems.all %}
+                    <div class="row">
+                         {{item.quantity}} x {{item.product.name}} ({{item.color}}) {{item.size}}
+                    </div>
+                    {% endfor %}
+                    <p class="small" style="background-color: aliceblue; color: darkgray;">Please be aware these items are all handmade and we appreciate your patience in waiting for their creation</p>
+                    <br>
+                    <a href="{% url 'products' %}"><button class="btn btn-large"> Continue Shopping <i class="fa fa-shooping-cart"></i></button></a>
+                </div>
+
+
+            </div>
         </div>
-        </div>
-        
     </div>
+
+</div>
 {% endblock %}

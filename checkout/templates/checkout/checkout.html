@@ -3,9 +3,8 @@
 
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}"> 
 {% endblock %}
-
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -117,8 +116,9 @@
                         <div class="text-red" id="card-errors" role="alert"></div>
                     </fieldset>
 
-                    <div class="center">                    
-						<a href="{% url 'orders' %}" id="adjustBtn" class="btn btn-outline-black rounded-0">
+                    <div class="center">     
+                        <br>               
+						<a href="{% url 'orders' %}" class="btn btn-outline-black rounded-0">
 							<span class="icon">
 								<i class="fas fa-chevron-left"></i>
 							</span>
@@ -141,6 +141,16 @@
                 </form>
             </div>
         </div>
+    </div>
+    <div style="display:none;" id="loading-overlay" class="center">
+        <h1 class="text-light logo-font loading-spinner">
+            <span class="icon">
+                <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+            </span>
+        </h1>
+    </div>
+    <div id="test1">
+        <h1>HELLO</h1>
     </div>
 {% endblock %}
 

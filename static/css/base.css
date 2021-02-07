@@ -297,3 +297,8 @@ button{
 .remove-item:hover{
     cursor: pointer;
 }
+
+.checkoutOrder h3{
+    background-color: #ffffff70;
+    border-radius: 1.4em;
+}
