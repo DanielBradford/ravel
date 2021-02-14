@@ -20,21 +20,49 @@
             <div class="container homeContainer heartwool">
 			<div class="intro row">
 					<div class="row center">
-						<h1 class="col s12"><strong>My Profile <i class="fa fa-user"></i></strong></h1>
+						<h1 class="col s12"><strong>{{user}}'s Profile <i class="fa fa-user"></i></strong></h1>
 					</div>
 			</div>
         </div>
         </div>
         <div class="row">
             <div class="col s12 m6 l6">
-                <h2>About Me</h2>
-                {% for item in profile %}
-                {{item }}
-                {% endfor %}
-                {{profile}}
-                {{profile.name}}
                 <h2>Order History</h2>
                 {{orders}}
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Order Date</th>
+                        <th>Order Number</th>
+                        <th>Order Items</th>
+                        <th>Order Total</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for item in orders%}
+                    <tr>
+                        <td>{{item.date}}</td>
+                        <td><a href="{% url 'order_history' order.order_number %}"
+                                        title="{{ order.order_number }}">
+                                            {{ order.order_number|truncatechars:6 }}
+                                        </a></td>
+                        <td>
+                            <ul>
+                                {% for item in order.lineitems.all %}
+                                    <li class="small">
+                                        Color: {{item.color.name}}
+                                        Size:  {{ item.size.name }}
+                                        Product: {{ item.product.name }} x {{ item.quantity }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>{{item.grand_total}}</td>
+                    </tr>
+                    {% endfor%}
+                    </tbody>
+                </table>
 
         
                 

@@ -76,6 +76,11 @@
 						<i class="fas fa-hat-winter"></i>
 					</a>
 					<ul>
+                        {% if request.user.is_authenticated %}
+                        <li title="My Profile">
+							<a href="{% url 'profile'%}" class="btn-floating #ffcc80 orange darken-3"><i class="fas fa-user"></i></a>
+						</li>
+                        {% endif %}
 						<li title="Babywear">
 							<a href="{% url 'products'%}" class="btn-floating #ffcc80 orange lighten-3"><i class="fas fa-baby"></i></a>
 						</li>

@@ -50,6 +50,14 @@
                     {% endfor %}
                     <p class="small" style="background-color: aliceblue; color: darkgray;">Please be aware these items are all handmade and we appreciate your patience in waiting for their creation</p>
                     <br>
+                     {% if from_profile %}
+                        <a href="{% url 'profile' %}" class="btn btn-large">
+                            <span class="icon">
+                                <i class="fas fa-angle-left"></i>
+                            </span>
+                            <span class="text-uppercase">Back to Profile</span>
+                        </a>
+                    {% endif %}
                     <a href="{% url 'products' %}"><button class="btn btn-large"> Continue Shopping <i class="fa fa-shooping-cart"></i></button></a>
                 </div>
 
