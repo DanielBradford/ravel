@@ -59,11 +59,11 @@ def checkout(request):
             newOrder = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
-            order.original_bag = json.dumps(newOrder)
+            order.original_basket = json.dumps(newOrder)
             order.save()
             try:
                 for item_info, quantity in order.items():
-                    item_id, color_id, size_id = [int(value) for value in item_info.split()]
+                    item_id, color_id, size_id =[int(value) for value in item_info.split()]
                     product = get_object_or_404(Product, pk=item_id)
                     color = get_object_or_404(Color, pk=color_id)
                     size = get_object_or_404(Size, pk=size_id) 
