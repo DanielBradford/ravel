@@ -3,7 +3,7 @@
 
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}"> 
+    <link rel="stylesheet" href="{% static '/checkout/css/checkout.css' %}"> 
 {% endblock %}
 {% block page_header %}
     <div class="container header-container">
@@ -45,7 +45,7 @@
                             <p class="my-0 small text-muted">Qty: {{ item.quantity }} <i onclick="M.toast({html: 'MAXIMUM OF 3 ITEMS CAN BE ORDERED DUE TO THEM BEING HANDMADE'})" class="quantityInfo fa fa-info-circle"></i></p>
                             
                         </div>
-                        <div class="col s4"><p class="my-0 small">£{{item.this_total}}</p></div>
+                        <div class="col s4"><p class="my-0 small">£{{item.this_total|floatformat:2}}</p></div>
                     </div>
                     {% endfor %}
                 
@@ -114,6 +114,8 @@
 
                         <!-- Used to display form errors -->
                         <div class="text-red" id="card-errors" role="alert"></div>
+                        <!-- Pass the client secret to the view so we can get the payment intent id -->
+                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
 
                     <div class="center">     
@@ -149,9 +151,9 @@
             </span>
         </h1>
     </div>
-    <div id="test1">
+    <!-- <div id="test1">
         <h1>HELLO</h1>
-    </div>
+    </div> -->
 {% endblock %}
 
 {% block postloadjs %}
