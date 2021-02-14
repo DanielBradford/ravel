@@ -26,14 +26,26 @@
         </div>
         </div>
         <div class="row">
-            <div class="col s12 m4 l6">
+            <div class="col s12 m6 l6">
+                <h2>About Me</h2>
+                {% for item in profile %}
+                {{item }}
+                {% endfor %}
                 {{profile}}
+                {{profile.name}}
+                <h2>Order History</h2>
+                {{orders}}
 
         
                 
             </div>
-            <div class="col s12 m8 l6">
-                
+            <div class="col s12 m6 l6">
+                <h2>Delivery Information</h2>
+                <form class="" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn btn-black rounded-0 text-uppercase text-right">Update Information</button>
+                </form>
             </div>
         </div>
     </div>
