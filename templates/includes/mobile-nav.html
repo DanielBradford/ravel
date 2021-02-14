@@ -5,7 +5,7 @@
         <li><a href="{% url 'account_logout' %}" class="dropdown-item">Admin <i class="fa fa-cogs"></i></a></li>
     {% endif %}
     <li><a href="orders">My Bag <i class="fas fa-shopping-bag"></i></a></li>
-    <li><a href="" class="dropdown-item">My Profile <i class="fa fa-user"></i></a></li>
+    <li><a href="{% url 'profile' %}" class="dropdown-item">My Profile <i class="fa fa-user"></i></a></li>
     <li><a href="{% url 'account_logout' %}" class="dropdown-item">Logout <i class="fa fa-door-open"></i></a></li>
     {% else %}
     <li><a href="{% url 'account_signup' %}" class="dropdown-item">Register <i class="fa fa-pen-alt"></i></a></li>

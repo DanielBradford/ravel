@@ -13,17 +13,22 @@
 
 
 </div>
+<div class="row">
+    <div class="col m3 s12"></div>
+    
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <div class="row center">
- <button class="btn btn-large" type="submit">{% trans "Sign Up" %} &raquo;</button>
-  </div>
- 
-</form>
+    <form class="signup col m6 s12" id="signup_form" method="post" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <div class="row center">
+    <button class="btn btn-large" type="submit">{% trans "Sign Up" %} &raquo;</button>
+    </div>
+    
+    </form>
+    <div class="col m3 s12"></div>
+</div>
 
 {% endblock %}
