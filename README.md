@@ -261,130 +261,49 @@ The product details page is the product specific page that gives more informatio
 
 <div align="center"><img width="600px" src="documents/screenshots/productDetails.png"></div>
 
+The user can pick the color (based on the contents of the Color Model)
+<div align="center"><img width="600px" src="documents/screenshots/productDetails1.png"></div>
 
-### **Search Feature**
-This feature occurs in a number of pages in the application.
-The search feature allows the user to input text and search the database for the relevant inputted data.
-- **Search recipes page** allows the user to search within the index of recipe name and recipe ingredients
+The user can pick the size (based on the contents of the Size Model)
+<div align="center"><img width="600px" src="documents/screenshots/productDetails2.png"></div>
 
-    <div align="center"><img width="600px" src="documents/screenshots/search_result.png"></div>
-- **Search saved recipes page** allows the user to search within the index of recipe name and recipe ingredients within their saved recipes contents
-- **Search my recipes page** allows the user to search within the index of recipe name and recipe ingredients within their 'my recipes' contents
+They then select the quantity and can add to basket. **Important** The maxiumum amount that can be added is 3. This is due to the items being handmade by the sole owner and founder of Ravel:
+<div align="center"><img width="600px" src="documents/screenshots/productDetails3.png"></div>
 
-### **View/Read Recipes**
-This allows all users to view the recipe of their choice from the selection in the database. The view recipe page has the following features:
 
-- The ingredients are split by "," and displayed in an unordered list
+### **My Basket Page**
+The basket page lists all the orders the user has placed in their basket where they can:
+- Review current item orders in basket
+- Update quantity within the order
+- Remove (Either all products or individual items) 
+- Continue to checkout.
 
-    view_recipe.html (line 135)
+<div align="center"><img width="600px" src="documents/screenshots/myBasket.png"></div>
 
-        {% for ing in item.ingredients.split(",") %}
+### **Checkout Page**
+The checkout page gives a summary of their basket and allows the user to enter their information to complete the order. This includes:
+- Name
+- Email Address
+- Delivery / Billing Address
+- Payment Information **This is done using Stripe (https://stripe.com/)**
 
-- Check boxes are displayed to be ticked if the user has the ingredient on the list
--The method instructions are split by "." and displayed in an ordered list
+### **Checkout Success Page**
+The checkout success page is only shown when the payment is approved and the order is successful.
+The page summarises:
+- The order
+- The payment / consistent
+- Informs the user that the order will also be confirmed by email
 
-    view_recipe.html (line 111)
-
-        {% for ing in item.method.split(".") %}
-
-- Check boxes are displayed to be ticked if the user has completed the stage of the method/instructions
-
-- When the appliance name is clicked it takes the user to the recommended appliance on the affiliate website. (THIS ALLOWS FOR THE APPLICATION TO BE MONETIZED THROUGH ADVERTSING AND AFFILILIATE MARKETING)
-
- For example:
-
-<div align="center"><img width="400px" src="documents/screenshots/view_recipe.png">
-<img width="400px" src="documents/screenshots/view_recipe2.png"></div>
-<div align="center"><img width="400px" src="documents/screenshots/amazon_product.png"></div>
 
 
 ## **REGISTERED USER FEATURES**
 
-## **Profile Page**
-After login and registration the user is directed to the profile page. On first arrival they are greeted with a flash message 'Welcome {username}'.
-
-The search feature in this page is identical in funcitonality and display to the search feature of the recipes page.
-
-The profile feature presents a dashboard display of the applications features. From the profile they can view:
-
-- All Recipes
-- Saved Recipes
-- My Recipes
-- Top Tools & Products
+## **My Profile Page**
+The profile page allows the user to view order history and saved delivery information. 
+The page lists all order history relevant to the user.
 
 <div align="center"><img width="600px"  src="documents/screenshots/profile.png"></div>
-
-When the cards are selected they reveal information and a link to the corresponding profile section.
-
-<div align="center"><img width="600px"  src="documents/screenshots/profile_cards.png"></div>
-
-## **My Recipes**
-This page displays all recipes contributed by the user. The number in brackets counts the total amount. 
-
-This page presents the add recipe button which redirects the user to the add recipe page. This allows the user to add a recipe. 
-
-On the recipe cards displayed there are buttons to edit (blue) or delete (red) their recipe. Or by clicking the card they can view the recipe.
-
-<div align="center"><img width="600px"  src="documents/screenshots/my_recipes.png"></div>
-
-## **Saved Recipes**
-
-This page displays all recipes saved by the user. The number in brackets counts the total amount.
-
-The user has the option to search all recipes within their saved list.
-
-They also have the option to remove the recipe using the trash icon. When this is clicked there is an option to remove the item. They have to confirm to complete this function.
-
-
-<div align="center"><img width="600px" src="documents/screenshots/saved_recipes.png"></div>
-
-## **Create/Add recipes**
-The ADD RECIPE button in 'My Recipes' and the Floating Menu ADD RECIPE Button (Green) direct the user here.
-
-The create recipe feature allows the user to add their own recipe using the data entry form provided. 
-
-The user is encouraged to seperate all ingredients with "," and seperate all method instructions with "." 
-
-This is important for the processing and displaying of information in the view_recipe.html template. *This method can be improved as it relies entirely on user compliance*
-
-The data entry form has front-end and back-end validation to reduce user error and help prevent malicious activity. For example:
-
-- Character min and max limits on text inputs
-
-<div align="center"><img width="600px" src="documents/screenshots/add_recipe.png"></div>
-<div align="center"><img width="600px" src="documents/screenshots/add_recipe2.png"></div>
-
-## **Delete recipes**
-The delete option is presented to the registered user in 'My Recipes' and 'View Recipe' Pages. If the user selects delete they have to confirm this via a Javascript Pop Up confirm box.
-
-<div align="center"><img width="600px" src="documents/screenshots/edit_delete_option.png"></div>
-
-## **Edit/Update recipes**
-The Edit Recipe Feature allows users to modify any recipe they have created. They are presented with the data enrty form used when adding but with populated fields using the data of the recipe they have chosen to edit. They also have the option cancel the editing proccess.
-
-<div align="center"><img width="600px" src="documents/screenshots/edit_recipe.png"><img width="600px" src="documents/screenshots/edit_recipe2.png"></div>
-
-## **Save recipes**
-The save recipes feature allows a registered user to click 'save' on any recipe they havent created and save it to their "saved recipes" page which can be accessed via their profile. (This is supported with the feature that can also remove the saved recipe).
-This was created using an Array in the User Collection document. Below shows the SAVED status and an example of the Saved Recipes Page.
-
- <div align="center"><img width="600px"  src="documents/screenshots/add_to_saved.png"></div>
-<div align="center"><img width="300px" src="documents/screenshots/saved.png"><img width="300px" src="documents/screenshots/saved_recipes.png"></div>
-
-## **Rate recipes**
-The rate recipe feature allows all registered users to rate a recipe out of 10 if they have not created it. This generates user feedback and allows users to see which recipes are rated well for reccomendation. The rating and the count of how many times it has been rated is clearly displayed. Below is a screenshot of the feature on the View Recipe page.
-
-<div align="center"><img width="500px" src="documents/screenshots/rating.png"></div>
-
-## **Product & Tools**
-This feature presents recomended tools and products.
-The product image, description and price are displayed with clickable links to the corresponding site. A registered user has access to discount codes which are displayed via modal when clicked.
-The modal also allows the user to click the copy icon to copy to the device's clipboard for future use.
-
-<div align="center"><img width="600px" src="documents/screenshots/tools_products.png"><img width="600px" src="documents/screenshots/products2.png"></div>
-<div align="center"><img width="300px" src="documents/screenshots/discount_code.png"><img width="300px" src="documents/screenshots/amazon_tool.png"></div>
-
-In future this page will be populated either via an API or using a web scraper (Beautiful Soup) depending on the legality. 
+ 
 
 ## **ADMIN / MANAGEMENT FEATURES**
 
