@@ -60,9 +60,9 @@ def checkout(request):
         if order_form.is_valid():
             newOrder = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
-            order.stripe_pid = pid
-            order.original_basket = json.dumps(newOrder)
-            order.save()
+            newOrder.stripe_pid = pid
+            newOrder.original_basket = json.dumps(order)
+            newOrder.save()
             try:
                 for item_info, quantity in order.items():
                     item_id, color_id, size_id =[int(value) for value in item_info.split()]
