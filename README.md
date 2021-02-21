@@ -311,7 +311,7 @@ Admin can be accessed with the extension of: /admin/
 
 This is a feature of the Django Framework which allows the Admin user full control over the website users and content.
 
-<div align="center"><img width="600px" src="documents/screenshots/admin1"></div>
+<div align="center"><img width="600px" src="documents/screenshots/admin1.png"></div>
 
 In this view the admin user can:
 - Verify User Email Addresses
@@ -321,7 +321,7 @@ In this view the admin user can:
 
 ## **Users**
 
-<div align="center"><img width="600px" src="documents/screenshots/users"></div>
+<div align="center"><img width="600px" src="documents/screenshots/users.png"></div>
 
 ### ADD USER
 URL extension: /admin/auth/user/add/
