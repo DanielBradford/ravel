@@ -295,6 +295,9 @@ The page summarises:
 - Informs the user that the order will also be confirmed by email
 
 
+### **Contact Us Page**
+This page is still in development and is intended for users to contact the owner/founder for any orders, enquiries or information that is not featured in the website. This can be considered as a future feature to enhance the existing site. EmailJS (https://www.emailjs.com/) would be used to enable the functionality for this.
+
 
 ## **REGISTERED USER FEATURES**
 
