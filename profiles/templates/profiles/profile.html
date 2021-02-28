@@ -26,9 +26,8 @@
         </div>
         </div>
         <div class="row">
-            <div class="col s12 m6 l6">
-                <h2>Order History</h2>
-                {{orders}}
+            <div class="col s12 m12">
+                <h2>Order History <i class="fa fa-history"></i></h2>
                 <table>
                     <thead>
                     <tr>
@@ -42,37 +41,39 @@
                     <tbody>
                         {% for item in orders%}
                     <tr>
-                        <td>{{item.date}}</td>
-                        <td><a href="{% url 'order_history' order.order_number %}"
-                                        title="{{ order.order_number }}">
-                                            {{ order.order_number|truncatechars:6 }}
-                                        </a></td>
+                        <td>{{item.date|date:"M d, Y"}}</td>
+                        <td>
+                                            {{ item.order_number }}
+                        </td>
                         <td>
                             <ul>
-                                {% for item in order.lineitems.all %}
+                                {% for item in item.lineitems.all %}
                                     <li class="small">
-                                        Color: {{item.color.name}}
-                                        Size:  {{ item.size.name }}
-                                        Product: {{ item.product.name }} x {{ item.quantity }}
+                                        Color: {{item.color}}
+                                        Size:  {{ item.size}}
+                                        Product: {{ item.product }} x {{ item.quantity }}
                                     </li>
                                 {% endfor %}
                             </ul>
                         </td>
-                        <td>{{item.grand_total}}</td>
+                        <td>£{{item.grand_total}}</td>
                     </tr>
                     {% endfor%}
                     </tbody>
                 </table>
+                <div>{{total_spend}}</div>
 
         
                 
             </div>
-            <div class="col s12 m6 l6">
-                <h2>Delivery Information</h2>
+            <div class="col s12 m12">
+                <h2>Delivery Info <i class="fa fa-truck fa-small"></i></h2>
                 <form class="" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button class="btn btn-black rounded-0 text-uppercase text-right">Update Information</button>
+                    <div class="center">
+                        <button class="btn btn-black rounded-0 text-uppercase text-right">Update Information</button>
+                    </div>
                 </form>
             </div>
         </div>
