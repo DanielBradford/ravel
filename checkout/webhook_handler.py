@@ -2,11 +2,9 @@ from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
-
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
-
 import json
 import time
 
@@ -26,7 +24,7 @@ class StripeWH_Handler:
             content=f'Unhandled webhook received: {event["type"]}',
             status=200)
 
-     def _send_confirmation_email(self, order):
+    def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
         cust_email = order.email
         subject = render_to_string(

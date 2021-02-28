@@ -4,7 +4,6 @@
     {% if request.user.is_superuser %}
         <li><a href="{% url 'account_logout' %}" class="dropdown-item">Admin <i class="fa fa-cogs"></i></a></li>
     {% endif %}
-    <li><a href="{% url 'orders'%}">My Orders <i class="fas fa-shopping-bag"></i></a></li>
     <li><a href="{% url 'profile' %}" class="dropdown-item">My Profile <i class="fa fa-user"></i></a></li>
     <li><a href="{% url 'account_logout' %}" class="dropdown-item">Logout <i class="fa fa-door-open"></i></a></li>
     {% else %}
