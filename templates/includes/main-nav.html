@@ -39,9 +39,9 @@
             </li> -->
             <!-- Prevents guest user accessing profile feature -->
 
-            <li>
+            <!-- <li>
               <a href="{% url 'contact' %}">Contact <i class="fas fa-comments"></i></a>
-            </li>
+            </li> -->
             <li>
               <a href="{% url 'orders' %}">Basket <i class="fas fa-shopping-basket"></i>  {% if order_items|length > 0 %}({{order_items|length}}){% endif %} </a>
             </li>

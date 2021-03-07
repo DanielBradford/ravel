@@ -29,9 +29,9 @@
         <li>
           <a href="{% url 'orders'%}">Basket<i class="fas fa-shopping-basket"></i>  {% if order_items|length > 0 %}({{order_items|length}}){% endif %} </a>
         </li> 
-        <li>
+        <!-- <li>
           <a href="{% url 'contact' %}">Contact<i class="fas fa-comments"></i></a>
-        </li>
+        </li> -->
         <li>
             <a class="dropdown-trigger" data-target="my-account-dropdown-mobile">My Account <i class="fas fa-user"></i></a>
         </li> 

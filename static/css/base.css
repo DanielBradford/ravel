@@ -322,3 +322,27 @@ button{
     margin: 0;
     height: 100%;
 }
+
+.message-container{
+    position: fixed;
+    width: 400px;
+    height: 300px;
+    overflow: scroll;
+    top: 80px;
+    right: 80px;
+    z-index: 9999999;
+    border-radius: 1.2em;
+}
+.toast{
+    margin: 30px;
+    background-color: #9575cde3;
+    border: solid 4px #fff;
+}
+
+.toast img{
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+

@@ -11,7 +11,7 @@ $(document).ready(function () {
 
   $(".remove-item").hover(function(){
     $(this).css("background-color", "goldenrod ");
-  })
+  });
   $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var item_id = $(this).attr('id');
@@ -21,10 +21,8 @@ $(document).ready(function () {
          .done(function() {
              location.reload();
          });
-    })
-   $('.update-link').click(function(e) {
-       alert("hello");
-        // var form = $(this).prev('.update-form');
-        // form.submit();
-    })
+    });
+    $('#toastDismiss').click(function(){
+        M.Toast.dismissAll();
+    });
 });

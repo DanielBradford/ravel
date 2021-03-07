@@ -28,12 +28,12 @@ def add_to_order(request, item_id):
     newItemID = str(item_id)
     order_info = newItemID + " " + color + " " + size
     if order_info in list(order.keys()):
-        order[order_info] += quantity 
+        order[order_info] += quantity
         messages.success(request, f'Updated {product.name} quantity')
 
     else:
         order[order_info] = quantity
-        messages.success(request, f'Added {product.name} to your bag')
+        messages.success(request, f'Added {quantity} x {product.name} to your basket')
     print(order)
     request.session['order'] = order
     return redirect(redirect_url)
