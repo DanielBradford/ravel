@@ -75,9 +75,9 @@ class OrderLineItem(models.Model):
     product = models.ForeignKey(Product, null=False, blank=False,
                                 on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
-    color = models.CharField(max_length=8, null=True,
+    color = models.CharField(max_length=10, null=True,
                                     blank=True)  # Blue, Pink etc (adult)
-    size = models.CharField(max_length=5, null=True,
+    size = models.CharField(max_length=10, null=True,
                                     blank=True)  # Small, Medium, Large (adult)
     
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2,

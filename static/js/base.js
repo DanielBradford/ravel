@@ -21,8 +21,8 @@ $(document).ready(function () {
          .done(function() {
              location.reload();
          });
-    });
-    $('#toastDismiss').click(function(){
+   });
+    $('#toastDismiss').click(function(e){
         M.Toast.dismissAll();
     });
 });
