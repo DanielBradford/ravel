@@ -396,7 +396,7 @@ Back-end routing checks prevent any cross site activity that may result in unwan
 <a name="responsive"></a>
 
 ## **Responsive Design**
-<div align="center"><img width="100px" src="static/images/ravelqrcode.png" alt="qrcode"></span><span><img width="400px" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"></span><span>   <img width="100px" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></div>
+<div align="center"><img width="100px" src="documents/screenshots/qr.png" alt="qrcode"></span><span><img width="400px" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"></span><span>   <img width="100px" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></div>
 
 The application has been built using a device-first approach. The Materialize grid system was utilized to maintain the responsiveness of this application accross all screen sizes. Throughout the development process, chrome developer tools, multiple desktops and mobile devices
 where used to ensure responsivness across all screen resolutions. *(The application was also tested by family and friends using various devices and browsers.)*

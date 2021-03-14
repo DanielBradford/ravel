@@ -19,7 +19,20 @@
 				</div>
 			</div>
 		</div>
-		<br />
+        <br />
+        <div class="row">
+        <form method="GET" action="{% url 'products' %}">
+                    <div class="searchbar input-group center">
+                        <input style="width: 50%; border: solid 2px #9575cd; border-radius:1.4em;" class="form-control" type="text" name="q" placeholder="Search our site">
+                        <div style="text-align: center;">
+                            <button class="form-control btn" type="submit">
+                                
+                                    <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+        </form>
+        </div>
 		<div class="row">
 			<div class="center col s12 m4 hide-on-small-only">
 				<img id="avatar" src="/media/images/avatar.png" alt="avatar of mary" />
