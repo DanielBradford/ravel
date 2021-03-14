@@ -23,6 +23,6 @@ $(document).ready(function () {
          });
    });
     $('#toastDismiss').click(function(e){
-        M.Toast.dismissAll();
+        $(".toast").toggle();
     });
 });
