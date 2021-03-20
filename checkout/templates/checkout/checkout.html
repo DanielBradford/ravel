@@ -38,14 +38,14 @@
                                     <img style="height: 10em; width: 10em; object-fit: cover;" class="card-image" src="{{ item.product.image.url }}" alt="{{ product.name }}">
                             </a>
                         </div>
-                        <div class="col s4 center">
+                        <div class="col s8 center">
                             <p class="my-0"><strong>{{ item.product.name }}</strong></p>
                             <p class="my-0 small">Size: {{ item.size.upper }}</p>
                             <p class="my-0 small">Color: {{ item.color.upper }}</p>
                             <p class="my-0 small text-muted">Qty: {{ item.quantity }} <i onclick="M.toast({html: 'MAXIMUM OF 3 ITEMS CAN BE ORDERED DUE TO THEM BEING HANDMADE'})" class="quantityInfo fa fa-info-circle"></i></p>
                             
                         </div>
-                        <div class="col s4"><p class="my-0 small">£{{item.this_total|floatformat:2}}</p></div>
+                        <div class="col s4 hide-on-small-only"><p class="my-0 small">£{{item.this_total|floatformat:2}}</p></div>
                     </div>
                     {% endfor %}
                 
