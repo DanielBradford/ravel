@@ -12,7 +12,9 @@
                     </div>
                 <hr>
             </div>
+            <div class="col-12 center">
              <form method="GET" action="{% url 'products' %}">
+                 {% csrf_token %}
                     <div class="searchbar input-group">
                         <input class="form-control" type="text" name="q" placeholder="Search our site">
                         <div style="text-align: center;">
@@ -22,7 +24,8 @@
                             </button>
                         </div>
                     </div>
-        </form>
+            </form>
+            </div>
         </div>
     </div>
     <div id="categories" class="row">
