@@ -5,8 +5,8 @@
     <div class="container homeContainer heartwool">
         <div class="intro row">
 
-            <div class="row center">
-                <h1 class="col s12"><strong>Basket {% if order_items|length > 0 %}({{order_items|length}}){% endif %} <i
+            <div class=" col s12 center">
+                <h1><strong>Basket {% if order_items|length > 0 %}({{order_items|length}}){% endif %} <i
                             class="fa fa-shopping-basket"></i></strong></h1>
             </div>
 
@@ -28,18 +28,18 @@
             <button id="deleteAll" onclick="return confirm('Are you sure? All items in your basket will be removed?')"
                 class="red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></button></a>
     </div>
-    <div>
-        <table style="padding: 2em; margin: 2em;">
+    <div class="col s12">
+        <table  class="responsive-table" style="padding: 2em; margin: 2em;">
             <thead>
                 <tr>
                     <th>Basket Item #</th>
-                    <th>Item Image</th>
+                    <th class="hide-on-small-only">Item Image</th>
                     <th>Item Name</th>
-                    <th>Item Price</th>
+                    <th class="hide-on-small-only">Item Price</th>
                     <th>Quantity</th>
                     <th>Item Color</th>
                     <th>Item Size</th>
-                    <th>Total</th>
+                    <th class="hide-on-small-only">Total</th>
                     <th>Remove</th>
                 </tr>
             </thead>
@@ -49,15 +49,15 @@
                 {% for item in order_items %}
                 <tr>
                     <td>{{forloop.counter}}</td>
-                    <td><img width="100px" style="border-radius: 1.4em; object-fit: cover;"
+                    <td class="hide-on-small-only"><img width="100px" style="border-radius: 1.4em; object-fit: cover;"
                             src="{{ item.product.image.url }}"></td>
                     <td>
-                        <h5><a href="{% url 'view_product' item.product.id %}" ><strong>{{item.product.name}}</strong></a>
-                        </h5>
-                        <p style="color: grey">({{item.product.category}})</p>
+                        <p><a href="{% url 'view_product' item.product.id %}" ><strong>{{item.product.name}}</strong></a>
+                        </p>
+                        <p class="hide-on-small-only" style="color: grey">({{item.product.category}})</p>
                     </td>
-                    <td>£{{item.product.price}}</td>
-                    <form method="POST" action="{% url 'update_order' %}" class="form update-form" >
+                    <td class="hide-on-small-only">£{{item.product.price}}</td>
+                    <form method="POST" action="{% url 'update_order' %}" class="form hide-on-small-only update-form" >
                         {% csrf_token %}
                         <td>
                             <div class="form-group center">
@@ -90,21 +90,16 @@
                             <br>
                             <button type="submit" class="btn btn-medium">Update <i class="fa fa-redo"></i></button>
                             </div>
-                            
-
-
-
-
-
 
                         </td>
+                        <td class="show-on-small hide-on-med-and-up">{{item.quantity}}</td>
                     </form>
-                    <td>{{item.color}} <span data-badge-caption="extra" class="new badge">(+ £{{item.colorCost}})</span>
+                    <td>{{item.color}} <span data-badge-caption="extra" class="hide-on-small-only new badge">(+ £{{item.colorCost}})</span>
                     </td>
 
-                    <td>{{item.size}} <span data-badge-caption="extra" class="new badge">(+ £{{item.sizeCost}})</span>
+                    <td>{{item.size}} <span data-badge-caption="extra" class="hide-on-small-only new badge">(+ £{{item.sizeCost}})</span>
                     </td>
-                    <td>£{{item.this_total|floatformat:2}}</td>
+                    <td class="hide-on-small-only">£{{item.this_total|floatformat:2}}</td>
 
                     <td>
 
