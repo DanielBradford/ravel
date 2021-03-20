@@ -346,6 +346,13 @@ button{
     border-radius: 50%;
 }
 
+.searchbar input.form-control{
+    border: solid #9575cd 2px;
+    border-radius: 1.4em;
+    padding: 5px;
+    text-align: center;
+}
+
 body > main > div:nth-child(3) > form > div > input{
     border: solid #9575cd 2px;
     border-radius: 1.4em;

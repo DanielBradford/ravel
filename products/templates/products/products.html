@@ -17,9 +17,8 @@
                  {% csrf_token %}
                     <div class="searchbar input-group">
                         <input class="form-control" type="text" name="q" placeholder="Search our site">
-                        <div style="text-align: center;">
+                        <div>
                             <button class="form-control btn" type="submit">
-                                
                                     <i class="fas fa-search"></i>
                             </button>
                         </div>
@@ -29,10 +28,13 @@
         </div>
     </div>
     <div id="categories" class="row">
-        <div class="col m6 s6 lg6 center">
+        <div class="col m4 s4 lg4 center">
         <a href="{% url 'products' %}?category=babywear" class="btn">Babywear <i class="fa fa-baby"></i></a>
         </div>
-        <div class="col m6 s6 lg6 center">
+        <div class="col m4 s4 lg4 center">
+        <a href="{% url 'products' %}" class="btn">All Products <i class="fa fa-hat"></i></a>
+        </div>
+        <div class="col m4 s4 lg4 center">
         <a href="{% url 'products' %}?category=accessories" class="btn">Accessories <i class="fa fa-scarf"></i></a>
         </div>
     <div class="products-container">

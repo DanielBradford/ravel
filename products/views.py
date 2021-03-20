@@ -7,21 +7,12 @@ from .models import Product, Category, Color, Size
 
 # Create your views here.
 
-products = Product.objects.all()
-colors = Color.objects.all()
-size = Size.objects.all()
-
-context = {
-    'products': products,
-    'colors': colors,
-    'size': size,
-}
-
-
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
     products = Product.objects.all()
+    colors = Color.objects.all()
+    size = Size.objects.all()
     query = None
     categories = None
     sort = None
@@ -41,11 +32,15 @@ def all_products(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
+            colors = Color.objects.all()
+            size = Size.objects.all()
             
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
+            colors = Color.objects.all()
+            size = Size.objects.all()
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -55,11 +50,15 @@ def all_products(request):
             
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
+            colors = Color.objects.all()
+            size = Size.objects.all()
 
     current_sorting = f'{sort}_{direction}'
 
     context = {
         'products': products,
+        'colors': colors,
+        'size': size,
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
@@ -74,6 +73,8 @@ def view_product(request, product_id):
     """A View to return product details"""
 
     product = get_object_or_404(Product, pk=product_id)
+    colors = Color.objects.all()
+    size = Size.objects.all()
 
     context = {
         'product': product,
