@@ -28,9 +28,9 @@
             <button id="deleteAll" onclick="return confirm('Are you sure? All items in your basket will be removed?')"
                 class="red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></button></a>
     </div>
-    <span>
-        <i class="fa fa-chevron-left"></i><p>Scroll to view multiple items in basket</p><i class="fa fa-chevron-right"></i>
-    </span>
+    <div class="center show-on-small hide-on-med-and-up" style="display: inline-flex; background-color: bisque;">
+        <p><i class="fa fa-chevron-left"></i> Scroll to view multiple items in basket <i class="fa fa-chevron-right"></i></p>
+    </div>
     <div class="col s12">
         <table  class="responsive-table" style="padding: 2em; margin: 2em;">
             <thead>
@@ -43,7 +43,7 @@
                     <th>Item Color</th>
                     <th>Item Size</th>
                     <th class="hide-on-small-only">Total</th>
-                    <th>Remove</th>
+                    <th class="hide-on-small-only">Remove</th>
                 </tr>
             </thead>
 
@@ -54,15 +54,15 @@
                     <td>{{forloop.counter}}</td>
                     <td class="hide-on-small-only"><img width="100px" style="border-radius: 1.4em; object-fit: cover;"
                             src="{{ item.product.image.url }}"></td>
-                    <td>
+                    <td style="padding: 0;">
                         <p><a href="{% url 'view_product' item.product.id %}" ><strong>{{item.product.name}}</strong></a>
                         </p>
                         <p class="hide-on-small-only" style="color: grey">({{item.product.category}})</p>
                     </td>
                     <td class="hide-on-small-only">£{{item.product.price}}</td>
-                    <form method="POST" action="{% url 'update_order' %}" class="form hide-on-small-only update-form" >
+                    <form method="POST" action="{% url 'update_order' %}" class=" update-form" >
                         {% csrf_token %}
-                        <td>
+                        <td class="form hide-on-small-only">
                             <div class="form-group center">
                                 <div class="input-group">
                                     <div class="input-group-prepend text-center">
@@ -128,7 +128,7 @@
             </tbody>
         </table>
     </div>
-    <div class="row left" style="padding-left: 100px;">
+    <div class="row left" style="padding-left: 10%;">
 
         <h4>1) <i class="fa fa-cash-register"></i> Total: £{{ total|floatformat:2}}</h4>
         {% if total < 20 %}
