@@ -2,65 +2,45 @@
 {% load static %}
 {% block content %}
 <div class="container homeContainer heartwool">
-			<div class="intro row">
-				
-					<div class="row center">
-						<h1 class="col s12"><strong>Contact Us <i class="fa fa-comments"></i></strong></h1>
-                    </div>
-                     <div class="row">
-    <form id="contactForm" class="col s12">
-      <div class="row">
-        <div class="input-field col s12 l6">
-          <input placeholder="Enter you first name" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s12 l6">
-          <input placeholder="Enter you last name" id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
-        </div>
-        <div class="input-field col s12">
-            <input placeholder="Enter your email address" id="email_inline" type="email" class="validate">
-            <label for="email_inline">Email</label>
-            <br>
-            <span class="helper-text" data-error="Invalid Email" data-success="right"></span>
-        </div>
-        <div class="input-field col s12">
-            <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
-            <label for="textarea2">Your Message</label>
-        </div>
+    <div class="intro row">
+
         <div class="row center">
-        <a class="waves-effect waves-light btn"><i class="fa fa-paper-plane"></i> Send</a>
+            <h1 class="col s12"><strong>Contact Us <i class="fa fa-comments"></i></strong></h1>
+        </div>
+        <div class="emailLink row center">
+            <div style="padding: 20px;">
+            <p>We want to here from you! If you have any items you might like to order that are not currently featured on our website, contact me via email.
+            <br> 
+            <hr>
+            Just click the link below <i class="fa fa-hand-point-down"></i></p></div>
+            <a href="mailto:customer.service.ravel.online@gmail.com"><h3>customer.service.ravel.online@gmail.com</h3></a>
         </div>
 
-      </div>
-    </form>
-  </div>
-			
-			
-			</div>
-        </div>
+
+    </div>
+</div>
 
 
 
 <div class="row">
-			<div class="center col s12 m4 hide-on-small-only">
-				<img id="avatar" src="/media/images/avatar.png" alt="avatar of mary" />
-            </div>
-				<div class="col s12 m8">
-					<h2 class="center">About Ravel</h2>
-					<h3 class="about flow-text">
-						The founder of Ravel, <span class="light">Mary Bradford</span>, has been
-						knitting for over <span class="light">40 years</span> and loves to create
-						amazing <span class="light">gifts and garments</span> for babies, children and
-						adults. Contact Mary now and place your order for incredible
-						<span class="light">hand-knitted</span> goods!
-					</h3>
-					<div class="row center">
-						<a
-							href="{% url 'products' %}"><button class="hoverable btn btn-large #ffcc80 orange lighten-3">Babywear <i class="fas fa-baby"></i> </button></a>
-						<a
-							href="{% url 'products' %}"><button class="hoverable btn btn-large purple lighten-2">Accessories <i class="fas fa-scarf"></i></button></a>
-					</div>
-				</div>
+    <div class="center col s12 m4 hide-on-small-only">
+        <img id="avatar" src="/media/images/avatar.png" alt="avatar of mary" />
+    </div>
+    <div class="col s12 m8">
+        <h2 class="center">About Ravel</h2>
+        <h3 class="about flow-text">
+            The founder of Ravel, <span class="light">Mary Bradford</span>, has been
+            knitting for over <span class="light">40 years</span> and loves to create
+            amazing <span class="light">gifts and garments</span> for babies, children and
+            adults. Contact Mary now and place your order for incredible
+            <span class="light">hand-knitted</span> goods!
+        </h3>
+        <div class="row center">
+            <a href="{% url 'products' %}"><button class="hoverable btn btn-large #ffcc80 orange lighten-3">Babywear <i
+                        class="fas fa-baby"></i> </button></a>
+            <a href="{% url 'products' %}"><button class="hoverable btn btn-large purple lighten-2">Accessories <i
+                        class="fas fa-scarf"></i></button></a>
         </div>
+    </div>
+</div>
 {% endblock %}

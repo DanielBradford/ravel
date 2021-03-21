@@ -38,7 +38,7 @@
 .contact{
     width: 40vw;
   height: 100vh;
-  background: url(media/images/pile.jpg) no-repeat bottom right fixed;
+  background: url(/media/images/pile.jpg) no-repeat bottom right fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -226,7 +226,7 @@ footer i{
 .heartwool-footer {
   width: 100vw;
   height: 10vh;
-  background: url(media/images/brownwool.jpg) no-repeat bottom right fixed;
+  background: url(/media/images/brownwool.jpg) no-repeat bottom right fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -235,7 +235,7 @@ footer i{
   align-items: center;
   justify-content: center;
   position: relative;
-  border-top-left-radius: 50%;
+  border-top-left-radius: 30%;
   box-shadow: 1px 1px #9575cd;
 }
 
@@ -303,6 +303,11 @@ button{
     border-radius: 1.4em;
 }
 
+.emailLink h3:hover{
+    text-decoration: underline;
+    color: teal;
+
+}
 
 #loading-overlay {
 	display: none;
@@ -334,7 +339,6 @@ button{
     border-radius: 1.2em;
 }
 .toast{
-    margin: 30px;
     background-color: #9575cde3;
     border: solid 4px #fff;
 }

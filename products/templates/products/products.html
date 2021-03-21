@@ -29,13 +29,13 @@
     </div>
     <div id="categories" class="row">
         <div class="col m4 s4 lg4 center">
-        <a href="{% url 'products' %}?category=babywear" class="btn">Babywear <i class="fa fa-baby"></i></a>
+        <a href="{% url 'products' %}?category=babywear" class="btn orange lighten-3">Babywear <i class="fa fa-baby"></i></a>
         </div>
         <div class="col m4 s4 lg4 center">
-        <a href="{% url 'products' %}" class="btn">All Products <i class="fa fa-hat"></i></a>
+        <a href="{% url 'products' %}" class="btn cyan">All Products <i class="fa fa-hat"></i></a>
         </div>
         <div class="col m4 s4 lg4 center">
-        <a href="{% url 'products' %}?category=accessories" class="btn">Accessories <i class="fa fa-scarf"></i></a>
+        <a href="{% url 'products' %}?category=accessories" class="btn  purple lighten-2">Accessories <i class="fa fa-scarf"></i></a>
         </div>
     <div class="products-container">
     <div class="row">
@@ -48,7 +48,7 @@
                 <span class="card-title activator grey-text text-darken-4">{{product.name}}<i class="material-icons right">more_vert</i></span>
                 <p><a href="#"><strong>from £{{product.price}}</strong></a></p>
                 <div class="center">
-                <a class="btn center" href="{% url 'view_product' product.id %}">More info</a>
+                <a class="btn center cyan lighten-2" href="{% url 'view_product' product.id %}">More info</a>
                 </div>
                 </div>
                 <div class="card-reveal">
@@ -96,7 +96,7 @@
                     </div>
             
                     <div class="row center">
-                        <button type="submit" class="btn center">Add to basket <i class="fa fa-plus"></i></button>
+                        <button type="submit" class="btn center cyan lighten-2">Add to basket <i class="fa fa-plus"></i></button>
                     </div>
                 
                 </form>
