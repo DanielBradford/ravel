@@ -33,8 +33,7 @@ class Order(models.Model):
     original_basket = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(max_length=254, null=False, blank=False,
                                   default='')
-     
-                                                                 
+    
     def _generate_order_number(self):
         """
         Generate a random, unique order number using UUID
@@ -68,7 +67,6 @@ class Order(models.Model):
         return self.order_number
 
 
-
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False,
                               on_delete=models.CASCADE,
@@ -76,10 +74,10 @@ class OrderLineItem(models.Model):
     product = models.ForeignKey(Product, null=False, blank=False,
                                 on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
-    color = models.CharField(max_length=10, null=True,
-                                    blank=True)  # Blue, Pink etc (adult)
+    color = models.CharField(max_length=10, null=True, 
+                             blank=True)  # Blue, Pink etc (adult)
     size = models.CharField(max_length=10, null=True,
-                                    blank=True)  # Small, Medium, Large (adult)
+                            blank=True)  # Small, Medium, Large (adult)
     
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2,
                                          null=False, blank=False,
