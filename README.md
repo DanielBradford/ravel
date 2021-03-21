@@ -422,6 +422,7 @@ Languages:
   - Used to create the structure of the pages
 - ### **CSS / CSS3**
   - Used to style the elements and customise layout. e.g. Color Schemes, design elements
+- ### **Javascript**
 - ### **JQuery**
   - Used to enhance the interactivity
 - ### **Python (3)** 
