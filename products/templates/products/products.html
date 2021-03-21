@@ -18,7 +18,7 @@
                     <div class="searchbar input-group">
                         <input class="form-control" type="text" name="q" placeholder="Search our site">
                         <div>
-                            <button class="form-control btn" type="submit">
+                            <button class="form-control btn deep-purple lighten-2" type="submit">
                                     <i class="fas fa-search"></i>
                             </button>
                         </div>
@@ -40,7 +40,7 @@
     <div class="products-container">
     <div class="row">
         {% for product in products %}
-            <div class=" col m3 l4 s12 card">
+            <div class=" col m4 l4 s12  card">
                 <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="{{ product.image.url }}">
                 </div>
