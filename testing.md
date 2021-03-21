@@ -45,14 +45,13 @@
 
 - ALL Python written in this project has been parsed  and linted using pep8 online and gitpod and no errors have been found. Upon scanning some lines of code needed to be shortened.
 
+<a name="error"></a>
+
 ### **Error Testing**
 
 In the eventuality of an error 400, 404, 500 or otherwise it was essential to provide a page the user is directed to. 
 
 I tested this by intentionally entering a non-existent URL. The application passed this test by presenting the 404 page:
-
-<img src="documents/screenshots/error.png">
-
 
 <a name="nav"></a>
 
@@ -83,74 +82,110 @@ I tested this by intentionally entering a non-existent URL. The application pass
     <span style="color:#00b300">PASSED</span> *The menu/nav bar functions for all screen sizes and the added floating menu enhances this experience. All navigation links successfully direct the user throughout the application*
 1. As a new user i want the option to register to the site
     
-    <span style="color:#00b300">PASSED</span> The registration page allows this. The functionality was tested by intentionally inputting data of various lengths and content. The registration validation passed this  manual test.
+    <span style="color:#00b300">PASSED</span> The registration page allows this. The functionality was tested by intentionally inputting data of various lengths and content. The registration validation passed this  manual test. The usermust validate their email address through the registartion process.
 1. As a returning user i want the option to login to the application
 
-    <span style="color:#00b300">PASSED</span> *The login page allows this. This was tested by intentionally inputting correct and incorrect usernames and passwords. The login validation passed this manual test.*
-1. As a new or returning user i want to view all recipes on the application
+    <span style="color:#00b300">PASSED</span> *The login page allows this. This was tested by intentionally inputting correct and incorrect usernames and passwords. The login validation passed this manual test. There is also the option to reset a forgotten password.*
+    <img src="documents/screenshots/pwdreset.png">
 
-    <span style="color:#ffa500">TESTING NOTE</span> *A 'forgotten password" feature would be utilised in future.*
+1. As a returning user i want to view my previous orders
 
-    <span style="color:#00b300">PASSED</span> *The view recipe page does this*
-1. As a new or returning user i want to easily search through all the recipes on the application
+    <span style="color:#00b300">PASSED</span> The My profile page allows this. In the my profile page (https://ravel-online.herokuapp.com/profile/), all previous orders of user are displayed in a table and the number of orders are shown in the header:
 
-    <span style="color:#ffa500">TESTING NOTE</span> *Although the search function works, the function does not take errors or misspelling into account. This could be improved in the future by filtering in the back-end*
+    <img src="documents/screenshots/orderHistory.png">
 
-    <span style="color:#00b300">PASSED</span> *The search function operates successfully*
-1. As a new or returning user i cant decide what recipe to view and want to be shown a random recipe to make my recipe choice experience fun and enjoyable
+1. As a new or returning user i want to view all products in the store
 
-    <span style="color:#ffa500">TESTING NOTE</span> *During testing the presentation of the random results could be clearer and display could be improved*
+     <span style="color:#00b300">PASSED</span> The PRODUCTS page allows this. In the products page (https://ravel-online.herokuapp.com/products/), all products are displayed clearly with information on price, description and image:
 
-    <span style="color:#00b300">PASSED</span> *The random recipe button function accomodates this*
+     <img src="documents/screenshots/products.png">
 
+1. As a new or returning user i want to easily search through all the products on the application
+
+    <span style="color:#00b300">PASSED</span> The HOME page and PRODUCTS page allows this. Both pages include a search bar feature in which both product name and description are searched for matching arguments:
+
+     <img src="documents/screenshots/searchbar.png">
+
+1. As a new or returning user i want to view product categories
+
+    <span style="color:#00b300">PASSED</span> On the home page and products page there are buttons/tabs that present the products based on category. These include Babywear, All Products and Accessories:
+
+     <img src="documents/screenshots/categories.png">
+
+1. As a new or returning user i want to view a product that has clear information including image, price and description
+
+    <span style="color:#00b300">PASSED</span> On the product details page the product selected is presented with clear Image, Description, Price etc:
+
+     <img src="documents/screenshots/prodDetailTest.png">
+
+1. As a new or returning user i want to add a product to my basket
+
+    <span style="color:#00b300">PASSED</span> When the add to basket button is selected in either the product or product details page, the related item with selected color, size and quantity is successfully added to basket. The user is notified with a pop up message (toast).
+
+    <img src="documents/screenshots/addTo.png">
+    <img src="documents/screenshots/toast.png">
     
-1. As a new or returning user i want to view all recipe types
+    The addition is viewable here https://ravel-online.herokuapp.com/orders/
 
-    <span style="color:#00b300">PASSED</span> *Recipes Types are well displayed*
-1. As a new or returning user i want to view a recipe that is displayed clearly and makes my cooking experience easier
+    <img src="documents/screenshots/basket.png">
 
-     <span style="color:#ffa500">TESTING NOTE</span> *All ingredient and method data is successfully processed and presented in the intended list format. The check boxes allow order and organisation for the user and is a helpful UX feature.*
+1. As a new or returning user i want to remove a product from my basket & As a new or returning user i want to delete all items from my basket. 
 
-    <span style="color:#00b300">PASSED</span> *The layout and design of the view recipe page does this*
-1. As a new or returning user i want to view all Vegan recipes 
+    <span style="color:#00b300">PASSED</span> The remove icon in the basket page allows users to remove the individual order item from the basket. There is also a delete all orders button which removes the entire contents of the basket. Both are followed by a confirmation alert window to prevent accidental removal.
 
-    <span style="color:#ffa500">TESTING NOTE</span> *The presentation and focus of the results can be improved.*
+    <img src="documents/screenshots/remove.png">
 
-    <span style="color:#00b300">PASSED</span> *The vegan filter button meets this requirement*
-1. As a registered user i want to add a recipe to the application
+    <img src="documents/screenshots/confirmremove.png">
 
-     <span style="color:#ffa500">TESTING NOTE</span> The data entry form was tested by inputting a variety of data sets that challended the length and content validation.
 
-    <span style="color:#00b300">PASSED</span> *The add recipe functionality and validation works efficiently*
-1. As a registered user i want to view all the recipes i have added/contributed
+1. As a new or returning user i want to change the quantity of items in my basket.
 
-    <span style="color:#00b300">PASSED</span> *The 'my recipes' display and functionality works efficiently*
-1. As a registered user i want to easily search through all recipes i have added/contributed
+    <span style="color:#00b300">PASSED</span> There is an intuitive feature to increase or decrease the quantity value for each order item which is confirmed with the update button:
 
-    <span style="color:#00b300">PASSED</span> *The search 'my recipes' functionality works efficiently*
-1. As a registered user i want to save recipes of other registered users
+    <img src="documents/screenshots/update.png">
 
-    <span style="color:#00b300">PASSED</span> *The save recipe functionality works efficiently*
-1. As a registered user i want to view all the recipes i have saved
+1. As a new or returning user i want to place my order and purchase using my Credit/Debit card
 
-    <span style="color:#00b300">PASSED</span> *The save recipe display works efficiently*
-1. As a registered user i want to easily search through all the recipes i have saved
+    <span style="color:#00b300">PASSED</span> To complete the order the user must enter their Credit/Debit Card information in the order form. This includes the 16 Digit card number, expiry date and the 3 digit security number. Stripe functionality enables that valid card details are entered.
 
-    <span style="color:#ffa500">TESTING NOTE</span> If the user clicks back after the search the system is unable to provide a suitable page destination and crashes. THIS REMAINS UNFIXED
+    Card Details Entry:
+    <img src="documents/screenshots/cardentry.png">
+    Valid Card Entry:
+    <img src="documents/screenshots/validcard.png">
+    Invalid Card Entry:
+    <img src="documents/screenshots/invalidcard.png">
 
-    <span style="color:#00b300">PASSED</span> *The search saved recipes functionality works efficiently*
-1. As a registered user i want to view cooking related products and tools recommended by Rubric
+1. As a new or returning user i want to view my order summary and recieve an email confirmation
 
-    <span style="color:#00b300">PASSED</span> *The products and tools display page works efficiently*
-1. As a registered user i want to receive discount codes for cooking related products.
+    <span style="color:#00b300">PASSED</span> After a successful order has been placed the user is redirected to an order success page and they are sent an email to confirm order details.
 
-    <span style="color:#00b300">PASSED</span> *The discount code modal functionality works efficiently*
+    <img src="documents/screenshots/ordersuccess.png">
+    <img src="documents/screenshots/ordersuccess2.png">
+    <img src="documents/screenshots/orderemail.png">
+
+
+
+
+
+
+
+
+**ADMIN USER STORIES**`
+1. As an admin user i want to view users, products and orders 
+1. As an admin user i want to have full control over the e-commerce store
+1. As an admin user i want to add a new product
+1. As an admin user i want to delete an existing product
+1. As an admin user i want to modify an order
+1. As an admin user i want to modify user details
+
+
 
 <a name="crud"></a>
 ### **CRUD FUNCTIONALITY TESTING**
 CREATE:  <span style="color:#00b300">PASSED</span>
 
-- All creation functionality for recipes, users, recipe types, products and tools was successful and reflected in the Mongo database
+- All creation functionality for products, users and orders was successful and reflected in the Admin database:
+
 
 READ: <span style="color:#00b300">PASSED</span>
 
@@ -171,19 +206,14 @@ ALL Javascript interactivity passed testing. This included:
 
 - All MATERIALIZE javascript/JQUERY e.g. Modals & Navigation
 - Toggles and Drop Downs
+- Form Submissions
 - Show/Hide functionality
-- Delete Confirmations
-- Copy to user device function (https://www.w3schools.com/howto/howto_js_copy_clipboard.asp)
+- Action Confirmations (Toasts)
 
 ### **DELETION CONFIRMATION TESTING**  (Javascript)  <span style="color:#00b300">PASSED</span>
-All Javascript Confirm functionality was used to prevent user error. This was tested by trying to delete a record without having to confirm.
+All Javascript Confirm functionality was used to prevent user error. This was tested by trying to delete an order item or basket contents without having to confirm.
 
 On every test the user had to confirm before deletion.
-
-This failed once on the management page but was corrected.
-
-<img style="width:50%" src="documents/screenshots/delete_confirm.png" alt=""><img  style="width:50%" src="documents/screenshots/delete_confim.png" alt="">
-
 
 <a name="search"></a>
 ### **SEARCH FUNCTIONALITY** <span style="color:#00b300">PASSED</span>
