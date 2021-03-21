@@ -26,18 +26,10 @@
 **HTML VALIDATION** - https://validator.w3.org/
 
 - All HTML written in this project has been submitted for validation via the above software.
-- The only errors thrown were due to the validator not recognising Jinja Templates.
-- I then inputted it using the apps URL address and all pages passed.
+
+- Due to the framework to test HTML the project was deployed and the output source code was tested .
 
 **CSS VALIDATION** - https://jigsaw.w3.org/css-validator/
-
-There were 3 minor errors that were corrected during testing:
-
-        commit 2c8e061905795040d61851ad483cc667bb5d6804
-        Author: Daniel Bradford <danielbradford@hotmail.co.uk>
-        Date:   Thu Sep 17 14:53:17 2020 +0000
-
-        Minor alterations resulted in passing jigssaw validation
 
 - All CSS written in this project has been submitted for validation and passed via the above software.
 

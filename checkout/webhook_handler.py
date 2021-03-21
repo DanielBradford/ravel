@@ -28,6 +28,7 @@ class StripeWH_Handler:
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
         cust_email = order.email
+        print(cust_email)
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
             {'order': order})
@@ -39,8 +40,7 @@ class StripeWH_Handler:
             body,
             settings.DEFAULT_FROM_EMAIL,
             [cust_email]
-        )       
-
+        )
 
     def handle_payment_intent_succeeded(self, event):
         """
@@ -64,7 +64,7 @@ class StripeWH_Handler:
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
-                    # email__iexact=shipping_details.email,
+                    email__iexact=shipping_details.email,
                     phone_number__iexact=shipping_details.phone,
                     country__iexact=shipping_details.address.country,
                     postcode__iexact=shipping_details.address.postal_code,
@@ -84,7 +84,8 @@ class StripeWH_Handler:
         if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
+                content=f'''Webhook received: {event["type"]} | SUCCESS:
+                Verified order already in database''',
                 status=200)
         else:
             order = None
@@ -103,10 +104,11 @@ class StripeWH_Handler:
                     stripe_pid=pid,
                 )
                 for item_info, quantity in json.loads(order).items():
-                    item_id, color_id, size_id = [int(value) for value in item_info.split()]
+                    item_id, color_id, size_id = [int(value) for
+                                                  value in item_info.split()]
                     product = get_object_or_404(Product, pk=item_id)
                     color = get_object_or_404(Color, pk=color_id)
-                    size = get_object_or_404(Size, pk=size_id) 
+                    size = get_object_or_404(Size, pk=size_id)
                     # order = request.session.get('order', {})
                     # current_order = order_contents(request)
                     # total = current_order['grand_total']
@@ -128,9 +130,9 @@ class StripeWH_Handler:
                     status=500)
         self._send_confirmation_email(order)
         return HttpResponse(
-            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+            content=f'''Webhook received: {event["type"]} | SUCCESS:
+                        Created order in webhook''',
             status=200)
-
 
     def handle_payment_intent_payment_failed(self, event):
         """

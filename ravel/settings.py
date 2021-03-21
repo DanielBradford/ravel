@@ -29,7 +29,16 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = 'DEVELOPMENT' in os.environ
-DEBUG = True
+DEBUG = True 
+
+TEMPLATES = [
+    {
+        # something else
+        'OPTIONS': {
+            'debug': DEBUG,
+        },
+    },
+]
 
 ALLOWED_HOSTS = [ 'ravel-online.herokuapp.com', 'localhost']
 
@@ -53,7 +62,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
 
-    #other
+    # other
     'crispy_forms',
 ]
 
@@ -90,7 +99,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'orders.contexts.order_contents',
             ],
-             'builtins': [
+            'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
                 'crispy_forms.templatetags.crispy_forms_field',
             ]
@@ -132,8 +141,8 @@ if 'DATABASE_URL' in os.environ:
 else:
     DATABASES = {
         'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+         'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_DIR / 
+         'db.sqlite3',
         }
     }
 

@@ -3,6 +3,9 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product, Color, Size
@@ -145,6 +148,24 @@ def checkout(request):
     return render(request, template, context)
 
 
+def send_confirmation_email(order):
+    """Send the user a confirmation email"""
+    cust_email = order.email
+    print(cust_email)
+    subject = render_to_string(
+        'checkout/confirmation_emails/confirmation_email_subject.txt',
+        {'order': order})
+    body = render_to_string(
+        'checkout/confirmation_emails/confirmation_email_body.txt',
+        {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [cust_email]
+        )
+
+
 def checkout_success(request, order_number):
     """
     Handle successful checkouts
@@ -154,6 +175,7 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
+    send_confirmation_email(order)
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
