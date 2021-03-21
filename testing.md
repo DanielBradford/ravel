@@ -45,14 +45,6 @@
 
 - ALL Python written in this project has been parsed  and linted using pep8 online and gitpod and no errors have been found. Upon scanning some lines of code needed to be shortened.
 
-        commit 3c480c91bb56308f20ebc5e99f9db5a8fd71587a
-        Author: Daniel Bradford <danielbradford@hotmail.co.uk>
-        Date:   Wed Sep 16 18:55:00 2020 +0000
-        Code layout cleaned to pass through pep8 validation
-
-
-<a name="error"></a>
-
 ### **Error Testing**
 
 In the eventuality of an error 400, 404, 500 or otherwise it was essential to provide a page the user is directed to. 
@@ -61,7 +53,6 @@ I tested this by intentionally entering a non-existent URL. The application pass
 
 <img src="documents/screenshots/error.png">
 
-If the user is logged in they are directed back to their profile page. If the user is not logged in they are directed to the home page.
 
 <a name="nav"></a>
 

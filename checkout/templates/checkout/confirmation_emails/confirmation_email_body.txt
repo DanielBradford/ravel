@@ -1,13 +1,13 @@
 Hey {{ order.first_name }}!
 
-This is to confir your order placed at Ravel. Your order information is below:
+This is to confirm your order placed at Ravel. Your order information is below:
 
 Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
 
 Order Total: £{{ order.order_total }}
-Delivery: ${{ order.delivery_cost }}
-Grand Total: ${{ order.grand_total }}
+Delivery: £{{ order.delivery_cost }}
+Grand Total: £{{ order.grand_total }}
 
 Your order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.
 

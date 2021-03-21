@@ -142,7 +142,7 @@ The application uses Django.
 Within the Ravel Project their are 5 models
 
 1. Product
-1.  Size
+1. Size
 1. Color
 1. Orders
 1. User Profile 
