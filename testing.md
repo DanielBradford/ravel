@@ -9,18 +9,11 @@
 1. <a href="#story">User Story Testing</a>
 1. <a href="#crud">C.R.U.D Testing</a>
 1. <a href="#js">Javascript / JQuery Testing</a>
-1. <a href="#rating">User Features Manual Testing</a>
-1. <a href="#form">Form Validation Testing</a>
-1. <a href="#admin">Admin features Manual Testing</a>
-1. <a href="#def">Defensive Programming Testing</a>
-1. <a href="#flash">Flash Messages Testing</a>
 1. <a href="#responsive">Responsive Design Testing</a>
 1. <a href="#bugs">De-bugging</a>
 1. <a href="#future">Future Issues</a>
 1. <a href="#devtool">DevTool Testing</a>
 1. <a href="#further">Further Testing</a>
-
-
 
 <a name="valid"></a>
 **HTML VALIDATION** - https://validator.w3.org/
@@ -49,9 +42,9 @@
 
 ### **Error Testing**
 
-In the eventuality of an error 400, 404, 500 or otherwise it was essential to provide a page the user is directed to. 
+In the eventuality of an error 400, 404, 500 or otherwise it was needed to provide a page the user is directed to. 
 
-I tested this by intentionally entering a non-existent URL. The application passed this test by presenting the 404 page:
+I tested this by intentionally entering a non-existent URL. The application passed this test by presenting the 404 page supplied by django. I would like to have created my own page that match the website theming and redirected the user to a correct URL pathway.
 
 <a name="nav"></a>
 
@@ -164,19 +157,32 @@ I tested this by intentionally entering a non-existent URL. The application pass
     <img src="documents/screenshots/orderemail.png">
 
 
-
-
-
-
-
-
 **ADMIN USER STORIES**`
 1. As an admin user i want to view users, products and orders 
+
+    <span style="color:#00b300">PASSED</span>
+
 1. As an admin user i want to have full control over the e-commerce store
+
+    <span style="color:#00b300">PASSED</span>
+
 1. As an admin user i want to add a new product
+
+    <span style="color:#00b300">PASSED</span>
+
+
 1. As an admin user i want to delete an existing product
+
+    <span style="color:#00b300">PASSED</span>
+
 1. As an admin user i want to modify an order
+
+    <span style="color:#00b300">PASSED</span>
+
 1. As an admin user i want to modify user details
+
+    <span style="color:#00b300">PASSED</span>
+
 
 
 
@@ -189,16 +195,16 @@ CREATE:  <span style="color:#00b300">PASSED</span>
 
 READ: <span style="color:#00b300">PASSED</span>
 
-- All data was successfully presented to the user and is accurate to all data stored in the Mongo database 
+- All data was successfully presented to the user and is accurate to all data stored in the Django and Stripe Data. 
 
 UPDATE: <span style="color:#00b300">PASSED</span>
 
-- It was important that when the edit form was presented that the form input fields were populated with the recipe information. I ensured the correct data was parsed and bound to the edit_recipe template with the option to be updated/edited by the user.
-- All update functionality for editing recipes and users, was successful and the database stored the data accordingly 
+- All update functionality for editing products, orders and users, tested as successful and the database stored the data accordingly 
 
 DELETE: <span style="color:#00b300">PASSED</span>
 
-- All functionality for deleting recipes, users, recipe types, tools and products was successful along with all Javascript confirmations. Further testing was needed for XSS attacks. (Cross Site Scripting)
+- All functionality for deleting products, users and orders was successful along with all Javascript confirmations. Further testing was needed for XSS attacks. (Cross Site Scripting)
+
 <a name="js"></a>
 ### **JAVASCRIPT/JQUERY INTERACTIVITY TESTING** <span style="color:#00b300">PASSED</span>
 
@@ -214,148 +220,6 @@ ALL Javascript interactivity passed testing. This included:
 All Javascript Confirm functionality was used to prevent user error. This was tested by trying to delete an order item or basket contents without having to confirm.
 
 On every test the user had to confirm before deletion.
-
-<a name="search"></a>
-### **SEARCH FUNCTIONALITY** <span style="color:#00b300">PASSED</span>
-In addition to testing the individual search functions to ensure they return and display the correct results, i also tested the outcome if **no results** were found. 
-
-I created catch messages for this instance and they work correctly. 
-
-<img style="width:50%" src="documents/screenshots/no_result.png" alt=""><img style="width:50%" src="documents/screenshots/no_result2.png" alt="">
-
-<a name="rating"></a>
-### **RATING FUNCTIONALITY** <span style="color:#00b300">PASSED</span>
-One of the main features that needed to be tested was the rating system. This system allows the user to rate a recipe between 1 and 10 using a slide bar. The rating is then stored in an array in the recipe document. On the front-end the code generates the sum of the array and divides it by the length of the array giving the average rating for that recipe.
-
-I tested this by logging in as different users and rating recipes to check the calculations were correct.
-
-THERE IS CURRRENTLY NO LIMIT TO THE AMOUNT OF TIMES A USER CAN RATE THSE RECIPE. IN FUTURE THIS WILL BE LIMITED TO PREVENT ABUSE OF THIS FUNCTION. 
-<a name="saved"></a>
-### **SAVE RECIPE FUNCTIONALITY** <span style="color:#00b300">PASSED</span>
-
-- This involved logging in as a registered user and clicking the save option on the view recipe page for various recipes.
-- The saved function passed this test by allowing the ObjectId to be saved and recalled/displayed on the Saved Recipes Page.
-- The removal of this saved recipe also passed testing.
-<a name="form"></a>
-### **DATA ENTRY FORM TESTING** <span style="color:#00b300">PASSED</span>
-
-This included testing the front-end and back-end validation for:
-- Add Recipe
-- Add User
-- Edit User
-
-For the purpose of defensive programming i used back end verification as well as front end validation to help prevent user error and or malicious intent.
-
-This was primarily checking that the input fields had been completed and were not empty as well as verifying that the input length was within the minimum and maximum allowance.
-
-I tested this by doing the following:
-
-- Leaving input fields blank
-- Trying to submit a form with fields missing
-- Trying to submit with incorrect email address format
-- Trying to submit with input length of 200 character
-
-All of the above tests passed as the forms did not allow me to proceed.
-<a name="admin"></a>
-### **MANAGEMENT / ADMIN FEATURE TESTING**
-- **C.R.U.D** FUNCTIONALITY FOR USERS, RECIPES, RECIPE TYPES, PRODUCTS AND TOOLS <span style="color:#00b300">PASSED</span>
-- USER EMAIL MAILTO FUNCTIONALITY - This successfully opens a new email addressed to the corresponding user. <span style="color:#00b300">PASSED</span>
-- INCREMENT/DECREMENT OF RECIPE TYPE COUNT - The result can be viewed either in the Admin Management Table or in the Mongo DB collection. <span style="color:#00b300">PASSED</span>
-
-    Below is the code used:
-
-            this_type = request.form.get("type")
-            # increments recipe type count
-            mongo.db.type.update({"type_name": this_type},
-                                 {"$inc": {"count": 1}})
-
-            types = mongo.db.recipes.distinct("type", {"_id": ObjectId(recipe_id)})
-            #decrements recipe type count
-            for i in types:
-            mongo.db.type.update({"type_name": i},
-                                 {"$inc": {"count": -1}})
-
-- TEST RECIPE TYPE CANNOT BE DELETED IF A RECIPE EXISTS IN THAT TYPE <span style="color:#00b300">PASSED</span>
-
-        commit b63a6bc3a52e2b0b83c6dd6f3bb70524b5cc0fcb
-<a name="def"></a>
-### **Defensive Programming** <span style="color:#00b300">PASSED</span>
-
-All defensive programming works as expected and controls user access and passed all tests.
-
-These tests included:
-- Cross URL Manipulation
-    - Copy and paste other usernames to access their profile **PASSED - User redirected and flash message displayed**
-    - Paste 'products' to the end of the URL to access the products page **PASSED - User redirected and flash message displayed**
-    - Paste in the 'Manage' to access Admin Management page **PASSED - User redirected and flash message displayed**
-    - Paste Add to end of URL to access add page (members only) **PASSED - User redirected and flash message displayed**
-
-For the purpose of access control i gave the visitor the default session username of "Guest". By doing this i was then able to control and manipulate the users access to various parts of the application.
-
-For example:
-
-        commit 6a427fc696ec7441ba8f935f4d0184e317f9a4cb
-
-- This helps prevent non registered users  from accessing member only areas e.g. someone elses profile
-
-        commit: 4f83b44abaf36a8ca2cc6231703d48c5b543f828
-
-<img src="documents/screenshots/members_only.png">
-
-- This helps prevent users from editing or deleting recipes that were not their own
-- This helps prevent non ADMIN users from accessing the management page.
-
-<img src="documents/screenshots/admin_only.png">
-- This reduces the scope of malicious or damaging activity within the application
-
-**For example:**
-
-To prevent users trying to view a recipe with a false code. I only allowed the standard Object ID length of 24 characters to be accepted.
-
-    commit f20ef11bb8e2fdbc016d5626438a208a701cc066
-    Author: Daniel Bradford <danielbradford@hotmail.co.uk>
-    Date:   Thu Sep 17 16:30:03 2020 +0000
-
-    View recipe defensive programming added. Checks recipe_id length to verify validity
-
-This can be improved upon by cross checking the Object Id exists within the database before proceeding. This would be a good security feature to implement in the future.
-
-CURRENTLY THERE IS A VULNERABILITY IN WHICH MEMBERS CAN COPY AND PASTE AN EXISTING RECIPE ID INTO THE URL BAR AND DELETE RECIPES THAT ARE NOT THEIR OWN. ATTEMPTS TO SOLVE THIS CAN BE VIEWED IN Branch deleteCheck.THIS REMAINS VULNERABLE AND WILL BE PROTECTED AGAINST IN FUTURE DEVELOPMENT.
-
-<a name="flash"></a>
-### **FLASH MESSAGES** <span style="color:#00b300">PASSED</span>
-
-Flash messages in this application inform the user of their succes and or errors.
-
-ALL flash messages used in app.py are displayed clearly and correctly when required. 
-
-These include:
-- Form validation (Back-End) for correct password, input field lengths and content.
-
-    <img src="documents/screenshots/length_check.png">
-    <img src="documents/screenshots/password_check.png">
-
-- Login (Welcome message) / Registration success - displayed when user has successfully logged in
-
-    <img src="documents/screenshots/profile.png">
-
-- Logout - displayed when user has succes logged out
-
-    <img src="documents/screenshots/logout.png">
-
-- Recipe Creation, Deletion, Saving and Editing success
-
-    <img src="documents/screenshots/save_success.png">
-    <img src="documents/screenshots/fail_remove.png">
-
-- Admin Only! Authorization Denied! - When user tries to access an admin only feature
-
-    <img src="documents/screenshots/admin_only.png">
-
-- Members Only - When user tries to access a member only feature
-
-    <img src="documents/screenshots/members_only.png">
-
 
 <a name="responsive"></a>
 ## Responsive Design Testing <span style="color:#00b300">PASSED</span>
@@ -373,24 +237,28 @@ Large               | >=1200px          | Passed, no changes neccessary. <span s
 
 Commit Examples:
 
-        commit 7a286130e0414e9703575ff7e0777cd1aafab062
+    commit 851d9584e940848d524e4bbfac4eea48c5db2b85
+    Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+    Date:   Sat Mar 20 16:37:06 2021 +0000
+
+    responsive design adjustments
+
+    commit f8cad7cabe1d025a3d66374e7b329e46f809ad4e
         Author: Daniel Bradford <danielbradford@hotmail.co.uk>
-        Date:   Thu Sep 17 15:44:48 2020 +0000
+        Date:   Sun Mar 21 11:31:37 2021 +0000
 
-        Media query alterations for responsive design improvements
+    Fixed small webhook issue. Linked buttons and modified for repsonsive design
+
+    commit 95e477fa1c8d6f84dec5281f12d5c121305bb221
+    Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+    Date:   Sat Mar 20 16:29:33 2021 +0000
+
+    altered basket view for mobile responsiveness
 
 
-        commit 4bde74435aaea76484abec91143be5529c7485d2
-        Author: Daniel Bradford <danielbradford@hotmail.co.uk>
-        Date:   Thu Sep 17 15:26:32 2020 +0000
 
-        Post testing alterations made to enhance responsive design
 
-        commit d11bb2716f24a9fdf42574bf275a7490d0e563d2 (HEAD -> master)
-        Author: Daniel Bradford <danielbradford@hotmail.co.uk>
-        Date:   Thu Sep 17 13:37:02 2020 +0000
-
-         Menu buttons spaced. Post testing resolve
+        
 ### Browser Compability <span style="color:#00b300">PASSED</span>
 
 Browser             | Version           | Comments
@@ -402,27 +270,44 @@ Chrome              | 84.0.4147.105     | <span style="color:#00b300">PASSED</sp
 <a name="bugs"></a>
 ## **Development Issues / De-bugging:**
 
-**Registration Bug:** When trying to apply defensive programming i blocked out the users option to register. I fixed this by removing uneccesary user filtering.
+**Email Bug:** 
 
-    Registration bug fixed. Overly defensive programming removed
-    commit 1597d33a6d773432837b4944992968b58b464cab
+    commit 291aa6c6675c13e411fb62960c4fe7a7a27b6ebb
+    Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+    Date:   Sun Mar 21 13:30:04 2021 +0000
 
-**Add recipe Routing Bug:** After the floating menu was added i had incorrectly routed the add recipe template. This was fixed accordingly.
+    Email for order confirmation bug fixed. Function moved to checkout success
 
-    commit 5453a8c314a786b6ef52de5221aaeef7e21bea5a
+    commit 0db89cfca4e9dd9d80f7dd91149c64c79eb8e0bf
+    Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+    Date:   Sun Mar 21 13:19:54 2021 +0000
 
-**Data Binding in Edit Recipe Form** A repeating bug was th inability to bind cooking time and temperature to the edit form to present the existing recipe information correctly. This was fixed by parsing the data into string format so it could be compared.
+    fixing email bug
 
-    commit 7a0c9c0baad9f6294d642e80e3c8f9cbbf07250a
+**Webhook issue**
+
+    commit f8cad7cabe1d025a3d66374e7b329e46f809ad4e
+    Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+    Date:   Sun Mar 21 11:31:37 2021 +0000
+
+    Fixed small webhook issue. Linked buttons and modified for repsonsive design
+
+**Search form and products form bug**
+
+    commit ec74f88f84ba5cb24392109222c83b9c4d7edae2
+    Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+    Date:   Sat Mar 20 15:51:40 2021 +0000
+
+    added buttons and solved search bar and product form conflict
+
+
 
 <a name="future"></a>
 ## **Future Issues to be fixed**
 
-- During development i encountered issues with the user session feature. When i a guest opens the application they are assigned a session['user] status as "Guest". This status allowed me to control their access throughout the application. This may have issues in the future if the application scope is to expand. 
+To be completed on feedback from mentor
 
-- The edit recipe type function in the management suite is still in development. The issue is not how it operates but what way it can be presented to the user most efficiently. 
 
-- After calling any search function there is a vulnerability if the user clicks the browsers back button. The form data is lost and crashes the application. THIS REMAINS UNFIXED
 
 <a name="devtool"></a>
 ## **Development Tools Testing**
@@ -432,13 +317,13 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 
 **Performance**
 
-- In initial reports the website had an average Performance rating of **76**.
+- In initial reports the website had an average Performance rating of **91**.
 - I streamlined the style.css file to lessen the data being loaded. (commit git 
 - By making these changes the current Performance rating is now (on average) **94**
 
 **Accessibility**
 
-- In initial reports the website had an average Accessibility rating of **78**
+- In initial reports the website had an average Accessibility rating of **85**
 - I altered color schemes of text vs. background to maximise the contrast score allowing information to be more visible to a wider group of users with accessiblity issues.
 - I added aria labels to enhance navigation accessiblity
 - I resized icons and images to make them more visible
@@ -452,7 +337,7 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 
 **Search Engine Optimisation**
 
-- In initial reports the website had an average SEO rating of **98**
+- In initial reports the website had an average SEO rating of **90**
 - I added in some META tags to give more information about the websites content and creator.
 - By making these changes the current SEO rating is now **100**
 
@@ -467,11 +352,9 @@ For example:
 
 One user after testing advised the floating menu should have 'tool tips' to hint at the menu icon's function for new users.
 
-        commit 6935a71fd5f9fe9ce3ff555068e16d9918539781 (HEAD -> master, origin/master, origin/HEAD)
-        Author: Daniel Bradford <danielbradford@hotmail.co.uk>
-        Date:   Mon Sep 21 16:13:14 2020 +0000
+        
+Titles added to floating menu icons to inform user of their function when hovered over on desktop
 
-    Titles added to floating menu icons to inform user of their function when hovered over on desktop
-This stage of testing allowed me to understand a more realistic client/user impression of the game and guided me to altering some functionality and stylistic choices. e.g. Future password retreaval system, bigger text in places and more breathing space between elements.
+This stage of testing allowed me to understand a more realistic client/user impression of the game and guided me to altering some functionality and stylistic choices.
 
 <div align="center"><a href="#top">BACK TO TOP</a></div>
