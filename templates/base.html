@@ -1,10 +1,10 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <link rel="shortcut icon" href="images/knit.png" />
-    <title>Ravel</title>
+    <title>Ravel {% block extra_title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="https://i.dlpng.com/static/png/1691732-knitting-needle-needlework-crochet-hand-sewing-needles-yarn-knitting-png-900_840_preview.png" />
     {% block meta %}
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta charset="UTF-8" />
@@ -32,7 +32,7 @@
 
     
     {% endblock %}
-    <title>Ravel {% block extra_title %}{% endblock %}</title>
+    
   </head>
 
   <body>
@@ -95,7 +95,7 @@
                         </li>
 					</ul>
 				</div>
-		</div>
+	</div>
     <footer class="heartwool-footer">
       <div class="purple-text container">
         © 2020 Copyright DDB

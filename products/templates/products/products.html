@@ -42,7 +42,7 @@
         {% for product in products %}
             <div class=" col m4 l4 s12  card">
                 <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="{{ product.image.url }}">
+                <img class="activator" src="{{ product.image.url }}" alt="Product Image">
                 </div>
                 <div class="card-content flow-text">
                 <span class="card-title activator grey-text text-darken-4">{{product.name}}<i class="material-icons right">more_vert</i></span>
@@ -56,18 +56,18 @@
                 <p class="flow-text">{{product.description}}</p>
                 <form action="{% url 'add_to_order' product.id%}" method="POST">
                     {% csrf_token %}
-                    <div id="color-select" class="row">
+                    <div class="row color-select">
                         <div class="input-field col s12 m12">
-                            <select required name="color" id="colorChoice" class="icons flow-text">
+                            <select required name="color" class="icons flow-text">
                             <option value="" disabled selected>Choose your Color</option>
                             {% for color in colors %}
-                            <option  value="{{color.id}}" data-icon="{{color.image.url}}">{{color.name}} <span class="center">(+£{{color.cost}})</span></option>
+                            <option  value="{{color.id}}" data-icon="{{color.image.url}}">{{color.name}} (+£{{color.cost}})</option>
                             {% endfor %}
                             </select>
                             <label>Color Option</label>
                         </div>
                         <div class="input-field col s12 m12">
-                            <select required name="size" id="sizeChoice" class="icons flow-text">
+                            <select required name="size" class="icons flow-text">
                             <option value="" disabled selected>Choose your Size</option>
                             {% for size in size %}
                             <option  value="{{size.id}}" >{{size.name}}: +£{{size.cost}} ({{size.measurement}}) </option>
@@ -76,7 +76,7 @@
                             <label>Size Option</label>        
                         </div>
                         <div class="input-field col s12 m12">
-                            <select required name="quantity" id="quantity" class="icons">
+                            <select required name="quantity" class="icons">
                             <option value="" disabled selected>Quantity</option>
                            
                             <option value="1">1 </option>

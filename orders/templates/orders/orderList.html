@@ -17,16 +17,15 @@
     {% if order_items|length > 0 %}
     {% if total < 20 %}
     <div class="row center">
-        <p><i class="fa fa-truck-loading"></i> <strong>You're <span
+        <p><i class="fa fa-truck-loading"></i><a href="{% url 'products'%}" ><strong>You're <span
                     style="font-weight: 800;">£{{ free_delivery_delta|floatformat:2 }}</span> away from getting free
-                delivery on your order! <a href="{% url 'products'%}" ></a><i class="fa fa-shopping-bag"></i></strong></a>
+                delivery on your order! <i class="fa fa-shopping-bag"></i></strong></a>
         </p>
     </div>
     {% endif %}
     <div class="row center">
-        <a href="{% url 'delete_session' %}">
-            <button id="deleteAll" onclick="return confirm('Are you sure? All items in your basket will be removed?')"
-                class="red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></button></a>
+        <a href="{% url 'delete_session' %}" id="deleteAll" onclick="return confirm('Are you sure? All items in your basket will be removed?')"
+                class="btn red white-text btn-medium">Delete All Orders <i class="fa fa-trash"></i></a>
     </div>
     <div class="center show-on-small hide-on-med-and-up" style="display: inline-flex; background-color: bisque;">
         <p><i class="fa fa-chevron-left"></i> Scroll to view multiple items in basket <i class="fa fa-chevron-right"></i></p>
@@ -52,17 +51,17 @@
                 {% for item in order_items %}
                 <tr>
                     <td>{{forloop.counter}}</td>
-                    <td class="hide-on-small-only"><img width="100px" style="border-radius: 1.4em; object-fit: cover;"
-                            src="{{ item.product.image.url }}"></td>
+                    <td class="hide-on-small-only"><img width="100" style="border-radius: 1.4em; object-fit: cover;"
+                            src="{{ item.product.image.url }}" alt="Product Image"></td>
                     <td style="padding: 0;">
                         <p><a href="{% url 'view_product' item.product.id %}" ><strong>{{item.product.name}}</strong></a>
                         </p>
                         <p class="hide-on-small-only" style="color: grey">({{item.product.category}})</p>
                     </td>
                     <td class="hide-on-small-only">£{{item.product.price}}</td>
-                    <form method="POST" action="{% url 'update_order' %}" class=" update-form" >
+                    <td class="form hide-on-small-only">
+                            <form method="POST" action="{% url 'update_order' %}" class=" update-form" >
                         {% csrf_token %}
-                        <td class="form hide-on-small-only">
                             <div class="form-group center">
                                 <div class="input-group">
                                     <div class="input-group-prepend text-center">
@@ -73,7 +72,7 @@
                                             </span>
                                         </button>
                                     </div>
-                                    <input class="form-control form-control-sm qty_input" type="number" name="quantity"
+                                    <input class="form-control form-control-sm qty_input center" type="number" name="quantity"
                                         value="{{ item.quantity }}" min="1" max="3" data-item_id="{{ item.product.id }}"
                                         id="id_qty_{{ item.product.id }}">
                                     <div class="input-group-append">
@@ -94,9 +93,11 @@
                             <button type="submit" class="btn btn-small white cyan-text lighten-2">Update <i class="fa fa-redo"></i></button>
                             </div>
 
-                        </td>
-                        <td class="show-on-small hide-on-med-and-up">{{item.quantity}}</td>
+                       
+                        <p class="show-on-small hide-on-med-and-up" style="text-align: center;">{{item.quantity}}</p>
                     </form>
+                     </td>
+                   
                     <td>{{item.color}} <span data-badge-caption="extra" class="hide-on-small-only new badge orange lighten-3">(+ £{{item.colorCost}})</span>
                     </td>
 
@@ -105,11 +106,7 @@
                     <td class="hide-on-small-only">£{{item.this_total|floatformat:2}}</td>
 
                     <td>
-
-                        <div class="center">
-
-
-                            <form action="{% url 'remove_from_order' %}" method="POST">
+                        <form action="{% url 'remove_from_order' %}" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="productID" value="{{item.product.id}}">
                                 <input type="hidden" name="colorID" value="{{item.color_id}}">
@@ -118,9 +115,7 @@
                                 <button type="submit"
                                     onclick="return confirm('Are you sure? This item in your basket will be removed?')"
                                     class="btn red white-text btn-medium">Remove <i class="fa fa-times"></i></button>
-                            </form>
-                        </div>
-
+                        </form>
                     </td>
                 </tr>
                 {% endfor %}
@@ -144,16 +139,16 @@
         <h4>3) <strong style="text-decoration: underline;">Grand Total: £{{grand_total|floatformat:2}}</strong></h4>
         {{free_deliver_delta}}
     </div>
-    <a href="{% url 'checkout' %}">
+    
         <div class="row center" style="padding-top: 100px">
-            <button class="btn-large pulse cyan lighten-2">Checkout <i class="fa fa-shopping-cart"></i></button>
+            <a href="{% url 'checkout' %}" class="btn-large pulse cyan lighten-2">Checkout <i class="fa fa-shopping-cart"></i></a>
         </div>
-    </a>
-    <a href="{% url 'products' %}">
+    
+    
         <div class="row center" style="padding-top: 50px">
-            <button class="btn  orange lighten-2">Continue Shopping <i class="fa fa-shopping-basket"></i></button>
+            <a href="{% url 'products' %}" class="btn  orange lighten-2">Continue Shopping <i class="fa fa-shopping-basket"></i></a>
         </div>
-    </a>
+
 
 
 </main>
@@ -169,7 +164,7 @@
 {{ block.super }}
 {% include 'orders/includes/quantity_script.html' %}
 
-<script type="text/javascript">
+<script>
     // Remove all order items
     $('#deleteAll').click(function (e) {
         $.post()

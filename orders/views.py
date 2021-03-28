@@ -6,7 +6,6 @@ import string
 import random
 
 
-
 def id_generator(size=6, chars=string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
@@ -17,7 +16,7 @@ def orders(request):
 
 
 def add_to_order(request, item_id):
-                
+
     """ Add a quantity of the specified product to the order """
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
