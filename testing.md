@@ -22,6 +22,13 @@
 
 - Due to the framework to test HTML the project was deployed and the output source code was tested .
 
+       commit f1f9628cc3b520a00b6853e8c6f1e5865c88ba50 (HEAD -> master, origin/master, origin/HEAD)
+    
+        Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+        Date:   Sun Mar 28 13:43:14 2021 +0000
+
+        Made changes due to HTML Verification requirements 
+
 **CSS VALIDATION** - https://jigsaw.w3.org/css-validator/
 
 - All CSS written in this project has been submitted for validation and passed via the above software.
@@ -37,6 +44,12 @@
 **PYTHON VALIDATION** - http://pep8online.com/
 
 - ALL Python written in this project has been parsed  and linted using pep8 online and gitpod and no errors have been found. Upon scanning some lines of code needed to be shortened.
+
+        commit 05375a9e07ab49758e255971188b1ee3b27a05da (HEAD -> master, origin/master, origin/HEAD)
+        Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+        Date:   Sun Mar 28 14:05:48 2021 +0000
+
+        Pep8 Validation Enhancements        
 
 <a name="error"></a>
 
@@ -319,7 +332,7 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 
 - In initial reports the website had an average Performance rating of **91**.
 - I streamlined the style.css file to lessen the data being loaded. (commit git 
-- By making these changes the current Performance rating is now (on average) **94**
+- By making these changes the current Performance rating is now (on average) **97**
 
 **Accessibility**
 
