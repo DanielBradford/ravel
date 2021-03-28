@@ -29,8 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = 'DEVELOPMENT' in os.environ
-DEBUG = True 
-
+DEBUG = True
 TEMPLATES = [
     {
         # something else
@@ -40,8 +39,7 @@ TEMPLATES = [
     },
 ]
 
-ALLOWED_HOSTS = [ 'ravel-online.herokuapp.com', 'localhost']
-
+ALLOWED_HOSTS = ['ravel-online.herokuapp.com', 'localhost']
 
 # Application definition
 
@@ -141,7 +139,7 @@ if 'DATABASE_URL' in os.environ:
 else:
     DATABASES = {
         'default': {
-         'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_DIR / 
+         'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_DIR /
          'db.sqlite3',
         }
     }
@@ -152,16 +150,21 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': '''django.contrib.auth.
+                        password_validation.
+                        UserAttributeSimilarityValidator''',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': '''django.contrib.auth.password_validation.
+        MinimumLengthValidator''',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': '''django.contrib.auth.
+        password_validation.CommonPasswordValidator''',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': '''django.contrib.auth.
+        password_validation.NumericPasswordValidator''',
     },
 ]
 
@@ -207,5 +210,3 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

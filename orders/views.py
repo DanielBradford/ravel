@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
-from django.contrib import messages
-from products.models import Product, Color, Size
-from django import template
-import string
 import random
+import string
+from django import template
+from products.models import Product, Color, Size
+from django.contrib import messages
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 
 
 def id_generator(size=6, chars=string.digits):
@@ -16,7 +16,6 @@ def orders(request):
 
 
 def add_to_order(request, item_id):
-
     """ Add a quantity of the specified product to the order """
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
@@ -32,13 +31,14 @@ def add_to_order(request, item_id):
 
     else:
         order[order_info] = quantity
-        messages.success(request, f'Added {quantity} x {product.name} to your basket')
+        messages.success(request, f'''Added {quantity} x
+        {product.name} to your basket''')
     print(order)
     request.session['order'] = order
     return redirect(redirect_url)
 
 
-def update_order(request):   
+def update_order(request):
     """ Update the quantity of the specified product to the order """
     order = request.session.get('order', {})
     quantity = int(request.POST.get('quantity'))
@@ -54,11 +54,7 @@ def update_order(request):
     request.session['order'] = order
     return redirect(reverse('orders'))
 
-    # except:
-    #     redirect_url = request.POST.get('redirect_url')
-    #     request.session['order'] = order
-    #     return redirect(redirect_url)
-    
+
 def remove_from_order(request):
     """Remove the item from the shopping basket"""
     try:
@@ -85,11 +81,3 @@ def delete_session(request):
     order = request.session.get('order', {})
     request.session['order'] = order
     return redirect(reverse('orders'))
-
-
-
-
-
-
-   
-  

@@ -68,28 +68,26 @@ def checkout(request):
             newOrder.save()
             try:
                 for item_info, quantity in order.items():
-                    item_id, color_id, size_id =[int(value) for value in item_info.split()]
+                    item_id, color_id, size_id = [int(value) for
+                                                  value in item_info.split()]
                     product = get_object_or_404(Product, pk=item_id)
                     color = get_object_or_404(Color, pk=color_id)
-                    size = get_object_or_404(Size, pk=size_id) 
-                    # order = request.session.get('order', {})
-                    # current_order = order_contents(request)
-                    # total = current_order['grand_total']
+                    size = get_object_or_404(Size, pk=size_id)
                     quantity = quantity
                     order_line_item = OrderLineItem(
-                                order=newOrder,
-                                product=product,
-                                quantity=quantity,
-                                color=color,
-                                size=size,
-
-                        )
+                        order=newOrder,
+                        product=product,
+                        quantity=quantity,
+                        color=color,
+                        size=size,
+                    )
                     order_line_item.save()
 
             except Product.DoesNotExist:
                 messages.error(request, (
-                    "One of the products in your bag wasn't found in our database. "
-                        "Please call us for assistance!")
+                    '''One of the products in your bag wasn't
+                    found in our database.
+                    Please call us for assistance!''')
                 )
                 newOrder.delete()
                 return redirect(reverse('view_orders'))
@@ -163,7 +161,7 @@ def send_confirmation_email(order):
         body,
         settings.DEFAULT_FROM_EMAIL,
         [cust_email]
-        )
+    )
 
 
 def checkout_success(request, order_number):
