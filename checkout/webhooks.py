@@ -7,7 +7,7 @@ from checkout.webhook_handler import StripeWH_Handler
 
 import stripe
 
-# code take from stripe with modifications / boutique ado tutorial guidance
+# code taken from stripe with modifications / boutique ado tutorial guidance
 
 
 @require_POST

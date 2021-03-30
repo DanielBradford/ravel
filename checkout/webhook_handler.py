@@ -91,9 +91,6 @@ class StripeWH_Handler:
                     product = get_object_or_404(Product, pk=item_id)
                     color = get_object_or_404(Color, pk=color_id)
                     size = get_object_or_404(Size, pk=size_id)
-                    # order = request.session.get('order', {})
-                    # current_order = order_contents(request)
-                    # total = current_order['grand_total']
                     quantity = quantity
                     order_line_item = OrderLineItem(
                                 order=order,
