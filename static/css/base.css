@@ -1,61 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Lobster&family=Open+Sans:wght@300&display=swap');
 
 
-#my-account-dropdown a{
+#my-account-dropdown a {
     font-family: sans-serif;
 }
 
-.intro{
-       margin-top: 30px;
+.intro {
+    margin-top: 30px;
 
 }
 
-.homeContainer{
+.homeContainer {
     margin-top: 10%;
     border: double 3px black;
 }
-.heartwool {
-  padding-top: 30px;
-  width: 70%;
-  height: auto;
-  background: url(/media/images/brownwool.jpg) no-repeat bottom right fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
 
-  box-shadow: 1px 1px #9575cd;
+.heartwool {
+    padding-top: 30px;
+    width: 70%;
+    height: auto;
+    background: url(/media/images/brownwool.jpg) no-repeat bottom right fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    box-shadow: 1px 1px #9575cd;
 }
 
-.about{
+.about {
     padding: 2em;
     padding-top: 1em;
 }
 
-.contact{
+.contact {
     width: 40vw;
-  height: 100vh;
-  background: url(/media/images/pile.jpg) no-repeat bottom right fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+    height: 100vh;
+    background: url(/media/images/pile.jpg) no-repeat bottom right fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 
 }
-#cta-btn-order{
-    margin-top:30%;
+
+#cta-btn-order {
+    margin-top: 30%;
 }
 
 
-#avatar{
+#avatar {
     height: 30vh;
     /* opacity: .8; */
     z-index: 400;
@@ -63,49 +65,50 @@
     border-radius: 50%;
     padding-top: 2em;
 }
-#knit{
+
+#knit {
     opacity: .07;
     height: 50vh;
     left: 100px;
 }
 
 .fixed-action-btn:hover,
-nav a:hover{
+nav a:hover {
     color: #b2ebf2;
 }
 
-.welcome{
+.welcome {
     padding: 1em;
 }
 
-.card img{
+.card img {
     height: 20em;
-    
+
 }
 
-.card-image{
+.card-image {
     border-top-right-radius: 1.8em;
     border-top-left-radius: 1.8em;
 }
 
-.card-image img{
+.card-image img {
     object-fit: cover;
 }
 
-.card{
-    
-    border-radius:1.8em;
+.card {
+
+    border-radius: 1.8em;
 }
 
-.card:hover{
+.card:hover {
     box-shadow: 2px 2px 2px #9575cd;
 }
 
-.card-title{
+.card-title {
     font-family: 'Bad Script', sans-serif;
 }
 
-.card-reveal{
+.card-reveal {
     border-radius: 1.4em;
     align-content: center;
 }
@@ -119,74 +122,76 @@ nav a:hover{
     width: 50vw;
 }
 
-.carousel-item img{
+.carousel-item img {
     border: solid 4px #9575cd;
 }
 
-.carousel img{
+.carousel img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
 }
 
-.carousel p{
-    font-family: 'Open Sans',sans-serif;
+.carousel p {
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.2em;
     color: rgba(128, 0, 128, 0.644);
 }
-nav{
+
+nav {
     font-family: 'Bad Script', sans-serif;
 }
-h1{
-    font-family: 'Lobster',sans-serif;
+
+h1 {
+    font-family: 'Lobster', sans-serif;
 }
 
-h1{
+h1 {
     color: rgb(104, 30, 165);
     background-color: rgba(245, 245, 245, 0.767);
     text-shadow: 1px 1px rgb(192, 142, 99);
 
 }
 
-h2{
+h2 {
     color: rgb(192, 142, 99);
     font-family: 'Bad Script', sans-serif;
     background-color: rgba(245, 245, 245, 0.767);
 }
 
-#contact-page form i{
+#contact-page form i {
     color: whitesmoke;
     text-shadow: 2px 2px rgb(192, 142, 99);
 }
 
-form{
+form {
     padding: 2em;
 }
 
-#contact-page h2{
+#contact-page h2 {
     color: rgb(58, 187, 226);
-    
+
 }
 
-#contact-page p{
+#contact-page p {
     color: rgba(192, 142, 99, 0.664);
 }
 
-.contact-details{
+.contact-details {
     font-size: 1.4em;
     font-family: 'Open Sans', sans-serif;
 }
 
-.contact-details a{
+.contact-details a {
     color: rgb(58, 187, 226);
 
 }
 
-.contact-details a:hover{
+.contact-details a:hover {
     text-decoration: underline;
 }
 
-.contact-content{
+.contact-content {
     margin-bottom: 0;
 }
 
@@ -196,123 +201,126 @@ h3 {
     line-height: 1.5em;
 }
 
-.light{
+.light {
     color: rgb(37, 121, 146);
     font-size: 1.2em;
 }
 
-#peek{
+#peek {
     position: fixed;
 }
-.navbar a{
+
+.navbar a {
     margin: .2em;
-    font-size: 25px;;
+    font-size: 25px;
+    ;
 }
 
-.sidenav a{
+.sidenav a {
     color: rgb(58, 187, 226);
 }
 
-footer i{
+footer i {
     margin-left: 1em;
     font-size: 40px;
     margin: 10px;
     color: #9575cd;
 }
 
-.modal-trigger{
+.modal-trigger {
     z-index: 300;
 }
 
 .heartwool-footer {
-  width: 100vw;
-  height: 10vh;
-  background: url(/media/images/brownwool.jpg) no-repeat bottom right fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border-top-left-radius: 30%;
-  box-shadow: 1px 1px #9575cd;
+    width: 100vw;
+    height: 10vh;
+    background: url(/media/images/brownwool.jpg) no-repeat bottom right fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-top-left-radius: 30%;
+    box-shadow: 1px 1px #9575cd;
 }
 
-button{
+button {
     font-family: 'Bad Script', sans-serif;
 }
 
-.btn-large:hover{
+.btn-large:hover {
     background-color: #9575cd;
     border: solid 1px rgb(28, 209, 209);
-    
+
 }
 
-.modal-content p{
+.modal-content p {
     font-size: 2em;
     font-family: 'Bad Script', sans-serif;
 }
 
-.fixed-action-btn i{
+.fixed-action-btn i {
     color: white;
 }
 
-#send-btn{
+#send-btn {
     color: white;
 
 }
 
 
-.color-select img{
+.color-select img {
     border: solid 1.2px;
     border-radius: 50%;
 }
 
-#submit-button, 
-.submit-button{
+#submit-button,
+.submit-button {
     margin-top: 20px;
 }
 
 
-#prodDetImg{
+#prodDetImg {
     width: 100%;
-    padding:20px; 
+    padding: 20px;
     border-radius: 1.4em;
 }
 
 
 #contactForm textarea,
-#contactForm input{
+#contactForm input {
     background-color: rgba(255, 255, 255, 0.692);
     border-radius: 1.4em;
     text-align: center;
 }
-#contactForm textarea{
+
+#contactForm textarea {
     height: 10em;
     text-align: left;
     padding-left: 10px;
 }
 
-.remove-item:hover{
+.remove-item:hover {
     cursor: pointer;
 }
 
-.checkoutOrder h3{
+.checkoutOrder h3 {
     background-color: #ffffff70;
     border-radius: 1.4em;
 }
 
-.emailLink h3:hover{
+.emailLink h3:hover {
     text-decoration: underline;
     color: teal;
 
 }
 
 #loading-overlay {
-	display: none;
-	position: fixed;
+    display: none;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -322,14 +330,14 @@ button{
 }
 
 .loading-spinner {
-	display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     margin: 0;
     height: 100%;
 }
 
-.message-container{
+.message-container {
     position: fixed;
     width: 400px;
     height: 300px;
@@ -339,38 +347,40 @@ button{
     z-index: 9999999;
     border-radius: 1.2em;
 }
-.toast{
+
+.toast {
     background-color: #9575cde3;
     border: solid 4px #fff;
 }
 
-.toast img{
+.toast img {
     height: 80px;
     width: 80px;
     object-fit: cover;
     border-radius: 50%;
 }
 
-.searchbar input.form-control{
+.searchbar input.form-control {
     border: solid #9575cd 2px;
     border-radius: 1.4em;
     padding: 5px;
     text-align: center;
 }
 
-body > main > div:nth-child(3) > form > div > input{
-    border: solid #9575cd 2px;
-    border-radius: 1.4em;
-    padding: 5px;
-    text-align: center;
-}
-body > main > div.container > div:nth-child(2) > form > div > input{
+body>main>div:nth-child(3)>form>div>input {
     border: solid #9575cd 2px;
     border-radius: 1.4em;
     padding: 5px;
     text-align: center;
 }
 
-table th{
+body>main>div.container>div:nth-child(2)>form>div>input {
+    border: solid #9575cd 2px;
+    border-radius: 1.4em;
+    padding: 5px;
+    text-align: center;
+}
+
+table th {
     text-align: center;
 }

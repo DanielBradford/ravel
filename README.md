@@ -468,7 +468,7 @@ This project was **deployed** using **HEROKU**.
 **How to deploy to Heroku using GitPod:**
 
 1. Created a new application using the Heroku dashboard.
-2. Go to settings tab, click on 'reveal config vars' and add config vars such as IP (0.0.0.0), PORT (5000), MongoDB Name, MongoDB URI (URL with DB name and password).
+2. Go to settings tab, click on 'reveal config vars' and add config vars such as IP (0.0.0.0), PORT (5000), STRIPE API Keys, Secret Keys, Email Hosting Keys etc.
 3. Install Heroku via the console using 'pip3 install -g Heroku'.
 4. Log into Heroku via the console using 'heroku login' and follow the on screen instructions to log in.
 5. Create a requirements.txt via the console using 'pip3 freeze > requirements.txt'.
