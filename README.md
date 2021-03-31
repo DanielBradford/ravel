@@ -120,7 +120,7 @@ Although registering is also free the user must give their full name and email a
 **ADMIN USER STORIES**`
 1. As an admin user i want to view users, products and orders 
 1. As an admin user i want to have full control over the e-commerce store
-1. As an admin user i want to add a new product
+1. As an admin user i want to add a new product, color option or size option 
 1. As an admin user i want to delete an existing product
 1. As an admin user i want to modify an order
 1. As an admin user i want to modify user details

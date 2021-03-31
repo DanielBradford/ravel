@@ -173,28 +173,28 @@ I tested this by intentionally entering a non-existent URL. The application pass
 **ADMIN USER STORIES**`
 1. As an admin user i want to view users, products and orders 
 
-    <span style="color:#00b300">PASSED</span>
+    <span style="color:#00b300">PASSED</span> The admin view and scope allows for full view over users, orders and products within the site.
 
 1. As an admin user i want to have full control over the e-commerce store
 
-    <span style="color:#00b300">PASSED</span>
+    <span style="color:#00b300">PASSED</span> The admin view and scope allows for full control over users, orders and products within the site.
 
-1. As an admin user i want to add a new product
+1. As an admin user i want to add a new product, color option or size option 
 
-    <span style="color:#00b300">PASSED</span>
+    <span style="color:#00b300">PASSED</span> This passed testing and in the admin view the user can complete the fields for product, color or size options and they will display successfully in the front end for customers.
 
 
 1. As an admin user i want to delete an existing product
 
-    <span style="color:#00b300">PASSED</span>
+    <span style="color:#00b300">PASSED</span> The admin user can successfully delete a product from the admin view.
 
 1. As an admin user i want to modify an order
 
-    <span style="color:#00b300">PASSED</span>
+    <span style="color:#00b300">PASSED</span> The admin user can succesfully modify an order record in the admin view.
 
 1. As an admin user i want to modify user details
 
-    <span style="color:#00b300">PASSED</span>
+    <span style="color:#00b300">PASSED</span> The admin user can successfully modify a user's details in the admin view
 
 
 
@@ -318,7 +318,7 @@ Chrome              | 84.0.4147.105     | <span style="color:#00b300">PASSED</sp
 <a name="future"></a>
 ## **Future Issues to be fixed**
 
-To be completed on feedback from mentor
+The validtion for order quantity could be established in the back end as the front end can be overridden by experieced and malicious developers / users.
 
 
 
@@ -355,7 +355,15 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 - By making these changes the current SEO rating is now **100**
 
 **Lighthouse Desktop Report:**
+
+Below is the lighthouse report prior to changes:
+
 <img src="documents/screenshots/lighthouse.png" alt="Landing Page - LIGHTHOUSE REPORT">
+ <a name="further"></a>
+
+ Below is the lighthouse report after changes:
+
+ <img src="documents/screenshots/lighthouse2.png" alt="Landing Page - LIGHTHOUSE REPORT">
  <a name="further"></a>
 
 ## **Further Testing**
