@@ -478,6 +478,9 @@ This project was **deployed** using **HEROKU**.
 9. Deploy your project to Heroku via the console using 'git push heroku master'.
 
 
+**AWS was used to host media and static files**
+https://docs.aws.amazon.com/s3/?id=docs_gateway
+
 ### **To run locally:**
 
 To clone this project from GitHub:
@@ -502,7 +505,9 @@ Content :
 
 For continual guidance:
 - Brain Macharia (CI Mentor)
+- Code Institute Support Team
 - Stack Overflow (https://stackoverflow.com/)
 - W3 Schools (https://www.w3schools.com/)
+
 
 <div align="center"><a href="#top">BACK TO TOP</a></div><div align="center"><img src="documents/screenshots/logo.png"></div>
