@@ -27,7 +27,7 @@ nav {
     padding-top: 30px;
     width: 70%;
     height: auto;
-    background: url(/media/images/brownwool.jpg) no-repeat bottom right fixed;
+    background: url(/media/brownwool.jpg) no-repeat bottom right fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -40,24 +40,8 @@ nav {
     box-shadow: 1px 1px #9575cd;
 }
 
-.contact {
-    width: 40vw;
-    height: 100vh;
-    background: url(/media/images/pile.jpg) no-repeat bottom right fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-
-}
-
 #avatar {
     height: 30vh;
-    /* opacity: .8; */
     z-index: 400;
     margin: 20%;
     border-radius: 50%;
@@ -354,7 +338,7 @@ footer i {
 .heartwool-footer {
     width: 100vw;
     height: 10vh;
-    background: url(/media/images/brownwool.jpg) no-repeat bottom right fixed;
+    background: url(/media/brownwool.jpg) no-repeat bottom right fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
