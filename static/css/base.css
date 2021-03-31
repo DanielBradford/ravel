@@ -1,19 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Lobster&family=Open+Sans:wght@300&display=swap');
 
 
+/* Navbar / Menu */
+
 #my-account-dropdown a {
     font-family: sans-serif;
 }
 
-.intro {
-    margin-top: 30px;
-
+nav {
+    font-family: 'Bad Script', sans-serif;
 }
 
-.homeContainer {
-    margin-top: 10%;
-    border: double 3px black;
+.navbar a {
+    margin: .2em;
+    font-size: 25px;
+    ;
 }
+
+.sidenav a {
+    color: rgb(58, 187, 226);
+}
+
+/* Image settings / Container Backgound Stylings */
 
 .heartwool {
     padding-top: 30px;
@@ -32,11 +40,6 @@
     box-shadow: 1px 1px #9575cd;
 }
 
-.about {
-    padding: 2em;
-    padding-top: 1em;
-}
-
 .contact {
     width: 40vw;
     height: 100vh;
@@ -52,11 +55,6 @@
 
 }
 
-#cta-btn-order {
-    margin-top: 30%;
-}
-
-
 #avatar {
     height: 30vh;
     /* opacity: .8; */
@@ -66,20 +64,60 @@
     padding-top: 2em;
 }
 
+#prodDetImg {
+    width: 100%;
+    padding: 20px;
+    border-radius: 1.4em;
+}
+
+.color-select img {
+    border: solid 1.2px;
+    border-radius: 50%;
+}
+
+/* General Stylings */
+
+.intro {
+    margin-top: 30px;
+
+}
+
+.about {
+    padding: 2em;
+    padding-top: 1em;
+}
+
+.homeContainer {
+    margin-top: 10%;
+    border: double 3px black;
+}
+
 #knit {
     opacity: .07;
     height: 50vh;
     left: 100px;
 }
 
-.fixed-action-btn:hover,
-nav a:hover {
-    color: #b2ebf2;
-}
-
 .welcome {
     padding: 1em;
 }
+
+.checkoutOrder h3 {
+    background-color: #ffffff70;
+    border-radius: 1.4em;
+}
+
+.emailLink h3:hover {
+    text-decoration: underline;
+    color: teal;
+
+}
+
+table th {
+    text-align: center;
+}
+
+/* Product Cards */
 
 .card img {
     height: 20em;
@@ -113,34 +151,7 @@ nav a:hover {
     align-content: center;
 }
 
-
-.carousel {
-    border-radius: 50%;
-    border-bottom-right-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.295);
-    margin: 1em;
-    width: 50vw;
-}
-
-.carousel-item img {
-    border: solid 4px #9575cd;
-}
-
-.carousel img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-}
-
-.carousel p {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.2em;
-    color: rgba(128, 0, 128, 0.644);
-}
-
-nav {
-    font-family: 'Bad Script', sans-serif;
-}
+/* Text and Icons */
 
 h1 {
     font-family: 'Lobster', sans-serif;
@@ -210,41 +221,15 @@ h3 {
     position: fixed;
 }
 
-.navbar a {
-    margin: .2em;
-    font-size: 25px;
-    ;
+/* Buttons */
+
+#cta-btn-order {
+    margin-top: 30%;
 }
 
-.sidenav a {
-    color: rgb(58, 187, 226);
-}
-
-footer i {
-    margin-left: 1em;
-    font-size: 40px;
-    margin: 10px;
-    color: #9575cd;
-}
-
-.modal-trigger {
-    z-index: 300;
-}
-
-.heartwool-footer {
-    width: 100vw;
-    height: 10vh;
-    background: url(/media/images/brownwool.jpg) no-repeat bottom right fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border-top-left-radius: 30%;
-    box-shadow: 1px 1px #9575cd;
+.fixed-action-btn:hover,
+nav a:hover {
+    color: #b2ebf2;
 }
 
 button {
@@ -257,11 +242,6 @@ button {
 
 }
 
-.modal-content p {
-    font-size: 2em;
-    font-family: 'Bad Script', sans-serif;
-}
-
 .fixed-action-btn i {
     color: white;
 }
@@ -271,10 +251,8 @@ button {
 
 }
 
-
-.color-select img {
-    border: solid 1.2px;
-    border-radius: 50%;
+.remove-item:hover {
+    cursor: pointer;
 }
 
 #submit-button,
@@ -283,40 +261,19 @@ button {
 }
 
 
-#prodDetImg {
-    width: 100%;
-    padding: 20px;
-    border-radius: 1.4em;
+/* Modal  */
+
+.modal-content p {
+    font-size: 2em;
+    font-family: 'Bad Script', sans-serif;
+}
+
+.modal-trigger {
+    z-index: 300;
 }
 
 
-#contactForm textarea,
-#contactForm input {
-    background-color: rgba(255, 255, 255, 0.692);
-    border-radius: 1.4em;
-    text-align: center;
-}
-
-#contactForm textarea {
-    height: 10em;
-    text-align: left;
-    padding-left: 10px;
-}
-
-.remove-item:hover {
-    cursor: pointer;
-}
-
-.checkoutOrder h3 {
-    background-color: #ffffff70;
-    border-radius: 1.4em;
-}
-
-.emailLink h3:hover {
-    text-decoration: underline;
-    color: teal;
-
-}
+/* Toast Message and Loading Overlay */
 
 #loading-overlay {
     display: none;
@@ -360,6 +317,8 @@ button {
     border-radius: 50%;
 }
 
+/* Searchbar  */
+
 .searchbar input.form-control {
     border: solid #9575cd 2px;
     border-radius: 1.4em;
@@ -381,6 +340,29 @@ body>main>div.container>div:nth-child(2)>form>div>input {
     text-align: center;
 }
 
-table th {
-    text-align: center;
+/* Footer */
+
+footer i {
+    margin-left: 1em;
+    font-size: 40px;
+    margin: 10px;
+    color: #9575cd;
+}
+
+
+
+.heartwool-footer {
+    width: 100vw;
+    height: 10vh;
+    background: url(/media/images/brownwool.jpg) no-repeat bottom right fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-top-left-radius: 30%;
+    box-shadow: 1px 1px #9575cd;
 }
