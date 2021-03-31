@@ -96,7 +96,7 @@ I tested this by intentionally entering a non-existent URL. The application pass
 
 1. As a returning user i want to view my previous orders
 
-    <span style="color:#00b300">PASSED</span> The My profile page allows this. In the my profile page (https://ravel-online.herokuapp.com/profile/), all previous orders of user are displayed in a table and the number of orders are shown in the header:
+    <span style="color:#00b300">PASSED</span> The My profile page allows this. In the my profile page (https://ravel-online.herokuapp.com/profile/), all previous orders of user are displayed in a table and the number of orders are shown in the header. This are also listed in order of most recent date to least recent. This is using a Class Meta -date syntax in the models.py of checkout app. (line 69/70):
 
     <img src="documents/screenshots/orderHistory.png">
 
